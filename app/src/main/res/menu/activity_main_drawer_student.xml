@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/Dashboard"
+            android:icon="@drawable/ic_dashboard_black_24dp"
+            android:title="Dashboard" />
+        <item
+            android:id="@+id/nav_Notif"
+            android:icon="@drawable/ic_assignment_late_black_24dp"
+            android:title="Notif" />
+        <item
+            android:id="@+id/nav_Schedule"
+            android:icon="@drawable/ic_today_black_24dp"
+            android:title="Schedule" />
+        <item
+            android:id="@+id/nav_Account"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="Account" />
+
+        <item
+            android:id="@+id/nav_Attendance"
+            android:icon="@drawable/ic_class_black_24dp"
+            android:title="Attendance" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_exit_to_app_black_24dp"
+            android:title="Logout" />
+    </group>
+</menu>

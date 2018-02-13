@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "799342714342",
+    "firebase_url": "https://smartclassroom-fca40.firebaseio.com",
+    "project_id": "smartclassroom-fca40",
+    "storage_bucket": "smartclassroom-fca40.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799342714342:android:d46d2d669f394f2b",
+        "android_client_info": {
+          "package_name": "com.example.user.smartclassroom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "799342714342-09r2vhou4df5boocellqeu21nh3qpdjc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDrIiZc_dCIy6YvFP-k5MVY-OOBsp0mCs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

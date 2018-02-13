@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Switch
+        android:id="@+id/light_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="137dp"
+        android:textOff="Off"
+        android:textOn="On"
+        android:layout_marginRight="137dp"
+        android:layout_marginTop="84dp"
+        android:text="Switch" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/light_switch"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="36dp"
+        android:layout_marginStart="36dp"
+        android:text="Light" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="41dp"
+        android:text="Socket" />
+
+    <Switch
+        android:id="@+id/socket_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="Off"
+        android:textOn="On"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignLeft="@+id/light_switch"
+        android:layout_alignStart="@+id/light_switch"
+        android:text="Switch" />
+
+    <Switch
+        android:id="@+id/front_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="Off"
+        android:textOn="On"
+        android:layout_alignLeft="@+id/socket_switch"
+        android:layout_alignStart="@+id/socket_switch"
+        android:layout_below="@+id/socket_switch"
+        android:layout_marginTop="32dp"
+        android:text="Switch" />
+
+    <Switch
+        android:id="@+id/back_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="Off"
+        android:textOn="On"
+        android:layout_alignLeft="@+id/front_switch"
+        android:layout_alignStart="@+id/front_switch"
+        android:layout_centerVertical="true"
+        android:text="Switch" />
+
+    <Switch
+        android:id="@+id/all_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="Off"
+        android:textOn="On"
+        android:layout_alignLeft="@+id/back_switch"
+        android:layout_alignStart="@+id/back_switch"
+        android:layout_below="@+id/back_switch"
+        android:layout_marginTop="46dp"
+        android:text="Switch" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/front_switch"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignStart="@+id/textView3"
+        android:text="Front" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/all_switch"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignStart="@+id/textView4"
+        android:text="Back" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/all_switch"
+        android:layout_alignBottom="@+id/all_switch"
+        android:layout_alignLeft="@+id/textView5"
+        android:layout_alignStart="@+id/textView5"
+        android:text="All" />
+</RelativeLayout>

@@ -1,0 +1,120 @@
+<ProductInfo> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe After Effects CS6/Adobe After Effects CS6.app/Contents/MacOS" exe="After Effects" version="11">AfterEffects-CS6-Mac-GM</leid>
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Audition CS6/Adobe Audition CS6.app/Contents/MacOS" exe="Adobe Audition CS6" version="5">Audition-CS6-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Dreamweaver CS6/Adobe Dreamweaver CS6.app/Contents/MacOS" exe="Dreamweaver" version="12">Dreamweaver-CS6-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Encore CS6/Adobe Encore CS6.app/Contents/MacOS" exe="Adobe Encore" version="6">EncoreApp-CS6-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Fireworks CS6/Adobe Fireworks CS6.app/Contents/MacOS" exe="Adobe Fireworks CS6" version="Adobe Fireworks CS6 version 12.">Fireworks-CS6-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Flash CS6/Adobe Flash CS6.app/Contents/MacOS" exe="Adobe Flash CS6" version="12">FlashPro-CS6-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Illustrator CS6/Adobe Illustrator.app/Contents/MacOS" exe="Adobe Illustrator" version="16">Illustrator-CS6-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe InDesign CS6/Adobe InDesign CS6.app/Contents/MacOS" exe="Adobe InDesign CS6" version="8">InDesign-CS6-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Photoshop CS6/Adobe Photoshop CS6.app/Contents/MacOS" adobeCode="{9124DF4E-617D-486B-A970-8FA632244F24}" exe="Adobe Photoshop CS6" iconId="PS_CS6" version="13">Photoshop-CS6-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Prelude CS6/Adobe Prelude CS6.app/Contents/MacOS" exe="Adobe Prelude CS6" version="1">Prelude-CS6-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Soundbooth CS5/Adobe Soundbooth CS5.app/Contents/MacOS" adobeCode="{CBE4F6C3-788E-4CAC-BA25-26FE39A3BC8C}" exe="Adobe Soundbooth CS5" version="20100319.0305">Soundbooth-CS5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Premiere Pro CS6/Adobe Premiere Pro CS6.app/Contents/MacOS" exe="Adobe Premiere Pro CS6" version="6">PremiereProApp-CS6-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe SpeedGrade CS6/Adobe SpeedGrade CS6.app/Contents/MacOS" exe="sgmacosx" version="2012">SpeedGrade-CS6-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Acrobat X Pro/Adobe Acrobat Pro.app/Contents/MacOS" exe="AdobeAcrobat" version="10">AcrobatPro-AS1-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Media Encoder CS5.5/Adobe Media Encoder CS5.5.app/Contents/MacOS" exe="Adobe Media Encoder CS5.5" version="">AdobeMediaEncoder-CS5.5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe After Effects CS5/Adobe After Effects CS5.app/Contents/MacOS" adobeCode="{DA1B174B-4297-467C-9EF8-0AB8D4D5171E}" exe="After Effects" version="10">AfterEffects-CS5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe After Effects CS5.5/Adobe After Effects CS5.5.app/Contents/MacOS" adobeCode="{E82097B9-A3B8-404A-9A92-AC16A8AC9576}" exe="After Effects" version="10.5">AfterEffects-CS5.5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Audition CS5.5/Adobe Audition.app/Contents/MacOS" adobeCode="{D5B1535A-FDFC-4B40-B2E2-21DA83D9CB57}" exe="Adobe Audition" version="4">Audition-CS5.5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Bridge CS5.1/Adobe Bridge CS5.1.app/Contents/MacOS" exe="Adobe Bridge CS5.1" version="">Bridge-CS5.5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Bridge CS6/Adobe Bridge CS6.app/Contents/MacOS" exe="Adobe Bridge CS6" version="">Bridge-CS6-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Contribute CS5.1/Adobe Contribute CS5.1.app/Contents/MacOS" adobeCode="{BD6EEC48-4A2E-4B19-B36E-C3A94A97C99E}" exe="Adobe Contribute CS5.1" version="6">Contribute-CS5.5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Device Central CS5.5/Adobe Device Central CS5.5.app/Contents/MacOS" exe="Adobe Device Central CS5.5" version="">DeviceCentral-CS5.5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Dreamweaver CS5.5/Adobe Dreamweaver CS5.5.app/Contents/MacOS" adobeCode="{9B4F8AA7-DDFA-4A0F-A36C-D0F66CCD66F7}" exe="Dreamweaver" version="11.5">Dreamweaver-CS5.5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Dreamweaver CS5/Adobe Dreamweaver CS5.app/Contents/MacOS" adobeCode="{DD5B1FAF-47FA-4B6D-A31C-5E313EB0DD07}" exe="Dreamweaver" version="11.0">Dreamweaver-CS5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Encore CS5.1/Adobe Encore CS5.1.app/Contents/MacOS" adobeCode="{FB720658-01F4-4002-BB69-49E66CD82E30}" exe="Adobe Encore" version="5">EncoreApp-CS5.5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Fireworks CS5.1/Adobe Fireworks CS5.1.app/Contents/MacOS" adobeCode="{4B4C871D-9C8A-4C8A-B92A-C37273D6CE7D}" exe="Adobe Fireworks CS5.1" version="Adobe Fireworks CS5.1 version 1">Fireworks-CS5.5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Flash Builder 4/Adobe Flash Builder 4.app/Contents/MacOS" adobeCode="{B198547F-579A-4CE1-AC61-558130922957}" exe="Adobe Flash Builder 4" version="Adobe Flash Builder 4">FlashBuilder-CS5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Flash Builder 4.5/Adobe Flash Builder 4.5.app/Contents/MacOS" adobeCode="{9D0088AD-BBB1-470B-B7B8-520EDEFAE5F3}" exe="Adobe Flash Builder 4.5" version="Adobe Flash Builder 4.5">FlashBuilder-CS5.5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Flash Catalyst CS5/Adobe Flash Catalyst CS5.app/Contents/MacOS" adobeCode="{A4EE8093-4250-4D8B-BDE4-A4675BB44953}" exe="Adobe Flash Catalyst CS5" version="1">FlashCatalyst-CS5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Flash Catalyst CS5.5/Adobe Flash Catalyst CS5.5.app/Contents/MacOS" adobeCode="{50491591-A44F-429E-B7C8-87E03FECFD78}" exe="Adobe Flash Catalyst CS5.5" version="1.5">FlashCatalyst-CS5.5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Flash CS5.5/Adobe Flash CS5.5.app/Contents/MacOS" adobeCode="{D97AF04B-B70A-4862-BC25-31E6D9C4A529}" exe="Adobe Flash CS5.5" version="11">FlashPro-CS5.5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Illustrator CS5.1/Adobe Illustrator.app/Contents/MacOS" adobeCode="{A516708E-EC03-40F5-B82E-0851A44B3780}" exe="Adobe Illustrator" version="15.1">Illustrator-CS5.5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe InDesign CS5.5/Adobe InDesign CS5.5.app/Contents/MacOS" adobeCode="{0CCF0458-5171-11E0-BC45-DC59E3AB3DC5}" exe="Adobe InDesign CS5.5" version="7">InDesign-CS5.5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe OnLocation CS5.1/Adobe OnLocation CS5.1.app/Contents/MacOS" adobeCode="{5D2A85AB-7391-4EAC-AA61-D5D9C09E4F17}" exe="Adobe OnLocation" version="12.0.4">OnLocationApp-CS5.5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Photoshop CS5.1/Adobe Photoshop CS5.1.app/Contents/MacOS" adobeCode="{08EF22BC-43B2-4B4E-BA12-52B18F418F38}" exe="Adobe Photoshop CS5.1" iconId="PS_CS5" version="12">Photoshop-CS5.5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Premiere Pro CS5.5/Adobe Premiere Pro CS5.5.app/Contents/MacOS" adobeCode="{CE45CAE5-0B56-4C52-AE07-98A05027A049}" exe="Adobe Premiere Pro CS5.5" version="5">PremiereProApp-CS5.5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Acrobat XI Pro/Adobe Acrobat Pro.app/Contents/MacOS" exe="AdobeAcrobat" version="11.1">V6{}AcrobatPro-AS2-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Contribute CS5/Adobe Contribute CS5.app/Contents/MacOS" adobeCode="{606853EA-E138-47A4-B0B2-692C7788607E}" exe="Adobe Contribute CS5" version="6">Contribute-CS5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Dreamweaver CC/Adobe Dreamweaver CC.app/Contents/MacOS" exe="Dreamweaver" version="13">Dreamweaver-CS7-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Encore CS5/Adobe Encore CS5.app/Contents/MacOS" adobeCode="{A334FDED-DCCA-481E-B226-F902CCC419D2}" exe="Adobe Encore" version="5">EncoreApp-CS5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Fireworks CS5/Adobe Fireworks CS5.app/Contents/MacOS" adobeCode="{755A9707-8A74-4B18-A6FD-F80F5893BDF2}" exe="Adobe Fireworks CS5" version="Adobe Fireworks CS5 version 11.">Fireworks-CS5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Flash CS5/Adobe Flash CS5.app/Contents/MacOS" adobeCode="{CFC9F871-7C40-40B6-BE4A-B98A5B309716}" exe="Adobe Flash CS5" version="11">FlashPro-CS5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Illustrator CS5/Adobe Illustrator.app/Contents/MacOS" adobeCode="{6A75E573-6909-4D48-BDFA-D8ED118605A5}" exe="Adobe Illustrator" version="15.0">Illustrator-CS5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe InDesign CS5/Adobe InDesign CS5.app/Contents/MacOS" adobeCode="{9EEF9016-4356-11DF-9781-28A32C404F28}" exe="Adobe InDesign CS5" version="7">InDesign-CS5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe OnLocation CS5/Adobe OnLocation CS5.app/Contents/MacOS" adobeCode="{ABDC1F61-2C50-4BB1-ACDA-66D412D72582}" exe="Adobe OnLocation" version="5.0">OnLocationApp-CS5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Photoshop CS5/Adobe Photoshop CS5.app/Contents/MacOS" adobeCode="{7DFEBBA4-81E1-425B-BBAA-06E9E5BBD97E}" exe="Adobe Photoshop CS5" iconId="PS_CS5" version="12">Photoshop-CS5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Premiere Pro CS5/Adobe Premiere Pro CS5.app/Contents/MacOS" adobeCode="{C21384F7-1A36-4706-95AB-B09BCE3C144F}" exe="Adobe Premiere Pro CS5" version="5">PremiereProApp-CS5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Bridge CC/Adobe Bridge CC.app/Contents/MacOS" exe="Adobe Bridge CC" version="6">Bridge-CS7-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Flash Builder 4.7/Adobe Flash Builder 4.7.app/Contents/MacOS" exe="Adobe Flash Builder 4.7" version="4.7">FlashBuilder-CS6-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Media Encoder CC 2014/Adobe Media Encoder CC 2014.app/Contents/MacOS" exe="Adobe Media Encoder CC 2014" version="8">V7{}AdobeMediaEncoder-8-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Audition CC 2014/Adobe Audition CC 2014.app/Contents/MacOS" exe="Adobe Audition CC 2014" version="7">V7{}Audition-7-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Dreamweaver CC 2014.1/Adobe Dreamweaver CC 2014.1.app/Contents/MacOS" exe="Dreamweaver" version="15">V7{}Dreamweaver-15-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Illustrator CC 2014/Adobe Illustrator.app/Contents/MacOS" exe="Adobe Illustrator" version="18">V7{}Illustrator-18-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe InCopy CC 2014/Adobe InCopy CC 2014.app/Contents/MacOS" exe="Adobe InCopy CC 2014" version="10">V7{}InCopy-10-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe InDesign CC 2014/Adobe InDesign CC 2014.app/Contents/MacOS" exe="Adobe InDesign CC 2014" version="10">V7{}InDesign-10-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Photoshop Lightroom 5.app/Contents/MacOS" adobeCode="{D84CBD1D-BA04-4CDC-9259-9AE864DD1815}" exe="Adobe Photoshop Lightroom 5" version="5.7">V7{}Lightroom-55-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Photoshop CC 2014/Adobe Photoshop CC 2014.app/Contents/MacOS" exe="Adobe Photoshop CC 2014" iconId="phs" version="15">V7{}Photoshop-15-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Prelude CC 2014/Adobe Prelude CC 2014.app/Contents/MacOS" exe="Adobe Prelude CC 2014" version="3">V7{}Prelude-3-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Premiere Pro CC 2014/Adobe Premiere Pro CC 2014.app/Contents/MacOS" exe="Adobe Premiere Pro CC 2014" version="8">V7{}PremierePro-8-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe SpeedGrade CC 2014/Adobe SpeedGrade CC 2014.app/Contents/MacOS" exe="sgmacosx" version="8">V7{}SpeedGrade-8-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Media Encoder CC/Adobe Media Encoder CC.app/Contents/MacOS" exe="Adobe Media Encoder CC" version="">AdobeMediaEncoder-CS7-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe After Effects CC/Adobe After Effects CC.app/Contents/MacOS" exe="After Effects" version="12">AfterEffects-CS7-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Audition CC/Adobe Audition CC.app/Contents/MacOS" exe="Adobe Audition CC" version="6">Audition-CS7-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Bridge CS5/Adobe Bridge CS5.app/Contents/MacOS" exe="Adobe Bridge CS5" version="">Bridge-CS5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Device Central CS5/Adobe Device Central CS5.app/Contents/MacOS" exe="Adobe Device Central CS5" version="">DeviceCentral-CS5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Edge Animate CC (3.0)/Adobe Edge Animate.app/Contents/MacOS" exe="Adobe Edge Animate" version="3">Edge-CS7-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Flash CC/Adobe Flash CC.app/Contents/MacOS" exe="Adobe Flash CC" version="13">FlashPro-CS7-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Illustrator CC/Adobe Illustrator.app/Contents/MacOS" exe="Adobe Illustrator" version="17">Illustrator-CS7-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe InCopy CC/Adobe InCopy CC.app/Contents/MacOS" exe="Adobe InCopy CC" version="9">InCopy-CS7-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe InDesign CC/Adobe InDesign CC.app/Contents/MacOS" exe="Adobe InDesign CC" version="9">InDesign-CS7-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Photoshop CC/Adobe Photoshop CC.app/Contents/MacOS" adobeCode="{AA01D250-3E72-4FD7-9A3B-F9A9C1DBC016}" exe="Adobe Photoshop CC" iconId="phs" version="14">Photoshop-CS7-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Prelude CC/Adobe Prelude CC.app/Contents/MacOS" exe="Adobe Prelude CC" version="2">Prelude-CS7-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Premiere Pro CC/Adobe Premiere Pro CC.app/Contents/MacOS" exe="Adobe Premiere Pro CC" version="7">PremiereProSuite-CS7-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe SpeedGrade CC/Adobe SpeedGrade CC.app/Contents/MacOS" exe="sgmacosx" version="7">SpeedGrade-CS7-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Media Encoder CC 2015/Adobe Media Encoder CC 2015.app/Contents/MacOS" exe="Adobe Media Encoder CC 2015" version="9">V7{}AdobeMediaEncoder-9-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe After Effects CC 2014/Adobe After Effects CC 2014.app/Contents/MacOS" exe="After Effects" version="13.0">V7{}AfterEffects-13-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe After Effects CC 2017/Adobe After Effects CC 2017.app/Contents/MacOS" exe="After Effects" version="14">V7{}AfterEffects-140-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Audition CC 2015/Adobe Audition CC 2015.app/Contents/MacOS" exe="Adobe Audition CC 2015" version="8">V7{}Audition-8-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Character Animator CC (Beta)/Adobe Character Animator CC (Beta).app/Contents/MacOS" exe="Character Animator" version="1.0">V7{}CharacterAnimator-105-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Dreamweaver CC 2015/Adobe Dreamweaver CC 2015.app/Contents/MacOS" exe="Dreamweaver" version="16">V7{}Dreamweaver-16-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Edge Animate CC 2015/Adobe Edge Animate CC 2015.app/Contents/MacOS" exe="Adobe Edge Animate CC 2015" version="6">V7{}EdgeAnimate-6-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Flash CC 2015/Adobe Flash CC 2015.app/Contents/MacOS" exe="Adobe Flash CC 2015" version="15">V7{}FlashPro-15-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Illustrator CC 2015/Adobe Illustrator.app/Contents/MacOS" exe="Adobe Illustrator" version="19">V7{}Illustrator-19-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe InCopy CC 2015/Adobe InCopy CC 2015.app/Contents/MacOS" exe="Adobe InCopy CC 2015" version="11">V7{}InCopy-11-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe InDesign CC 2015/Adobe InDesign CC 2015.app/Contents/MacOS" exe="Adobe InDesign CC 2015" version="11">V7{}InDesign-11-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Lightroom/Adobe Lightroom.app/Contents/MacOS" exe="Adobe Lightroom" version="6">V7{}Lightroom-6-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Muse CC 2015/Adobe Muse CC 2015.app/Contents/MacOS" exe="Adobe Muse CC" version="2015">V7{}Muse-80-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Photoshop CC 2015/Adobe Photoshop CC 2015.app/Contents/MacOS" exe="Adobe Photoshop CC 2015" iconId="phs" version="16">V7{}Photoshop-16-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Prelude CC 2015/Adobe Prelude CC 2015.app/Contents/MacOS" exe="Adobe Prelude CC 2015" version="4">V7{}Prelude-4-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Premiere Pro CC 2015/Adobe Premiere Pro CC 2015.app/Contents/MacOS" exe="Adobe Premiere Pro CC 2015" version="9">V7{}PremierePro-9-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe SpeedGrade CC 2015/Adobe SpeedGrade CC 2015.app/Contents/MacOS" exe="sgmacosx" version="9">V7{}SpeedGrade-9-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Prelude CC 2015.4/Adobe Prelude CC 2015.app/Contents/MacOS" exe="Adobe Prelude CC 2015" version="5">V7{}Prelude-5-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Premiere Pro CC 2015.3/Adobe Premiere Pro CC 2015.app/Contents/MacOS" exe="Adobe Premiere Pro CC 2015" version="10">V7{}PremierePro-10-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Photoshop CC 2015.5/Adobe Photoshop CC 2015.5.app/Contents/MacOS" exe="Adobe Photoshop CC 2015.5" version="17">V7{}Photoshop-17-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Muse CC 2015.2/Adobe Muse CC 2015.app/Contents/MacOS" exe="Adobe Muse CC" version="2015.2.1">V7{}Muse-14-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Media Encoder CC 2015.3/Adobe Media Encoder CC 2015.app/Contents/MacOS" exe="Adobe Media Encoder CC 2015" version="10">V7{}AdobeMediaEncoder-10-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Illustrator CC 2015.3/Adobe Illustrator.app/Contents/MacOS" exe="Adobe Illustrator" version="20">V7{}Illustrator-20-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe After Effects CC 2015.3/Adobe After Effects CC 2015.app/Contents/MacOS" exe="After Effects" version="13.8">V7{}AfterEffects-138-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Animate CC 2015.2/Adobe Animate CC 2015.2.app/Contents/MacOS" exe="Adobe Animate CC 2015.2" version="15">V7{}Animate-152-Mac-GM</leid> 
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Audition CC 2015.2/Adobe Audition CC 2015.app/Contents/MacOS" exe="Adobe Audition CC 2015" version="9">V7{}Audition-9-Mac-GM</leid>
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Animate CC 2017/Adobe Animate CC 2017.app/Contents/MacOS" exe="Adobe Animate CC 2017" version="16">V7{}Animate-16-Mac-GM</leid>
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Audition CC 2017/Adobe Audition CC 2017.app/Contents/MacOS" exe="Adobe Audition CC 2017" version="10">V7{}Audition-10-Mac-GM</leid>
+    <leid defaultpath="[AdobeProgramFiles]/Applications/Adobe Dreamweaver CC 2017/Adobe Dreamweaver CC 2017.app/Contents/MacOS" exe="Dreamweaver" version="17">V7{}Dreamweaver-17-Mac-GM</leid>
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Illustrator CC 2017/Adobe Illustrator.app/Contents/MacOS" exe="Adobe Illustrator" version="21">V7{}Illustrator-21-Mac-GM</leid>
+    <leid defaultpath="[AdobeProgramFiles]/Adobe InCopy CC 2017/Adobe InCopy CC 2017.app/Contents/MacOS" exe="Adobe InCopy CC 2017" version="12">V7{}InCopy-12-Mac-GM</leid>
+    <leid defaultpath="[AdobeProgramFiles]/Adobe InDesign CC 2017/Adobe InDesign CC 2017.app/Contents/MacOS" exe="Adobe InDesign CC 2017" version="12">V7{}InDesign-12-Mac-GM</leid>
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Media Encoder CC 2017/Adobe Media Encoder CC 2017.app/Contents/MacOS" exe="Adobe Media Encoder CC 2017" version="11">V7{}AdobeMediaEncoder-11-Mac-GM</leid>
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Muse CC 2017/Adobe Muse CC 2017.app/Contents/MacOS" exe="Adobe Muse CC" version="15">V7{}Muse-15-Mac-GM</leid>
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Photoshop CC 2017/Adobe Photoshop CC 2017.app/Contents/MacOS" exe="Adobe Photoshop CC 2017" version="18">V7{}Photoshop-18-Mac-GM</leid>
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Prelude CC 2017/Adobe Prelude CC 2017.app/Contents/MacOS" exe="Adobe Prelude CC 2017" version="6">V7{}Prelude-6-Mac-GM</leid>
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Premiere Pro CC 2017/Adobe Premiere Pro CC 2017.app/Contents/MacOS" exe="Adobe Premiere Pro CC 2017" version="11">V7{}PremierePro-11-Mac-GM</leid>
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Fuse CC (Preview)/Fuse.app/Contents/MacOS" exe="Fuse" version="1">V7{}Fuse-1.0-Mac-GM</leid>
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Bridge CC 2017/Adobe Bridge CC 2017.app/Contents/MacOS" exe="Adobe Bridge CC 2017" version="7">V7{}Bridge-7-Mac-GM</leid>
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Acrobat 2015/Adobe Acrobat.app/Contents/MacOS" exe="AdobeAcrobat" version="15.006">V7{}AcrobatESR-12-Mac-GM</leid>
+    <leid defaultpath="[AdobeProgramFiles]/Adobe Acrobat DC/Adobe Acrobat.app/Contents/MacOS" adobeCode="{E0EE657B-8AD5-493E-9943-10F07DC05957}" exe="AdobeAcrobat" version="15.022">V7{}AcrobatCont-12-Mac-GM</leid>
+    <leid defaultpath="[AdobeProgramFiles]/Adobe After Effects CC 2015/Adobe After Effects CC 2015.app/Contents/MacOS" adobeCode="{147EC100-14BE-45EF-AB42-35BAEE7D02F0}" exe="After Effects" version="13.5">V7{}AfterEffects-14-Mac-GM</leid>
+</ProductInfo> 
+ 
+ 
