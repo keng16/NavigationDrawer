@@ -105,11 +105,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            drawer.openDrawer(GravityCompat.START);
-        }
+//        if (drawer.isDrawerOpen(GravityCompat.START)) {
+//            drawer.closeDrawer(GravityCompat.START);
+//        } else {
+//            //zdrawer.openDrawer(GravityCompat.START);
+//        }
+        FragmentManager fm = getFragmentManager();
+        fm.popBackStack();
     }
 
 
@@ -144,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             attendance.setArguments(bundle);
             ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
             ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
-            fragmentManager.beginTransaction()
+            fragmentManager.beginTransaction().addToBackStack("Attendance")
                     .replace(R.id.contentFrame
                             , attendance)
                     .commit();
@@ -153,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             controller.setArguments(bundle);
             ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
             ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
-            fragmentManager.beginTransaction()
+            fragmentManager.beginTransaction().addToBackStack("Controller")
                     .replace(R.id.contentFrame
                             , controller)
                     .commit();
@@ -163,7 +165,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             logs_dash.setArguments(bundle);
             ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
             ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
-            fragmentManager.beginTransaction()
+            fragmentManager.beginTransaction().addToBackStack("logs")
                     .replace(R.id.contentFrame
                             , logs_dash)
                     .commit();
@@ -173,7 +175,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             schedule.setArguments(bundle);
             ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
             ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
-            fragmentManager.beginTransaction()
+            fragmentManager.beginTransaction().addToBackStack("Schedule")
                     .replace(R.id.contentFrame
                             , schedule)
                     .commit();
@@ -183,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             account_class.setArguments(bundle);
             ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
             ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
-            fragmentManager.beginTransaction()
+            fragmentManager.beginTransaction().addToBackStack("Account")
                     .replace(R.id.contentFrame
                             , account_class)
                     .commit();
@@ -236,7 +238,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             attendance.setArguments(bundle);
             ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
             ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
-                    fragmentManager.beginTransaction()
+                    fragmentManager.beginTransaction().addToBackStack("Attendance")
                             .replace(R.id.contentFrame
                                     , attendance)
                             .commit();
@@ -244,7 +246,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else if (view.getId()==R.id.Controller) {
             ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
             ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
-                    fragmentManager.beginTransaction()
+                    fragmentManager.beginTransaction().addToBackStack("Controller")
                             .replace(R.id.contentFrame
                                     , new Controller())
                             .commit();
@@ -254,7 +256,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             logs_dash.setArguments(bundle);
             ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
             ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
-                    fragmentManager.beginTransaction()
+                    fragmentManager.beginTransaction().addToBackStack("Logs")
                             .replace(R.id.contentFrame
                                     , logs_dash)
                             .commit();
@@ -263,7 +265,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             schedule.setArguments(bundle);
             ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
             ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
-                    fragmentManager.beginTransaction()
+                    fragmentManager.beginTransaction().addToBackStack("Schedule")
                             .replace(R.id.contentFrame
                                     , schedule)
                             .commit();

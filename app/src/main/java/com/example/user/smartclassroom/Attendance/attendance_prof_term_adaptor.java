@@ -64,13 +64,12 @@ public class attendance_prof_term_adaptor extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         Properties properties=model.get(position);
 
-
             if (convertView==null) {
                 date = properties.getDate();
                 convertView = View.inflate(context,R.layout.header, null);
                 tv_date = (TextView)convertView.findViewById(R.id.textSeparator);
                 tv_date.setText(date);
-            }else if (date.equals(properties.getDate())){
+            }else if (date.equals(properties.getDate())||convertView!=null){
                 convertView = View.inflate(context,R.layout.attendance_design_student, null);
                 tv_name = (TextView) convertView.findViewById(R.id.tv_name);
                 student_pic = (ImageView)convertView.findViewById(R.id.imageView_ProfilePic);

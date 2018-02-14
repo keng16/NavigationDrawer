@@ -80,7 +80,7 @@ public class Schedule extends Fragment implements View.OnClickListener{
             PhpFile = "STUDENT-SCHED.php";
         }
         selectedday = dayToday();
-
+        btn_day.setText(selectedday);
         ScheduleTask scheduleTask;
         btn_day.setOnClickListener(this);
         dialog = new ProgressDialog(getActivity());
@@ -104,6 +104,7 @@ public class Schedule extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if(v.getId()==R.id.btn_select_day){
+//            mySpinner.getSelectedItem().equals(selectedday);
             final Handler handler = new Handler();
 
             final ScheduleTask scheduleTask = new ScheduleTask();
@@ -126,7 +127,7 @@ public class Schedule extends Fragment implements View.OnClickListener{
                             scheduleTask.execute();
                         }
                     });
-                    btn_day.setText( dayToday()+", "+mySpinner.getSelectedItem().toString());
+                    btn_day.setText( "Selected day:"+" "+mySpinner.getSelectedItem().toString());
                     //dialogInterface.dismiss();
 
                 }

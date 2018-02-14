@@ -31,7 +31,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setAutoCancel(true)
-                .setContentTitle("FCM Test")
+                .setContentTitle("SmartClassroom Notification")
                 .setContentText(message)
                 .setSmallIcon(R.drawable.ic_wifi_black_24dp)
                 .setContentIntent(pendingIntent);

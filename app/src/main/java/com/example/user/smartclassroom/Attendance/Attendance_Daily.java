@@ -126,7 +126,7 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
                 bundle.putString("name", p.getStudentfname()+" "+p.getStudentmname()+" "+p.getStudentlname());
                 bundle.putString("status",p.getStatdescript());
                 student_profile.setArguments(bundle);
-                fragmentManager.beginTransaction()
+                fragmentManager.beginTransaction().addToBackStack("Profile")
                         .replace(R.id.contentFrame
                                 , student_profile)
                         .commit();

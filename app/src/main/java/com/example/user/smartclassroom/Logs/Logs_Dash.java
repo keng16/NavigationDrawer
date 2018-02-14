@@ -47,7 +47,7 @@ public class Logs_Dash extends Fragment implements View.OnClickListener{
             ((LinearLayout)myView.findViewById(R.id.Linear)).removeAllViews();
             fragmentManager
                     .replace(R.id.contentFrame
-                            , logs_term,"Logs_Term")
+                            , logs_term,"Logs_Term").addToBackStack("logs_term")
                     .commit();
         }else if(view.getId()==R.id.Logs_Today){
             Logs_Daily logs_daily=new Logs_Daily();
@@ -55,7 +55,7 @@ public class Logs_Dash extends Fragment implements View.OnClickListener{
             ((LinearLayout)myView.findViewById(R.id.Linear)).removeAllViews();
             fragmentManager
                     .replace(R.id.contentFrame
-                            , logs_daily,"Logs_Daily")
+                            , logs_daily,"Logs_Daily").addToBackStack("logs_daily")
                     .commit();
         }
     }

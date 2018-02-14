@@ -77,7 +77,6 @@ public class MainActivity_Student extends AppCompatActivity implements Navigatio
 
         //Bundle extras = getIntent();
         control="Login";
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -100,6 +99,8 @@ public class MainActivity_Student extends AppCompatActivity implements Navigatio
         View hView = navigationView.getHeaderView(0);
         //imageview
         new registerToken().execute();
+        new CheckProfNotif().execute();
+
         ImageView imgView = (ImageView)hView.findViewById(R.id.imageView);
         Picasso.with(getApplicationContext())
                 .load(url)
@@ -313,6 +314,73 @@ public class MainActivity_Student extends AppCompatActivity implements Navigatio
             try {
                 //ip= new Properties();
                 String Url = p.getIP()+"register.php";
+                httpclient = new DefaultHttpClient();
+                httppost = new HttpPost(Url);
+                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                response = httpclient.execute(httppost);
+                inputStream = response.getEntity().getContent();
+
+                data = new byte[256];
+
+                buffer = new StringBuffer();
+
+                int len = 0;
+
+                while (-1 != (len = inputStream.read(data)) ) {
+                    buffer.append(new String(data, 0, len));
+                }
+                //for the output or echo
+                String bufferedInputString = buffer.toString();
+
+                inputStream.close();
+
+
+
+            }
+            catch (final Exception e) {
+                runOnUiThread(new Runnable() {
+                    public void run() {
+
+                        Toast.makeText(MainActivity_Student.this, "error: "+e.toString(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+            }
+            return buffer.toString();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+        }
+    }
+    public class CheckProfNotif extends AsyncTask<Void,Void,String>{
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            String output = "";
+            byte[] data;
+            HttpPost httppost;
+            HttpClient httpclient;
+            StringBuffer buffer = null;
+            HttpResponse response;
+            InputStream inputStream;
+            HttpGet httpGet;
+            Intent intent;
+            String resultString="";
+            Bundle extras=new Bundle();
+            List<NameValuePair> nameValuePairs;
+            nameValuePairs = new ArrayList<NameValuePair>(2);
+            nameValuePairs.add(new BasicNameValuePair("id",stud_id));
+
+            try {
+                //ip= new Properties();
+                String Url = p.getIP()+"Notification.php";
                 httpclient = new DefaultHttpClient();
                 httppost = new HttpPost(Url);
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));

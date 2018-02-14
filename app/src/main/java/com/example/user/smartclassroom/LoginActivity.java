@@ -50,6 +50,7 @@ public class LoginActivity extends AppCompatActivity{
     Properties p=new Properties();
     private ProgressDialog dialog;
     private Button mEmailSignInButton;
+    String status;
     /**
      * A dummy authentication store containing known user names and passwords.
      * TODO: remove after connecting to a real authentication system.
@@ -75,7 +76,7 @@ public class LoginActivity extends AppCompatActivity{
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         //populateAutoComplete();
-
+        status = "Offline";
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -231,6 +232,7 @@ public class LoginActivity extends AppCompatActivity{
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("liveaccount", mEmail));
             nameValuePairs.add(new BasicNameValuePair("id",mPassword));
+            nameValuePairs.add(new BasicNameValuePair("status",status));
             try {
                 //ip= new Properties();
                 String Url = p.getIP()+"LOGIN.php";

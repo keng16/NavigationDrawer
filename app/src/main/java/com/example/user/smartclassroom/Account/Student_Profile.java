@@ -1,6 +1,7 @@
 package com.example.user.smartclassroom.Account;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -277,6 +278,7 @@ public class Student_Profile extends Fragment implements RadioButton.OnClickList
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            Toast.makeText(getActivity(),s,Toast.LENGTH_SHORT).show();
             splitter = s.split(":");
             present = splitter[0];
             late = splitter[1];

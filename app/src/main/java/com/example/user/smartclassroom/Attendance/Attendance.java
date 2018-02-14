@@ -58,7 +58,7 @@ public class Attendance extends Fragment implements View.OnClickListener{
             ((LinearLayout)myView.findViewById(R.id.LinearAttendance)).removeAllViews();
             fragmentManager
                     .replace(R.id.contentFrame
-                            , attendance_daily,"Attendance_Daily")
+                            , attendance_daily,"Attendance_Daily").addToBackStack("Daily")
                     .commit();
         }else if (view.getId()==R.id.AttenTerm){
             Attendance_Term attendance_term=new Attendance_Term();
@@ -66,7 +66,7 @@ public class Attendance extends Fragment implements View.OnClickListener{
             ((LinearLayout)myView.findViewById(R.id.LinearAttendance)).removeAllViews();
             fragmentManager
                     .replace(R.id.contentFrame
-                            , attendance_term,"Attendance_Daily")
+                            , attendance_term,"Attendance_Daily").addToBackStack("Term")
                     .commit();
         }
     }
