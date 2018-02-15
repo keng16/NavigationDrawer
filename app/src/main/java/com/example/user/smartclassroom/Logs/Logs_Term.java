@@ -74,6 +74,7 @@ public class Logs_Term extends Fragment implements View.OnClickListener{
         myView = inflater.inflate(R.layout.logs_prof_term,container,false);
         stud_id = getArguments().getString("Stud_id").toString();
         course_logs_term = (Button) myView.findViewById(R.id.btn_logs_term_course);
+        listView = (ListView)myView.findViewById(R.id.list_view_logs_term);
         swipeRefreshLayout = (SwipeRefreshLayout)myView.findViewById(R.id.swipe_refresh_term);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

@@ -43,6 +43,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
@@ -74,6 +75,7 @@ public class Logs_Daily extends Fragment implements View.OnClickListener{
     String date_final="";
     String month_final;
     String year_final;
+    String day;
     String day_final;
     ProgressDialog dialog;
     TimerTask timerTask;
@@ -94,6 +96,8 @@ public class Logs_Daily extends Fragment implements View.OnClickListener{
         });
         date.setOnClickListener(this);
         course_btn.setOnClickListener(this);
+        date_final = datetoday();
+        date.setText(datetoday());
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
@@ -101,10 +105,19 @@ public class Logs_Daily extends Fragment implements View.OnClickListener{
                 month_final = String.valueOf(month);
                 year_final = String.valueOf(year);
                 day_final = String.valueOf(day);
-                date_final = year_final + "-" + month_final + "-" + day_final;
-                if(course.length()>0&&sections.length()>0&&room.length()>0&&date_final.length()>0) {
+                if(day<10 && month<10) {
+                    date_final = year_final + "-" + "0" + month_final + "-" + "0"+day_final;
+                }else if(day>9 && month>9){
+                    date_final = year_final + "-" + month_final + "-" + day_final;
+                }else if(day>9&&month<10){
+                    date_final = year_final + "-" + "0"+month_final + "-" + day_final;
+                }else if(day<10&&month>9){
+                    date_final = year_final + "-" + month_final + "-" + "0"+day_final;
+                }
+                MessageBox(date_final);
+                if(course!=null&&sections!=null&&room!=null&&date_final!=null) {
                     final Handler handler=new Handler();
-
+                    date.setText(date_final);
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
@@ -112,7 +125,7 @@ public class Logs_Daily extends Fragment implements View.OnClickListener{
                             logs_daily_task.execute();
                         }
                     });
-                    Toast.makeText(getActivity(), month_final + "/" + day_final + "/" + year_final, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), month_final + "/" + day_final + "/" + year_final, Toast.LENGTH_SHORT).show();
                 }
                 else {
                     MessageBox("Error");
@@ -144,7 +157,7 @@ public class Logs_Daily extends Fragment implements View.OnClickListener{
                         course = splitter[0];
                         room = splitter[1];
                         sections = splitter[2];
-                        if(course.length()>0&&sections.length()>0&&room.length()>0&&date_final.length()>0&&date_final.length()>0) {
+                        if(course.length()>0&&sections.length()>0&&room.length()>0&&date_final.length()>0&&date_final!=null) {
                             Toast.makeText(getActivity(), mySpinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
 
                             System.out.println(course);
@@ -158,7 +171,7 @@ public class Logs_Daily extends Fragment implements View.OnClickListener{
                                     logs_daily_task.execute();
                                 }
                             });
-
+                            course_btn.setText(mySpinner.getSelectedItem().toString());
                             //dialogInterface.dismiss();
                         }else {
                           MessageBox("Select Date");
@@ -312,7 +325,7 @@ public class Logs_Daily extends Fragment implements View.OnClickListener{
         Bundle extras=new Bundle();
         List<NameValuePair> nameValuePairs;
         nameValuePairs = new ArrayList<NameValuePair>(2);
-        nameValuePairs.add(new BasicNameValuePair("term","2")); //mga laman ng spinner para madetermine ko yung ilalabas kong attendance data nasa where clause ito ng php
+        //nameValuePairs.add(new BasicNameValuePair("term","3")); //mga laman ng spinner para madetermine ko yung ilalabas kong attendance data nasa where clause ito ng php
         nameValuePairs.add(new BasicNameValuePair("course",course));
         nameValuePairs.add(new BasicNameValuePair("sections",sections));
         nameValuePairs.add(new BasicNameValuePair("date_today",date_final ));
@@ -362,6 +375,16 @@ public class Logs_Daily extends Fragment implements View.OnClickListener{
         swipeRefreshLayout.setRefreshing(false);
     }
 }
+    public String datetoday()
+    {
+        Calendar c = Calendar.getInstance();
+        //	System.out.println("Current time => " + c.getTime());
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        day = df.format(c.getTime());
+        MessageBox(day);
+        return day;
+    }
     public ArrayList<Properties> logsUse(String result) {
         ArrayList<Properties> logsusers = new ArrayList<Properties>();
         try {

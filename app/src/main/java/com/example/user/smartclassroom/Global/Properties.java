@@ -36,7 +36,7 @@ public class Properties {
 	{
 		this.holiday_date = holiday_date;
 	}
-	public String getIP() {return "http://192.168.43.207/scwebservice/";}
+	public String getIP() {return "http://192.168.0.15/scwebservice/";}
 	public String getHolidayDescript()
 	{
 		return holiday_description;
