@@ -10,33 +10,21 @@ import android.util.Log;
  */
 
 public class CheckNetwork {
-    private static final String TAG = CheckNetwork.class.getSimpleName();
 
 
 
     public static boolean isInternetAvailable(Context context)
     {
-        NetworkInfo info = (NetworkInfo) ((ConnectivityManager)
-                context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
-
-        if (info == null)
-        {
-            Log.d(TAG,"no internet connection");
-            return false;
+        boolean connected = false;
+        ConnectivityManager connectivityManager = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            connected = true;
         }
-        else
-        {
-            if(info.isConnected())
-            {
-                Log.d(TAG," internet connection available...");
-                return true;
-            }
-            else
-            {
-                Log.d(TAG," internet connection");
-                return true;
-            }
-
+        else {
+            connected = false;
         }
+        return connected;
     }
 }

@@ -31,6 +31,7 @@ import org.apache.http.message.BasicNameValuePair;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -216,13 +217,12 @@ public class Controller extends Fragment {
             nameValuePairs = new ArrayList<NameValuePair>(2);
             // nameValuePairs.add(new BasicNameValuePair("id",stud_id));
             nameValuePairs.add(new BasicNameValuePair("condition",condition));
+            nameValuePairs.add(new BasicNameValuePair("day",dayToday()));
             nameValuePairs.add(new BasicNameValuePair("frontlock",front));
             nameValuePairs.add(new BasicNameValuePair("light",light));
             nameValuePairs.add(new BasicNameValuePair("outlet",socket));
             nameValuePairs.add(new BasicNameValuePair("backlock",back));
             try {
-                //Thread.sleep(1000);
-                //ip= new Properties();
                 String Url = p.getIP()+"controlDevice.php";
                 httpclient = new DefaultHttpClient();
                 httppost = new HttpPost(Url);
@@ -259,6 +259,7 @@ public class Controller extends Fragment {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            MessageBox(s);
         }
     }
     public class Load_Device_Status extends AsyncTask<Void,Void,String>{
@@ -327,9 +328,9 @@ public class Controller extends Fragment {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             String[] splitted;
-
+            MessageBox(s);
             splitted = s.split(":");
-
+//asdsad
             //Toast.makeText(getActivity(),splitted[1]+splitted[2]+splitted[3]+splitted[4],Toast.LENGTH_SHORT).show();
             light = splitted[1];
             socket = splitted[2];
@@ -359,8 +360,41 @@ public class Controller extends Fragment {
             if(back.equals("OFF")){
                 back_switch.setChecked(false);
             }
+        }
+    }
+    public String dayToday()
+    {
+        String Day="";
+        Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DAY_OF_WEEK);
 
+        switch (day) {
+            case Calendar.SUNDAY:
+                // Current day is Sunday
+                Day = "Sunday";
+                break;
+            case Calendar.MONDAY:
+                // Current day is Monday
+                Day = "Monday";
+                break;
+            case Calendar.TUESDAY:
+                // etc.
+                Day = "Tuesday";
+                break;
+            case Calendar.WEDNESDAY:
+                Day = "Wednesday";
+                break;
+            case  Calendar.THURSDAY:
+                Day = "Thursday";
+                break;
+            case  Calendar.FRIDAY:
+                Day = "Friday";
+                break;
+            case Calendar.SATURDAY:
+                Day = "Saturday";
+                break;
 
         }
+        return Day;
     }
 }

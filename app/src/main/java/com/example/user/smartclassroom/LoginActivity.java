@@ -93,11 +93,10 @@ public class LoginActivity extends AppCompatActivity{
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                WifiManager wifiManager = ((WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE));
-                if(CheckNetwork.isInternetAvailable(LoginActivity.this)||wifiManager.isWifiEnabled()) {
+                if (CheckNetwork.isInternetAvailable(getApplicationContext())){
                     attemptLogin();
-                }else {
-                    Toast.makeText(LoginActivity.this,"No Internet Connection",Toast.LENGTH_SHORT).show();
+                }else if (!CheckNetwork.isInternetAvailable(getApplicationContext())){
+                    Toast.makeText(getApplicationContext(),"Not connected to the Internet",Toast.LENGTH_SHORT).show();
                 }
             }
         });
