@@ -244,11 +244,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             .commit();
         }
         else if (view.getId()==R.id.Controller) {
+            Controller controller=new Controller();
+            controller.setArguments(bundle);
             ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
             ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
                     fragmentManager.beginTransaction().addToBackStack("Controller")
                             .replace(R.id.contentFrame
-                                    , new Controller())
+                                    , controller)
                             .commit();
 
         }else if (view.getId()==R.id.Logs) {

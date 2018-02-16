@@ -90,6 +90,9 @@ public class Account_Class extends Fragment implements View.OnClickListener{
             MessageBox("Password not Match");
             et_newpassword.requestFocus();
         }
+        else{
+            MessageBox("Please put something!");
+        }
     }
 
     public class Change_Password_Task extends AsyncTask<Void,Void,String>{

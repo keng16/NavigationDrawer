@@ -50,6 +50,7 @@ public class Controller extends Fragment {
     String light,socket,front,back,all;
     String condition;
     TimerTask timerTask;
+    String stud_id;
 
 
      Handler handler = new Handler();
@@ -64,6 +65,7 @@ public class Controller extends Fragment {
         front_switch = (Switch) myView.findViewById(R.id.front_switch);
         back_switch = (Switch) myView.findViewById(R.id.back_switch);
         all_switch = (Switch) myView.findViewById(R.id.all_switch);
+        stud_id = getArguments().getString("Stud_id");
        Update_Device_Status();
 
         light_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -285,6 +287,9 @@ public class Controller extends Fragment {
             List<NameValuePair> nameValuePairs;
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("condition","None"));
+            nameValuePairs.add(new BasicNameValuePair("day",dayToday()));
+            nameValuePairs.add(new BasicNameValuePair("id",stud_id));
+
 
             try {
                 //ip= new Properties();
@@ -329,37 +334,40 @@ public class Controller extends Fragment {
             super.onPostExecute(s);
             String[] splitted;
             MessageBox(s);
-            splitted = s.split(":");
-//asdsad
-            //Toast.makeText(getActivity(),splitted[1]+splitted[2]+splitted[3]+splitted[4],Toast.LENGTH_SHORT).show();
-            light = splitted[1];
-            socket = splitted[2];
-            front = splitted[3];
-            back = splitted[4];
-            if (light.equals("ON")){
-                light_switch.setChecked(true);
-            }
-            if(socket.equals("ON")){
-                socket_switch.setChecked(true);
-            }
-            if (front.equals("ON")){
-                front_switch.setChecked(true);
-            }
-            if(back.equals("ON")){
-                back_switch.setChecked(true);
-            }
-            if (light.equals("OFF")){
-                light_switch.setChecked(false);
-            }
-            if(socket.equals("OFF")){
-                socket_switch.setChecked(false);
-            }
-            if (front.equals("OFF")){
-                front_switch.setChecked(false);
-            }
-            if(back.equals("OFF")){
-                back_switch.setChecked(false);
-            }
+//            if(s.contains(":"));
+//            {
+//                splitted = s.split(":");
+////asdsad
+//                //Toast.makeText(getActivity(),splitted[1]+splitted[2]+splitted[3]+splitted[4],Toast.LENGTH_SHORT).show();
+//                light = splitted[1];
+//                socket = splitted[2];
+//                front = splitted[3];
+//                back = splitted[4];
+//                if (light.equals("ON")) {
+//                    light_switch.setChecked(true);
+//                }
+//                if (socket.equals("ON")) {
+//                    socket_switch.setChecked(true);
+//                }
+//                if (front.equals("ON")) {
+//                    front_switch.setChecked(true);
+//                }
+//                if (back.equals("ON")) {
+//                    back_switch.setChecked(true);
+//                }
+//                if (light.equals("OFF")) {
+//                    light_switch.setChecked(false);
+//                }
+//                if (socket.equals("OFF")) {
+//                    socket_switch.setChecked(false);
+//                }
+//                if (front.equals("OFF")) {
+//                    front_switch.setChecked(false);
+//                }
+//                if (back.equals("OFF")) {
+//                    back_switch.setChecked(false);
+//                }
+//            }
         }
     }
     public String dayToday()
