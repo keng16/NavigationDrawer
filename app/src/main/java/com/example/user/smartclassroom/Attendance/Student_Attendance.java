@@ -118,6 +118,7 @@ public class Student_Attendance extends Fragment implements View.OnClickListener
                             student_attendance_task.execute();
                         }
                     });
+                    btnPickCourse.setText(mySpinner.getSelectedItem().toString());
 
                     //dialogInterface.dismiss();
 
