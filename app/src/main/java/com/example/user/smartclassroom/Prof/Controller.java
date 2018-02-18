@@ -1,15 +1,19 @@
 package com.example.user.smartclassroom.Prof;
 
+import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import com.example.user.smartclassroom.Global.Properties;
 
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.text.format.Formatter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,8 +39,10 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-
+import android.graphics.drawable.StateListDrawable;
+import android.graphics.drawable.ColorDrawable;
 import static android.content.Context.WIFI_SERVICE;
+import android.util.AttributeSet;
 
 /**
  * Created by kenonnegammad on 20/01/2018.
@@ -56,6 +62,8 @@ public class Controller extends Fragment {
      Handler handler = new Handler();
 
     //Properties p=new Properties();
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -67,6 +75,7 @@ public class Controller extends Fragment {
         all_switch = (Switch) myView.findViewById(R.id.all_switch);
         stud_id = getArguments().getString("Stud_id");
        Update_Device_Status();
+
 
         light_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -405,4 +414,5 @@ public class Controller extends Fragment {
         }
         return Day;
     }
+
 }

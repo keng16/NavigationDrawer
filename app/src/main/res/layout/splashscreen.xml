@@ -7,7 +7,7 @@
     android:background="@drawable/backgroundimg"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    
+
     <pl.droidsonroids.gif.GifTextView
         android:background="@drawable/gifsmart"
         android:layout_width="match_parent"

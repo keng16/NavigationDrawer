@@ -13,7 +13,8 @@ import com.example.user.smartclassroom.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 /**
  * Created by kenonnegammad on 26/01/2018.
  */
@@ -59,7 +60,39 @@ public class Schedule_Adapter extends BaseAdapter {
         tv_course.setText(properties.getCourseId()+" "+"-"+" "+properties.getSection());
         tv_day.setText(properties.getDay());
         tv_room.setText(properties.getRoom());
+        matchWeek(); //change nicole feb 18
         return convertview;
     }
-
+    private void matchWeek()
+    {
+        String weekday_name = new SimpleDateFormat("EEEE", Locale.ENGLISH).format(System.currentTimeMillis());
+        if (weekday_name.equals("Monday") && tv_day.getText().toString().contains("Monday"))
+        {
+            cardView.setCardBackgroundColor(Color.parseColor("#ffc94d"));
+        }
+        else if (weekday_name.equals("Tuesday") && tv_day.getText().toString().contains("Tuesday"))
+        {
+            cardView.setCardBackgroundColor(Color.parseColor("#ffc94d"));
+        }
+        else if (weekday_name.equals("Wednesday") && tv_day.getText().toString().contains("Wednesday"))
+        {
+            cardView.setCardBackgroundColor(Color.parseColor("#ffc94d"));
+        }
+        else if (weekday_name.equals("Thursday") && tv_day.getText().toString().contains("Thursday"))
+        {
+            cardView.setCardBackgroundColor(Color.parseColor("#ffc94d"));
+        }
+        else if (weekday_name.equals("Friday") && tv_day.getText().toString().contains("Friday"))
+        {
+            cardView.setCardBackgroundColor(Color.parseColor("#ffc94d"));
+        }
+        else if (weekday_name.equals("Saturday") && tv_day.getText().toString().contains("Saturday"))
+        {
+            cardView.setCardBackgroundColor(Color.parseColor("#ffc94d"));
+        }
+        else if (weekday_name.equals("Sunday") && tv_day.getText().toString().contains("Sunday"))
+        {
+            cardView.setCardBackgroundColor(Color.parseColor("#ffc94d"));
+        }
+    }
 }

@@ -17,5 +17,5 @@
     <color name="card_green">#BAF7CB</color>
     <color name="card_red">#EF4F4E</color>
 
-    <color name="black_overlay">#66000000</color>
+    <color name="black_overlay">#000000</color>
 </resources>
