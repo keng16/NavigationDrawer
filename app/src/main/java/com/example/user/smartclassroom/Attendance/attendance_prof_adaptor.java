@@ -1,6 +1,7 @@
 package com.example.user.smartclassroom.Attendance;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,7 @@ public class attendance_prof_adaptor extends BaseAdapter {
         student_pic = (ImageView)view.findViewById(R.id.imageView_ProfilePic);
         tv_studnum = (TextView) view.findViewById(R.id.tv_studnum);
         tv_status = (TextView)view.findViewById(R.id.tv_status);
+        cardView=(CardView)view.findViewById(R.id.cardviewAttendance);
         Properties properties=model.get(i);
         Picasso.with(context)
                 .load("https://scontent.fmnl4-4.fna.fbcdn.net/v/t1.0-9/25498243_1940597495956755_8655756564574274692_n.jpg?_nc_eui2=v1%3AAeFwwatFfrOIXkER7QX4sbvpIH6mDnx1y85GjjiiZg-x4Sliu9sgMegLiNC3ikLf4A9z39rVXgAJCznsbRO-V5nhiAzJUAU7g8YOboUh8R-uXw&oh=4765dcc5dfa8337457abcb570082d608&oe=5B170219")
@@ -65,7 +67,20 @@ public class attendance_prof_adaptor extends BaseAdapter {
 
         tv_name.setText(properties.getStudentlname()+" , "+properties.getStudentfname()+" "+properties.getStudentmname()+".");
         tv_status.setText(properties.getStatdescript());
+        cardStatus();
         tv_studnum.setText(String.valueOf(properties.getStud_id()));
         return  view;
+    }
+    private void cardStatus()
+    {
+        if (tv_status.getText().toString().equals("Absent")) {
+            cardView.setCardBackgroundColor(Color.parseColor("#EE9859"));
+        }
+        else if (tv_status.getText().toString().equals("Late")) {
+            cardView.setCardBackgroundColor(Color.parseColor("#ffc94d"));
+        }
+        else if (tv_status.getText().toString().equals("Present")) {
+            cardView.setCardBackgroundColor(Color.parseColor("#477956"));
+        }
     }
 }

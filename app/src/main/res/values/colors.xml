@@ -14,6 +14,8 @@
     <color name="white">#FFFFFF</color>
     <color name="lightgreen">#98fb98</color>
     <color name="lightblue">#00BFFF</color>
+    <color name="card_green">#BAF7CB</color>
+    <color name="card_red">#EF4F4E</color>
 
     <color name="black_overlay">#66000000</color>
 </resources>
