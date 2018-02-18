@@ -36,6 +36,7 @@ dependencies {
     compile 'com.google.firebase:firebase-core:11.8.0'
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
     implementation files('libs/picasso-2.5.2.jar')
 }
 apply plugin: 'com.google.gms.google-services'

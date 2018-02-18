@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.user.smartclassroom.Global.Properties;
@@ -27,6 +28,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 /**
  * Created by kenonnegammad on 09/02/2018.
  */
@@ -35,6 +38,7 @@ public class Splash extends AppCompatActivity {
     private final int SPLASH_DISPLAY_LENGTH = 1000;
     private Properties p=new Properties();
     private String token;
+    ImageView imglogo;
     String status;
     String id;
     @Override
@@ -42,6 +46,8 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splashscreen);
         token= FirebaseInstanceId.getInstance().getToken();
+
+
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
@@ -51,6 +57,7 @@ public class Splash extends AppCompatActivity {
             }
         }, SPLASH_DISPLAY_LENGTH);
     }
+
     public class CheckOnlineTask extends AsyncTask<Void,Void,String>{
         @Override
         protected void onPreExecute() {
