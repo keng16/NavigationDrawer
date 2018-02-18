@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardviewAttendance"
+    android:background="@drawable/backgroundimg"
     app:cardUseCompatPadding="true"
     app:cardCornerRadius="8dp"
     android:layout_marginBottom="8dp"
@@ -64,6 +65,18 @@
                     android:text="TextView" />
 
 
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp">
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="TextView" />
             </LinearLayout>
         </LinearLayout>
 

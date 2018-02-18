@@ -108,6 +108,7 @@ public class Attendance_Term extends Fragment implements View.OnClickListener {
                         });
 
                     //dialogInterface.dismiss();
+                    course_pick.setText(mySpinner.getSelectedItem().toString());
 
                 }
             });
@@ -308,7 +309,7 @@ public class Attendance_Term extends Fragment implements View.OnClickListener {
                 user.setStudentmname(json_data.getString("student_mname"));
                 user.setStudentlname(json_data.getString("student_lname"));
                 user.setStatdescript(json_data.getString("status_description"));
-                user.setDate(new String(json_data.getString("date")));
+                user.setDate(json_data.getString("date"));
                 user.setPic(json_data.getString("student_ImgUrl"));
                 attendanceusers.add(user);
                 //attendanceusers.get(index)

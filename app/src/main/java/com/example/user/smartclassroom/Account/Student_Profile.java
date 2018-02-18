@@ -89,7 +89,7 @@ public class Student_Profile extends Fragment implements RadioButton.OnClickList
         name = getArguments().getString("name").toString();
         status = getArguments().getString("status").toString();
         Picasso.with(getActivity())
-                .load(url)
+                .load("https://scontent.fmnl4-4.fna.fbcdn.net/v/t1.0-9/25498243_1940597495956755_8655756564574274692_n.jpg?_nc_eui2=v1%3AAeFwwatFfrOIXkER7QX4sbvpIH6mDnx1y85GjjiiZg-x4Sliu9sgMegLiNC3ikLf4A9z39rVXgAJCznsbRO-V5nhiAzJUAU7g8YOboUh8R-uXw&oh=4765dcc5dfa8337457abcb570082d608&oe=5B170219")
                 .resize(120, 120)
                 .into(imgProfile);
         if (status.equals("Present")){

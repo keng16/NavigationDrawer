@@ -9,9 +9,9 @@
     android:orientation="vertical"
 
     android:padding="10dp"
-    android:background="@color/lightgray"
     android:gravity="center"
-    android:id="@+id/ll">
+    android:id="@+id/ll"
+    android:background="@drawable/backgroundimg">
     <LinearLayout
         android:clipToPadding="false"
         android:id="@+id/Linear"

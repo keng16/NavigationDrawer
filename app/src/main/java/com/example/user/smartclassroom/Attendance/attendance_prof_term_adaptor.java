@@ -2,48 +2,37 @@ package com.example.user.smartclassroom.Attendance;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.user.smartclassroom.Global.Properties;
 import com.example.user.smartclassroom.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.TreeSet;
 
 /**
- * Created by kenonnegammad on 13/02/2018.
+ * Created by kenonnegammad on 02/02/2018.
  */
 
 public class attendance_prof_term_adaptor extends BaseAdapter {
+    private Context context;
+    private ArrayList<Properties> model;
+    CardView cardView;
+    ImageView student_pic;
+    TextView tv_name;
+    TextView tv_studnum;
+    TextView tv_present,tv_late,tv_absent;
+    TextView tv_status;
+    TextView tv_date;
+
     public attendance_prof_term_adaptor(Context context, ArrayList<Properties> model) {
         this.context = context;
         this.model = model;
     }
-
-    private Context context;
-    private ArrayList<Properties> model;
-    String date=null;
-    CardView cardView;
-    ImageView student_pic;
-    int pos;
-    TextView tv_name;
-    TextView tv_date;
-    TextView tv_studnum;
-    int c=0;
-    TextView tv_present,tv_late,tv_absent;
-    TextView tv_status;
-    private static final int Food_Item = 0;
-    private static final int header = 1;
-    private LayoutInflater mInflater;
-
-
 
     @Override
     public int getCount() {
@@ -51,45 +40,34 @@ public class attendance_prof_term_adaptor extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
-        return model.get(position);
+    public Object getItem(int i) {
+        return model.get(i);
     }
 
     @Override
-    public long getItemId(int position) {
-        return position;
+    public long getItemId(int i) {
+        return i;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        Properties properties=model.get(position);
-
-            if (convertView==null) {
-                date = properties.getDate();
-                convertView = View.inflate(context,R.layout.header, null);
-                tv_date = (TextView)convertView.findViewById(R.id.textSeparator);
-                tv_date.setText(date);
-            }else if (date.equals(properties.getDate())||convertView!=null){
-                convertView = View.inflate(context,R.layout.attendance_design_student, null);
-                tv_name = (TextView) convertView.findViewById(R.id.tv_name);
-                student_pic = (ImageView)convertView.findViewById(R.id.imageView_ProfilePic);
-                tv_studnum = (TextView) convertView.findViewById(R.id.tv_studnum);
-                tv_status = (TextView)convertView.findViewById(R.id.tv_status);
-                Picasso.with(context)
-                        .load(properties.getPic())
-                        .resize(90, 90)
-                        .into(student_pic);
-                tv_name.setText(properties.getStudentlname()+" , "+properties.getStudentfname()+" "+properties.getStudentmname()+".");
-                tv_status.setText(properties.getStatdescript());
-                tv_studnum.setText(String.valueOf(properties.getStud_id()));
-            }else if(!date.equals(properties.getDate())){
-                date = properties.getDate();
-                convertView = View.inflate(context,R.layout.header, null);
-                tv_date = (TextView)convertView.findViewById(R.id.textSeparator);
-                tv_date.setText(date);
-                c=0;
-            }
-
-        return convertView;
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        if (view==null){
+            view = View.inflate(context,R.layout.attendance_design_prof,null);
+        }
+        tv_name = (TextView) view.findViewById(R.id.tv_name);
+        student_pic = (ImageView)view.findViewById(R.id.imageView_ProfilePic);
+        tv_studnum = (TextView) view.findViewById(R.id.tv_studnum);
+        tv_status = (TextView)view.findViewById(R.id.tv_status);
+        tv_date = (TextView)view.findViewById(R.id.tv_date);
+        Properties properties=model.get(i);
+        Picasso.with(context)
+                .load("https://scontent.fmnl4-4.fna.fbcdn.net/v/t1.0-9/25498243_1940597495956755_8655756564574274692_n.jpg?_nc_eui2=v1%3AAeFwwatFfrOIXkER7QX4sbvpIH6mDnx1y85GjjiiZg-x4Sliu9sgMegLiNC3ikLf4A9z39rVXgAJCznsbRO-V5nhiAzJUAU7g8YOboUh8R-uXw&oh=4765dcc5dfa8337457abcb570082d608&oe=5B170219")
+                .resize(90,90)
+                .into(student_pic);
+        tv_date.setText(properties.getDate());
+        tv_name.setText(properties.getStudentlname()+" , "+properties.getStudentfname()+" "+properties.getStudentmname()+".");
+        tv_status.setText(properties.getStatdescript());
+        tv_studnum.setText(String.valueOf(properties.getStud_id()));
+        return  view;
     }
 }

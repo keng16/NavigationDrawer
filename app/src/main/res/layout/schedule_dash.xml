@@ -7,9 +7,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    android:background="#fcfcfc"
     android:gravity="center"
-    android:id="@+id/ll">
+    android:id="@+id/ll"
+    android:background="@drawable/backgroundimg">
     <LinearLayout
         android:clipToPadding="false"
         android:gravity="center"

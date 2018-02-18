@@ -59,9 +59,10 @@ public class attendance_prof_adaptor extends BaseAdapter {
         tv_status = (TextView)view.findViewById(R.id.tv_status);
         Properties properties=model.get(i);
         Picasso.with(context)
-                .load("http://localhost/scwebservice/Images/Unknown_Person.png")
-                .resize(90, 90)
+                .load("https://scontent.fmnl4-4.fna.fbcdn.net/v/t1.0-9/25498243_1940597495956755_8655756564574274692_n.jpg?_nc_eui2=v1%3AAeFwwatFfrOIXkER7QX4sbvpIH6mDnx1y85GjjiiZg-x4Sliu9sgMegLiNC3ikLf4A9z39rVXgAJCznsbRO-V5nhiAzJUAU7g8YOboUh8R-uXw&oh=4765dcc5dfa8337457abcb570082d608&oe=5B170219")
+                .resize(90,90)
                 .into(student_pic);
+
         tv_name.setText(properties.getStudentlname()+" , "+properties.getStudentfname()+" "+properties.getStudentmname()+".");
         tv_status.setText(properties.getStatdescript());
         tv_studnum.setText(String.valueOf(properties.getStud_id()));
