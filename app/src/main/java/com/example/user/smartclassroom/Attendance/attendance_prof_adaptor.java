@@ -27,7 +27,7 @@ public class attendance_prof_adaptor extends BaseAdapter {
     TextView tv_name;
     TextView tv_studnum;
     TextView tv_present,tv_late,tv_absent;
-    TextView tv_status;
+    TextView tv_status,tv_date;
 
     public attendance_prof_adaptor(Context context, ArrayList<Properties> model) {
         this.context = context;
@@ -58,7 +58,9 @@ public class attendance_prof_adaptor extends BaseAdapter {
         student_pic = (ImageView)view.findViewById(R.id.imageView_ProfilePic);
         tv_studnum = (TextView) view.findViewById(R.id.tv_studnum);
         tv_status = (TextView)view.findViewById(R.id.tv_status);
+        tv_date = (TextView)view.findViewById(R.id.tv_date);
         cardView=(CardView)view.findViewById(R.id.cardviewAttendance);
+
         Properties properties=model.get(i);
         Picasso.with(context)
                 .load("https://scontent.fmnl4-4.fna.fbcdn.net/v/t1.0-9/25498243_1940597495956755_8655756564574274692_n.jpg?_nc_eui2=v1%3AAeFwwatFfrOIXkER7QX4sbvpIH6mDnx1y85GjjiiZg-x4Sliu9sgMegLiNC3ikLf4A9z39rVXgAJCznsbRO-V5nhiAzJUAU7g8YOboUh8R-uXw&oh=4765dcc5dfa8337457abcb570082d608&oe=5B170219")
@@ -67,9 +69,17 @@ public class attendance_prof_adaptor extends BaseAdapter {
 
         tv_name.setText(properties.getStudentlname()+" , "+properties.getStudentfname()+" "+properties.getStudentmname()+".");
         tv_status.setText(properties.getStatdescript());
-        cardStatus();
+        cardStatus();  //change 2/18 -nicole
+        dateInvi();   //change 2/18 -nicole
         tv_studnum.setText(String.valueOf(properties.getStud_id()));
         return  view;
+    }
+    private void dateInvi()
+    {
+        if(tv_date.getText().toString().equals("TextView"));
+        {
+            tv_date.setText("");
+        }
     }
     private void cardStatus()
     {

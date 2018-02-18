@@ -21,7 +21,7 @@ public class student_attendance_adaptor extends BaseAdapter {
     private Context context;
     private ArrayList<Properties> model;
     TextView tv_course,tv_date,tv_time,tv_room,tv_status;
-
+    CardView cardView;
     public student_attendance_adaptor(Context context, ArrayList<Properties> model) {
         this.context = context;
         this.model = model;
@@ -51,11 +51,26 @@ public class student_attendance_adaptor extends BaseAdapter {
         tv_date= (TextView) view.findViewById(R.id.tv_date);
         tv_room = (TextView)view.findViewById(R.id.room_tv);
         tv_status = (TextView)view.findViewById(R.id.tv_status);
+        cardView=(CardView)view.findViewById(R.id.cardviewAttendance);
+
         Properties properties=model.get(i);
         tv_course.setText(properties.getCourseId()+" "+"-"+" "+properties.getSection());
         tv_date.setText(properties.getDate());
         tv_room.setText(properties.getRoom());
         tv_status.setText(properties.getStatdescript());
+        cardStatus();  //change 2/18 -nicole
         return view;
+    }
+    private void cardStatus()
+    {
+        if (tv_status.getText().toString().equals("Absent")) {
+            cardView.setCardBackgroundColor(Color.parseColor("#EE9859"));
+        }
+        else if (tv_status.getText().toString().equals("Late")) {
+            cardView.setCardBackgroundColor(Color.parseColor("#ffc94d"));
+        }
+        else if (tv_status.getText().toString().equals("Present")) {
+            cardView.setCardBackgroundColor(Color.parseColor("#477956"));
+        }
     }
 }
