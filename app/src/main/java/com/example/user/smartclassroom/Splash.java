@@ -7,7 +7,9 @@ import android.os.Handler;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.user.smartclassroom.Global.Properties;
@@ -25,6 +27,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
 import java.io.InputStream;
+import java.net.Inet4Address;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,12 +44,13 @@ public class Splash extends AppCompatActivity {
     ImageView imglogo;
     String status;
     String id;
+    ProgressBar progressBar;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splashscreen);
+        progressBar = (ProgressBar)findViewById(R.id.progressBar2);
         token= FirebaseInstanceId.getInstance().getToken();
-
 
         new Handler().postDelayed(new Runnable(){
             @Override
@@ -58,7 +62,7 @@ public class Splash extends AppCompatActivity {
         }, SPLASH_DISPLAY_LENGTH);
     }
 
-    public class CheckOnlineTask extends AsyncTask<Void,Void,String>{
+    public class CheckOnlineTask extends AsyncTask<Void,Integer,String>{
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -78,6 +82,7 @@ public class Splash extends AppCompatActivity {
             String resultString="";
             Bundle extras=new Bundle();
             List<NameValuePair> nameValuePairs;
+
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("token", token));
             try {
@@ -92,7 +97,6 @@ public class Splash extends AppCompatActivity {
                 data = new byte[256];
 
                 buffer = new StringBuffer();
-
                 int len = 0;
 
                 while (-1 != (len = inputStream.read(data)) ) {
@@ -102,22 +106,18 @@ public class Splash extends AppCompatActivity {
                 String bufferedInputString = buffer.toString();
 
                 inputStream.close();
-
-
-
             }
             catch (final Exception e) {
                 runOnUiThread(new Runnable() {
                     public void run() {
 
                         Toast.makeText(Splash.this, "error: "+e.toString(), Toast.LENGTH_SHORT).show();
-
                     }
                 });
             }
             return buffer.toString();
-
         }
+
 
         @Override
         protected void onPostExecute(String s) {
@@ -132,14 +132,13 @@ public class Splash extends AppCompatActivity {
                 String[] splitted = s.split(":");
                 id = splitted[0];
                 new OnlineStatus().execute();
-
             }
         }
     }
     public void MessageBox(String message){
         Toast.makeText(Splash.this,message,Toast.LENGTH_SHORT).show();
     }
-    public class OnlineStatus extends AsyncTask<Void,Void,String>{
+    public class OnlineStatus extends AsyncTask<Void,Integer,String>{
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -187,7 +186,6 @@ public class Splash extends AppCompatActivity {
                 inputStream.close();
 
 
-
             }
             catch (final Exception e) {
                 runOnUiThread(new Runnable() {
@@ -233,7 +231,6 @@ public class Splash extends AppCompatActivity {
                     i.putExtra("Stud_id",id);
                     startActivity(i);
                 }
-
             }
         }
     }
