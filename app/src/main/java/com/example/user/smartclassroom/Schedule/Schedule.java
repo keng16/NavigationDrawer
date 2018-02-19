@@ -80,7 +80,7 @@ public class Schedule extends Fragment implements View.OnClickListener{
             PhpFile = "STUDENT-SCHED.php";
         }
         selectedday = dayToday();
-        btn_day.setText("TODAY IS"+selectedday);
+        btn_day.setText("TODAY IS "+selectedday);
         ScheduleTask scheduleTask;
         btn_day.setOnClickListener(this);
         dialog = new ProgressDialog(getActivity());
