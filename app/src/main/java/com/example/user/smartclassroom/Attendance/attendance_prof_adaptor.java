@@ -67,7 +67,7 @@ public class attendance_prof_adaptor extends BaseAdapter {
                 .resize(90,90)
                 .into(student_pic);
 
-        tv_name.setText(properties.getStudentlname()+" , "+properties.getStudentfname()+" "+properties.getStudentmname()+".");
+        tv_name.setText(properties.getStudentlname()+" , "+properties.getStudentfname()+" "+properties.getStudentmname());
         tv_status.setText(properties.getStatdescript());
         cardStatus();  //change 2/18 -nicole
         dateInvi();   //change 2/18 -nicole

@@ -13,7 +13,8 @@
         android:id="@+id/btn_select_day"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Button"
+        android:background="#EE9859"/>
     </LinearLayout>
 
     <ListView

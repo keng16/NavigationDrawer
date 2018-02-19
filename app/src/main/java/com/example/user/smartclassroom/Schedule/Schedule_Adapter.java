@@ -20,11 +20,11 @@ import java.util.Locale;
  */
 
 public class Schedule_Adapter extends BaseAdapter {
-   private Context context;
-   private ArrayList<Properties> model;
-   CardView cardView;
-
-   TextView tv_course,tv_day,tv_time,tv_room,tv_section;
+    private Context context;
+    private ArrayList<Properties> model;
+    CardView cardView;
+    String allday="Monday-Tuesday-Wednesday-Thursday-Friday-Saturday-Sunday";
+    TextView tv_course,tv_day,tv_time,tv_room,tv_section;
     public Schedule_Adapter(Context context, ArrayList<Properties> model) {
         this.context = context;
         this.model = model;
@@ -58,11 +58,20 @@ public class Schedule_Adapter extends BaseAdapter {
         Properties properties=model.get(i);
         tv_time.setText(properties.getStartTime()+" "+"-"+" "+ properties.getEndTime());
         tv_course.setText(properties.getCourseId()+" "+"-"+" "+properties.getSection());
-        tv_day.setText(properties.getDay());
+
+        String get_Day=properties.getDay();
+        tv_day.setText(get_Day);
+        if (get_Day.equals(allday))
+        {
+            tv_day.setText("All days of the Week");
+            cardView.setCardBackgroundColor(Color.parseColor("#ffc94d"));
+        }
+
         tv_room.setText(properties.getRoom());
         matchWeek(); //change nicole feb 18
         return convertview;
     }
+
     private void matchWeek()
     {
         String weekday_name = new SimpleDateFormat("EEEE", Locale.ENGLISH).format(System.currentTimeMillis());
@@ -96,3 +105,4 @@ public class Schedule_Adapter extends BaseAdapter {
         }
     }
 }
+

@@ -24,10 +24,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="60dp"
+                android:fontFamily="@font/amiko"
                 android:text="Course"
-                android:textAppearance="@android:style/TextAppearance.DeviceDefault.SearchResult.Title"
+                android:textColor="@color/black_overlay"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="0dp" />
+                tools:layout_editor_absoluteY="16dp" />
 
             <TextView
                 android:id="@+id/room_tv"
@@ -35,12 +37,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
+                android:fontFamily="@font/amiko"
                 android:text="Room"
-                android:textAppearance="@android:style/TextAppearance.DeviceDefault.SearchResult.Title"
+                android:textColor="@color/black_overlay"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.743"
+                app:layout_constraintHorizontal_bias="0.735"
                 app:layout_constraintStart_toStartOf="@+id/course_tv"
-                tools:layout_editor_absoluteY="0dp" />
+                tools:layout_editor_absoluteY="16dp" />
         </android.support.constraint.ConstraintLayout>
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -54,9 +58,12 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/amiko"
                 android:text="8:30-10:00"
-                android:textAppearance="@android:style/TextAppearance.DeviceDefault.SearchResult.Title"
+                android:textColor="@color/black_overlay"
+                android:textSize="18sp"
+                android:layout_centerInParent="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
@@ -78,11 +85,14 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="MWF"
-                android:textAppearance="@android:style/TextAppearance.DeviceDefault.SearchResult.Title"
+                android:textColor="@color/black_overlay"
+                android:textSize="18sp"
+                android:layout_centerInParent="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
         </android.support.constraint.ConstraintLayout>
 

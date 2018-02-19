@@ -396,7 +396,6 @@ public class Logs_Daily extends Fragment implements View.OnClickListener{
                 JSONObject json_data = jArray.getJSONObject(i);
                 Properties user = new Properties();
 
-
 //                if( json_data.getString("entity_type").equals("Professor")) //pag walang student na nag in at prof lang
 //                {
 //                    user.setProffname(json_data.getString("fname"));

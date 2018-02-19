@@ -69,7 +69,7 @@ public class attendance_prof_term_adaptor extends BaseAdapter {
                 .resize(90,90)
                 .into(student_pic);
         tv_date.setText(properties.getDate());
-        tv_name.setText(properties.getStudentlname()+" , "+properties.getStudentfname()+" "+properties.getStudentmname()+".");
+        tv_name.setText(properties.getStudentlname()+" , "+properties.getStudentfname()+" "+properties.getStudentmname());
         tv_status.setText(properties.getStatdescript());
         cardStatus();  //change 2/18 -nicole
         tv_studnum.setText(String.valueOf(properties.getStud_id()));

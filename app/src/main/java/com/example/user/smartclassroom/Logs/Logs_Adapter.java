@@ -59,7 +59,7 @@ public class Logs_Adapter extends BaseAdapter {
         tv_transaction = (TextView) convertView.findViewById(R.id.tv_transaction);
         tv_time = (TextView) convertView.findViewById(R.id.tv_time);
         cardView = (CardView)convertView.findViewById(R.id.cardview);
-        tv_name.setText(properties.getStudentlname()+", "+properties.getStudentfname()+" "+properties.getStudentlname()+".");
+        tv_name.setText(properties.getStudentlname()+", "+properties.getStudentfname()+" "+properties.getStudentmname());
         tv_transaction.setText(properties.getTransact());
         tv_time.setText(properties.getStartTime());
 
