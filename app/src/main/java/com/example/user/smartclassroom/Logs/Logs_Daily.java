@@ -43,9 +43,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Timer;
@@ -409,7 +412,16 @@ public class Logs_Daily extends Fragment implements View.OnClickListener{
                     user.setStudentfname(json_data.getString("fname")); //ipinasa dito
                     user.setStudentmname(json_data.getString("mname"));
                     user.setStudentlname(json_data.getString("lname"));
-                    user.setStartTime(json_data.getString("time"));
+
+                    // time convert to normal change feb/19
+                    String timetap=json_data.getString("time");
+                    DateFormat start = new SimpleDateFormat("HH:mm:ss"); //HH for hour of the day (0 - 23)
+                    Date d = start.parse(timetap);
+                    DateFormat f2 = new SimpleDateFormat("h:mma");
+                    String time_tap =f2.format(d).toLowerCase(); // "12:18am"
+                    user.setStartTime(time_tap);
+                    //end
+
                     user.setEntity(json_data.getString("entity_type"));
                     user.setTransact(json_data.getString("transaction"));
                     logsusers.add(user);
@@ -419,6 +431,8 @@ public class Logs_Daily extends Fragment implements View.OnClickListener{
 
         } catch (JSONException e) {
             Log.e("log_tag", "Error parsing data " + e.toString());
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
         return logsusers;
     }

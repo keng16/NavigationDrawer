@@ -1,6 +1,7 @@
 package com.example.user.smartclassroom.Logs;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,14 +53,42 @@ public class Logs_Adapter extends BaseAdapter {
         if (convertView==null){
             convertView = View.inflate(context, R.layout.logs_prof_design,null);
         }
+
         Properties properties =model.get(position);
         tv_name = (TextView) convertView.findViewById(R.id.tv_name);
         tv_transaction = (TextView) convertView.findViewById(R.id.tv_transaction);
         tv_time = (TextView) convertView.findViewById(R.id.tv_time);
+        cardView = (CardView)convertView.findViewById(R.id.cardview);
         tv_name.setText(properties.getStudentlname()+", "+properties.getStudentfname()+" "+properties.getStudentlname()+".");
         tv_transaction.setText(properties.getTransact());
         tv_time.setText(properties.getStartTime());
+
+        //feb19
+        String identify_entity = properties.getEntity();
+
+        if (identify_entity.equals("Student"))
+        {
+            cardView.setCardBackgroundColor(Color.parseColor("#EE9859"));
+        }
+        else if (identify_entity.equals("Professor"))
+        {
+            cardView.setCardBackgroundColor(Color.parseColor("#ffc94d"));
+        }
+        transText();
+
+
         return convertView;
 
+    }
+    private void transText()
+    {
+        if (tv_transaction.getText().toString().equals("In"))
+        {
+            tv_transaction.setTextColor(Color.parseColor("#477956"));
+        }
+        else if (tv_transaction.getText().toString().equals("Out"))
+        {
+            tv_transaction.setTextColor(Color.parseColor("#5181CB"));
+        }
     }
 }
