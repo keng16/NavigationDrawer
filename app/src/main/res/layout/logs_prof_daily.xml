@@ -33,7 +33,8 @@
             android:text="Select Course"
             app:layout_constraintEnd_toStartOf="@+id/btn_logs_date"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="0dp" />" />
+            tools:layout_editor_absoluteY="0dp"
+            android:background="@color/yello"/>" />
 
         <Button
             android:id="@+id/btn_logs_date"
@@ -45,7 +46,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.771"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="0dp" />
+            tools:layout_editor_absoluteY="0dp"
+            android:background="@color/yello"/>
 
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>

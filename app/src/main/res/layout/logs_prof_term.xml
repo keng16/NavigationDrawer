@@ -22,5 +22,6 @@
         android:id="@+id/btn_logs_term_course"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pick Subject" />
+        android:text="Pick Subject"
+        android:background="@color/yello"/>
 </LinearLayout>

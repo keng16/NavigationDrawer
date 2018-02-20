@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#ffffff</color>
-    <color name="colorPrimaryDark">#FFA000</color>
+    <color name="colorPrimaryDark">#ffa000</color>
     <color name="backgroundcolor">#fcfcfc</color>
     <color name="lightgray">#ededed</color>
     <color name="deeppurple">#7c4dff</color>
@@ -14,7 +14,7 @@
     <color name="white">#FFFFFF</color>
     <color name="lightgreen">#98fb98</color>
     <color name="lightblue">#00BFFF</color>
-    <color name="card_green">#BAF7CB</color>
+    <color name="card_green">#baf7cb</color>
     <color name="card_red">#EF4F4E</color>
 
     <color name="black_overlay">#000000</color>

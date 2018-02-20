@@ -14,9 +14,11 @@
         <TextView
             android:id="@+id/tv_date_attendance_daily"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/amiko"
             android:gravity="center"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textColor="@color/white" />
     </LinearLayout>
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh_attendance_daily"
@@ -46,7 +48,8 @@
             android:text="Select Course"
             app:layout_constraintEnd_toStartOf="@+id/btn_logs_date"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="0dp"/>
+            tools:layout_editor_absoluteY="0dp"
+            android:background="@color/yello"/>
 
         <Button
             android:id="@+id/btn_attendance_date"
@@ -58,7 +61,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.771"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="0dp" />
+            tools:layout_editor_absoluteY="0dp"
+            android:background="@color/yello"/>
 
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>
