@@ -114,24 +114,21 @@ public class Notif_Class extends Fragment {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            notificationModels = attendanceUse(s);
+            notificationAdapter = new NotificationAdapter(notificationModels,getActivity());
+            listView.setAdapter(notificationAdapter);
         }
     }
-    public ArrayList<Properties> attendanceUse(String result) {
-        ArrayList<Properties> attendanceusers = new ArrayList<Properties>();
+    public ArrayList<NotificationModel> attendanceUse(String result) {
+        ArrayList<NotificationModel> attendanceusers = new ArrayList<NotificationModel>();
         try {
             JSONArray jArray = new JSONArray(result);
             for (int i = 0; i < jArray.length(); i++) {
                 JSONObject json_data = jArray.getJSONObject(i);
-                Properties user = new Properties();
-                user.setAttendID(json_data.getInt("attendance_id"));
-                user.setStud_id(json_data.getInt("entity_id"));
-                user.setStudentfname(json_data.getString("student_fname")); //ipinasa dito
-                user.setStudentmname(json_data.getString("student_mname"));
-                user.setStudentlname(json_data.getString("student_lname"));
-                user.setStatdescript(json_data.getString("status_description"));
-                user.setDate(json_data.getString("date"));
-                user.setPic(json_data.getString("student_ImgUrl"));
-                attendanceusers.add(user);
+                NotificationModel notificationModel = new NotificationModel();
+                notificationModel.setMessage(json_data.getString("notification_body"));
+                notificationModel.setDate(json_data.getString("notification_date"));
+                attendanceusers.add(notificationModel);
                 //attendanceusers.get(index)
             }
         } catch (JSONException e) {

@@ -120,7 +120,7 @@ public class MainActivity_Student extends AppCompatActivity implements Navigatio
 
         cardAttendace = (CardView) cView.findViewById(R.id.Attendance);
         cardLogs = (CardView) cView.findViewById(R.id.Account);
-        cardController = (CardView) cView.findViewById(R.id.Notif);
+        cardController = (CardView) cView.findViewById(R.id.Notification);
         cardSchedule = (CardView) cView.findViewById(R.id.Schedule);
         cardAttendace.setOnClickListener(this);
         cardController.setOnClickListener(this);
@@ -409,8 +409,6 @@ public class MainActivity_Student extends AppCompatActivity implements Navigatio
                 String bufferedInputString = buffer.toString();
 
                 inputStream.close();
-
-
 
             }
             catch (final Exception e) {
