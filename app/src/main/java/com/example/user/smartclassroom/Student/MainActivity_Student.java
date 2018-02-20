@@ -27,6 +27,7 @@ import com.example.user.smartclassroom.Attendance.Student_Attendance;
 import com.example.user.smartclassroom.Firebase.MyFirebaseInstanceIDService;
 import com.example.user.smartclassroom.Global.Properties;
 import com.example.user.smartclassroom.LoginActivity;
+import com.example.user.smartclassroom.Notif.Notif_Class;
 import com.example.user.smartclassroom.Prof.Controller;
 import com.example.user.smartclassroom.R;
 import com.example.user.smartclassroom.Schedule.Schedule;
@@ -181,20 +182,8 @@ public class MainActivity_Student extends AppCompatActivity implements Navigatio
                     .replace(R.id.contentFrame_Student
                             , schedule).addToBackStack(null)
                     .commit();
-        } else if(id==R.id.Dashboard){
-            DashBoard_Student dashBoard_student=new DashBoard_Student();
-            dashBoard_student.setArguments(bundle);
-            ((LinearLayout)findViewById(R.id.Linear_Student)).removeAllViews();
-            ((LinearLayout) findViewById(R.id.Linear_Student2)).removeAllViews();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.contentFrame_Student
-                            , dashBoard_student).addToBackStack(null)
-                    .commit();
-        }
-        else if (id==R.id.nav_Account)
-        {
+        } else if (id==R.id.nav_Account) {
             Account_Class account_class=new Account_Class();
-
             account_class.setArguments(bundle);
             ((LinearLayout) findViewById(R.id.Linear_Student)).removeAllViews();
             ((LinearLayout) findViewById(R.id.Linear_Student2)).removeAllViews();
@@ -212,7 +201,17 @@ public class MainActivity_Student extends AppCompatActivity implements Navigatio
                     .replace(R.id.contentFrame_Student
                             , student_attendance).addToBackStack(null)
                     .commit();
-        } else if (id == R.id.nav_logout) {
+        }else if(id == R.id.nav_Notif){
+            Notif_Class notif_class = new Notif_Class();
+            notif_class.setArguments(bundle);
+            ((LinearLayout)findViewById(R.id.Linear_Student)).removeAllViews();
+            ((LinearLayout) findViewById(R.id.Linear_Student2)).removeAllViews();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.contentFrame_Student
+                            , notif_class).addToBackStack(null)
+                    .commit();
+        }
+        else if (id == R.id.nav_logout) {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             alertDialogBuilder.setMessage("Are you sure?");
                     alertDialogBuilder.setPositiveButton("YES",
@@ -262,6 +261,16 @@ public class MainActivity_Student extends AppCompatActivity implements Navigatio
                             .replace(R.id.contentFrame_Student
                                     , student_attendance).addToBackStack(null)
                             .commit();
+        }
+        else if(view.getId()==R.id.Notification){
+            Notif_Class notif_class = new Notif_Class();
+            notif_class.setArguments(bundle);
+            ((LinearLayout)findViewById(R.id.Linear_Student)).removeAllViews();
+            ((LinearLayout) findViewById(R.id.Linear_Student2)).removeAllViews();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.contentFrame_Student
+                            , notif_class).addToBackStack(null)
+                    .commit();
         }
         else if (view.getId()==R.id.Schedule) {
             Schedule schedule=new Schedule();
