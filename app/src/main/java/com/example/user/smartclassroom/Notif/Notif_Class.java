@@ -50,8 +50,7 @@ public class Notif_Class extends Fragment {
         myView = inflater.inflate(R.layout.notification,container,false);
         listView = (ListView)myView.findViewById(R.id.listview_notifications);
         stud_id = getArguments().getString("Stud_id").toString();
-
-
+        new Notification_Task().execute();
         return myView;
     }
     public class Notification_Task extends AsyncTask<Void,Void,String>{
@@ -129,7 +128,6 @@ public class Notif_Class extends Fragment {
                 notificationModel.setMessage(json_data.getString("notification_body"));
                 notificationModel.setDate(json_data.getString("notification_date"));
                 attendanceusers.add(notificationModel);
-                //attendanceusers.get(index)
             }
         } catch (JSONException e) {
             Log.e("log_tag", "Error parsing data " + e.toString());

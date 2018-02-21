@@ -151,14 +151,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             , attendance)
                     .commit();
         }else if (id==R.id.Controller) {
-            Controller controller=new Controller();
-            controller.setArguments(bundle);
-            ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
-            ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
-            fragmentManager.beginTransaction().addToBackStack("Controller")
-                    .replace(R.id.contentFrame
-                            , controller)
-                    .commit();
+            new ControllerTask().execute();
 
         }else if (id==R.id.logs) {
             Logs_Dash logs_dash=new Logs_Dash();
@@ -244,14 +237,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             .commit();
         }
         else if (view.getId()==R.id.Controller) {
-            Controller controller=new Controller();
-            controller.setArguments(bundle);
-            ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
-            ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
-                    fragmentManager.beginTransaction().addToBackStack("Controller")
-                            .replace(R.id.contentFrame
-                                    , controller)
-                            .commit();
+            new ControllerTask().execute();
 
         }else if (view.getId()==R.id.Logs) {
             Logs_Dash logs_dash=new Logs_Dash();
@@ -341,6 +327,85 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+        }
+    }
+    public class ControllerTask extends AsyncTask<String,Void,String>{
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            String output = "";
+            byte[] data;
+            HttpPost httppost;
+            HttpClient httpclient;
+            StringBuffer buffer = null;
+            HttpResponse response;
+            InputStream inputStream;
+            HttpGet httpGet;
+            Intent intent;
+            String resultString="";
+            Bundle extras=new Bundle();
+            List<NameValuePair> nameValuePairs;
+            nameValuePairs = new ArrayList<NameValuePair>(2);
+            // nameValuePairs.add(new BasicNameValuePair("id",stud_id));
+            nameValuePairs.add(new BasicNameValuePair("id",stud_id));
+            nameValuePairs.add(new BasicNameValuePair("condition","control"));
+            try {
+                String Url = p.getIP()+"controlDevice.php";
+                httpclient = new DefaultHttpClient();
+                httppost = new HttpPost(Url);
+                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                response = httpclient.execute(httppost);
+                inputStream = response.getEntity().getContent();
+
+                data = new byte[256];
+
+                buffer = new StringBuffer();
+
+                int len = 0;
+
+                while (-1 != (len = inputStream.read(data)) ) {
+                    buffer.append(new String(data, 0, len));
+                }
+                //for the output or echo
+                String bufferedInputString = buffer.toString();
+
+                inputStream.close();
+            }
+            catch (final Exception e) {
+                runOnUiThread(new Runnable() {
+                    public void run() {
+
+                        Toast.makeText(MainActivity.this, "error: "+e.toString(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+            }
+            return buffer.toString();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            FragmentManager fragmentManager = getFragmentManager();
+            bundle.putString("Stud_id",stud_id);
+            bundle.putString("User",user);
+            if(s.equals("Not time yet")){
+                Toast.makeText(getApplicationContext(),s,Toast.LENGTH_SHORT).show();
+            }else{
+                Controller controller=new Controller();
+                controller.setArguments(bundle);
+                ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
+                ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
+                fragmentManager.beginTransaction().addToBackStack("Controller")
+                        .replace(R.id.contentFrame
+                                , controller)
+                        .commit();
+            }
         }
     }
 }
