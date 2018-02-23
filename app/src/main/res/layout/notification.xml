@@ -7,12 +7,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backgroundimg">
-
-
-    <ListView
-        android:id="@+id/listview_notifications"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_notifications"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/listview_notifications"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>

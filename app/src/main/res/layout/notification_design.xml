@@ -8,15 +8,12 @@
     app:cardUseCompatPadding="true"
     android:layout_marginBottom="8dp"
     app:cardCornerRadius="8dp"
-    android:id="@+id/cardview"
-
-    >
+    android:id="@+id/cardview">
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:background="@drawable/notifcard"
         >
-
 
         <TextView
             android:id="@+id/tv_name_notification"
