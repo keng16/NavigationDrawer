@@ -5,14 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backgroundimg">
-
-        <ListView
-            android:id="@+id/list_view_attendance_student"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_attendance_student"
             android:layout_width="match_parent"
-            android:layout_height="0dip"
+            android:layout_height="wrap_content"
             android:layout_weight="1">
-
-        </ListView>
+                <ListView
+                    android:id="@+id/list_view_attendance_student"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip">
+                </ListView>
+        </android.support.v4.widget.SwipeRefreshLayout>
         <Button
             android:id="@+id/btnPickSubject"
             android:layout_width="match_parent"

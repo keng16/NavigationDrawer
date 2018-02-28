@@ -51,6 +51,7 @@ public class LoginActivity extends AppCompatActivity{
     private ProgressDialog dialog;
     private Button mEmailSignInButton;
     String status;
+    CheckNetwork checkNetwork=new CheckNetwork();
     /**
      * A dummy authentication store containing known user names and passwords.
      * TODO: remove after connecting to a real authentication system.
@@ -64,7 +65,6 @@ public class LoginActivity extends AppCompatActivity{
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private View mLoginFormView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,11 +93,9 @@ public class LoginActivity extends AppCompatActivity{
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (CheckNetwork.isInternetAvailable(getApplicationContext())){
                     attemptLogin();
-                }else if (!CheckNetwork.isInternetAvailable(getApplicationContext())){
-                    Toast.makeText(getApplicationContext(),"Not connected to the Internet",Toast.LENGTH_SHORT).show();
-                }
+
+
             }
         });
 
@@ -157,7 +155,12 @@ public class LoginActivity extends AppCompatActivity{
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute();
+            if(checkNetwork.isConnectedToInternet(this)){
+                mAuthTask.execute();
+            }else{
+                Toast.makeText(this,"No internet",Toast.LENGTH_SHORT);
+            }
+
 
         }
     }
@@ -284,7 +287,7 @@ public class LoginActivity extends AppCompatActivity{
                     user = usergetter[3];
                     sname = usergetter[0]+" "+usergetter[1]+" "+usergetter[2];
 
-                    if (user.equals("Prof")) {
+                    if (user.equals("Professor")) {
                         String id= usergetter[4];
                         Intent i = new Intent(LoginActivity.this, MainActivity.class);
                         i.putExtra("Name",sname);

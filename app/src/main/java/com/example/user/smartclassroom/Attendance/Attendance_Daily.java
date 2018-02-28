@@ -107,6 +107,7 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
         });
         //datetoday();
         date_today.setText(dateToday());
+        date_final = datetoday();
         date_pick.setText(datetoday());
         date_pick.setOnClickListener(this);
         course_pick.setOnClickListener(this);

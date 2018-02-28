@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Config;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -58,6 +59,7 @@ public class Student_Attendance extends Fragment implements View.OnClickListener
     Properties p=new Properties();
     private ArrayAdapter<String> adapter;
     private ArrayList<Properties> properties;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     Spinner mySpinner;
     Button btnPickCourse;
@@ -82,6 +84,14 @@ public class Student_Attendance extends Fragment implements View.OnClickListener
         dialog.setCancelable(false);
         dialog.setMessage("Getting Attendance...");
         listView = (ListView) myView.findViewById(R.id.list_view_attendance_student);
+        swipeRefreshLayout = (SwipeRefreshLayout)myView.findViewById(R.id.swipe_attendance_student);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Student_Attendance_Task().execute();
+            }
+        });
+
         //loadClass.execute();
         btnPickCourse = (Button)myView.findViewById(R.id.btnPickSubject);
         btnPickCourse.setOnClickListener(this);
@@ -352,6 +362,7 @@ public class Student_Attendance extends Fragment implements View.OnClickListener
         getActivity().finish();
         loadClass.cancel(true);
         student_attendance_task.cancel(true);
+        swipeRefreshLayout.setRefreshing(false);
     }
     //end
 }

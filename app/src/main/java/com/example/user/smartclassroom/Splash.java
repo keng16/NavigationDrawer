@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.user.smartclassroom.Global.Properties;
@@ -45,6 +46,7 @@ public class Splash extends AppCompatActivity {
     String status;
     String id;
     ProgressBar progressBar;
+    CheckNetwork checkNetwork=new CheckNetwork();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +58,12 @@ public class Splash extends AppCompatActivity {
             @Override
             public void run() {
                 /* Create an Intent that will start the Menu-Activity. */
-                new CheckOnlineTask().execute();
+                if(checkNetwork.isConnectedToInternet(Splash.this)){
+                    new CheckOnlineTask().execute();
+                }else{
+                    Toast.makeText(Splash.this,"No internet",Toast.LENGTH_SHORT);
+                }
+
 
             }
         }, SPLASH_DISPLAY_LENGTH);

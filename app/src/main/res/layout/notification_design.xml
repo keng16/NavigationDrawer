@@ -39,10 +39,10 @@
             android:id="@+id/tv_message_notification"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
+            android:layout_marginStart="240dp"
             android:layout_marginTop="36dp"
             android:text="Message"
-            app:layout_constraintStart_toEndOf="@+id/tv_name_notification"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
 

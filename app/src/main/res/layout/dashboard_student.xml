@@ -11,6 +11,7 @@
     android:background="@drawable/backgroundimg"
     android:gravity="center"
     android:id="@+id/ll">
+
     <LinearLayout
         android:clipToPadding="false"
         android:id="@+id/Linear_Student"

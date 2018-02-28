@@ -74,7 +74,7 @@ public class Schedule extends Fragment implements View.OnClickListener{
         btn_day = (Button)myView.findViewById(R.id.btn_select_day);
         user = getArguments().getString("User").toString();
         stud_id=this.getArguments().getString("Stud_id").toString();
-        if(user.equals("Prof")){
+        if(user.equals("Professor")){
             PhpFile = "SCHEDULE-PROF.php";
         }else if (user.equals("Student")){
             PhpFile = "STUDENT-SCHED.php";

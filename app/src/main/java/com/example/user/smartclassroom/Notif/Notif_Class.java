@@ -46,6 +46,7 @@ public class Notif_Class extends Fragment {
     private ArrayList<NotificationModel> attendanceusers = new ArrayList<NotificationModel>();
     SwipeRefreshLayout swipeRefreshLayout;
     String stud_id;
+    String user;
 
     @Nullable
     @Override
@@ -54,6 +55,7 @@ public class Notif_Class extends Fragment {
         listView = (ListView)myView.findViewById(R.id.listview_notifications);
         swipeRefreshLayout = (SwipeRefreshLayout)myView.findViewById(R.id.swipe_notifications);
         stud_id = getArguments().getString("Stud_id").toString();
+        user = getArguments().getString("User").toString();
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -89,6 +91,7 @@ public class Notif_Class extends Fragment {
             List<NameValuePair> nameValuePairs;
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("id",stud_id));
+            nameValuePairs.add(new BasicNameValuePair("user",user));
             try {
                 //ip= new Properties();
                 String Url = p.getIP()+"notification_android.php";
@@ -143,6 +146,7 @@ public class Notif_Class extends Fragment {
                 NotificationModel notificationModel = new NotificationModel();
                 notificationModel.setMessage(json_data.getString("notification_body"));
                 notificationModel.setDate(json_data.getString("notification_date"));
+                notificationModel.setName(json_data.getString("professor_fname")+" "+json_data.getString("professor_mname")+" "+json_data.getString("professor_lname"));
                 attendanceusers.add(notificationModel);
             }
         } catch (JSONException e) {
@@ -223,8 +227,10 @@ public class Notif_Class extends Fragment {
             for (int i = 0; i < jArray.length(); i++) {
                 JSONObject json_data = jArray.getJSONObject(i);
                 NotificationModel notificationModel = new NotificationModel();
+                notificationModel.setName("Holiday");
                 notificationModel.setMessage(json_data.getString("Holiday_Description"));
                 notificationModel.setDate(json_data.getString("Holiday_Date"));
+
                 attendanceusers.add(notificationModel);
             }
         } catch (JSONException e) {

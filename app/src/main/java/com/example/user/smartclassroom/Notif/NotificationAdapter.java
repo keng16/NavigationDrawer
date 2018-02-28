@@ -21,6 +21,7 @@ public class NotificationAdapter extends BaseAdapter {
     protected Context context;
     TextView tv_message;
     TextView tv_date;
+    TextView tv_name;
 
     public NotificationAdapter(ArrayList<NotificationModel> model, Context context) {
         this.model = model;
@@ -49,9 +50,11 @@ public class NotificationAdapter extends BaseAdapter {
         }
         tv_date = (TextView)convertView.findViewById(R.id.tv_date_notification);
         tv_message = (TextView)convertView.findViewById(R.id.tv_message_notification);
+        tv_name = (TextView)convertView.findViewById(R.id.tv_name_notification);
         NotificationModel notificationModel = model.get(position);
         tv_date.setText(notificationModel.getDate());
         tv_message.setText(notificationModel.getMessage());
+        tv_name.setText(notificationModel.getName());
 
         return convertView;
     }
