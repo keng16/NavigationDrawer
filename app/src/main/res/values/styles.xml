@@ -13,8 +13,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="CustomActionBarTheme"
-        parent="@android:style/Theme.Holo.Light.NoActionBar">
+    <style name="CustomActionBarTheme" parent="@android:style/Theme.Holo.Light.NoActionBar">
         <item name="android:windowActionBarOverlay">true</item>
     </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

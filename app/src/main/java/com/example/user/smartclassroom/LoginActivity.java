@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -62,7 +63,7 @@ public class LoginActivity extends AppCompatActivity{
     private UserLoginTask mAuthTask = null;
 
     // UI references.
-    private AutoCompleteTextView mEmailView;
+    private EditText mEmailView;
     private EditText mPasswordView;
     private View mLoginFormView;
     @Override
@@ -74,7 +75,7 @@ public class LoginActivity extends AppCompatActivity{
         dialog.setCancelable(false);
         dialog.setMessage("Loading....");
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        mEmailView = (EditText) findViewById(R.id.email);
         //populateAutoComplete();
         status = "Offline";
         mPasswordView = (EditText) findViewById(R.id.password);
@@ -94,8 +95,6 @@ public class LoginActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                     attemptLogin();
-
-
             }
         });
 
@@ -179,18 +178,6 @@ public class LoginActivity extends AppCompatActivity{
      * Shows the progress UI and hides the login form.
      */
 
-
-
-
-
-    private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
-        //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(LoginActivity.this,
-                        android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
-
-        mEmailView.setAdapter(adapter);
-    }
 
 
 
@@ -288,15 +275,17 @@ public class LoginActivity extends AppCompatActivity{
                     sname = usergetter[0]+" "+usergetter[1]+" "+usergetter[2];
 
                     if (user.equals("Professor")) {
-                        String id= usergetter[4];
+                        url = usergetter[4]+":"+usergetter[5];
+                        String id= usergetter[6];
                         Intent i = new Intent(LoginActivity.this, MainActivity.class);
                         i.putExtra("Name",sname);
                         i.putExtra("Email",mEmail);
+                        i.putExtra("Url",url);
                         i.putExtra("User",user);
                         i.putExtra("Stud_id",id);
                         startActivity(i);
                     } else if (user.equals("Student")){
-                        url = usergetter[5];
+                        url = usergetter[4]+":"+usergetter[5];
                         String id= usergetter[6];
                         Intent i = new Intent(LoginActivity.this, MainActivity_Student.class);
                         i.putExtra("Name",sname);
@@ -311,7 +300,6 @@ public class LoginActivity extends AppCompatActivity{
                     mPasswordView.setError(getString(R.string.error_incorrect_password));
                     mPasswordView.requestFocus();
                 }
-
         }
         @Override
         protected void onCancelled() {

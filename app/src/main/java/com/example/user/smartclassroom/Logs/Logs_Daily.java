@@ -396,21 +396,10 @@ public class Logs_Daily extends Fragment implements View.OnClickListener{
                 JSONObject json_data = jArray.getJSONObject(i);
                 Properties user = new Properties();
 
-//                if( json_data.getString("entity_type").equals("Professor")) //pag walang student na nag in at prof lang
-//                {
-//                    user.setProffname(json_data.getString("fname"));
-//                    user.setProfmname(json_data.getString("mname"));
-//                    user.setProflname(json_data.getString("lname"));
-//                    user.setStartTime(json_data.getString("time"));
-//                    user.setEntity(json_data.getString("entity_type"));
-//                    user.setTransact(json_data.getString("transaction"));
-//                    logsusers.add(user);
-//                }
-//                else
-//                {
                     user.setStudentfname(json_data.getString("fname")); //ipinasa dito
                     user.setStudentmname(json_data.getString("mname"));
                     user.setStudentlname(json_data.getString("lname"));
+                    user.setPic(json_data.getString("student_ImgUrl"));
 
                     // time convert to normal change feb/19
                     String timetap=json_data.getString("time");
@@ -420,8 +409,6 @@ public class Logs_Daily extends Fragment implements View.OnClickListener{
                     String time_tap =f2.format(d).toLowerCase(); // "12:18am"
                     user.setStartTime(time_tap);
                     //end
-
-                    user.setEntity(json_data.getString("entity_type"));
                     user.setTransact(json_data.getString("transaction"));
                     logsusers.add(user);
 //                }

@@ -60,7 +60,7 @@ public class Splash extends AppCompatActivity {
                 /* Create an Intent that will start the Menu-Activity. */
                 if(checkNetwork.isConnectedToInternet(Splash.this)){
                     new CheckOnlineTask().execute();
-                }else{
+                }else if (!checkNetwork.isConnectedToInternet(Splash.this)){
                     Toast.makeText(Splash.this,"No internet",Toast.LENGTH_SHORT);
                 }
 
@@ -210,25 +210,27 @@ public class Splash extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             final String user;
-            MessageBox(s);
+            //MessageBox(s);
             String sname = null;
-            String url = null;
+            String url;
             if (!s.equals("none")) {
                 // Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
                 String[] usergetter = s.split(":");
                 user = usergetter[3];
                 sname = usergetter[0]+" "+usergetter[1]+" "+usergetter[2];
 
-                if (user.equals("Prof")) {
-                    String id= usergetter[4];
+                if (user.equals("Professor")) {
+                    url = usergetter[4]+":"+usergetter[5];
+                    String id= usergetter[6];
                     Intent i = new Intent(Splash.this, MainActivity.class);
                     i.putExtra("Name",sname);
-                    i.putExtra("Email",usergetter[5]);
+                    i.putExtra("Email",usergetter[7]);
+                    i.putExtra("Url",url);
                     i.putExtra("User",user);
                     i.putExtra("Stud_id",id);
                     startActivity(i);
                 } else if (user.equals("Student")){
-                    url = usergetter[5];
+                    url = usergetter[4]+":"+usergetter[5];
                     String id= usergetter[6];
                     Intent i = new Intent(Splash.this, MainActivity_Student.class);
                     i.putExtra("Name",sname);

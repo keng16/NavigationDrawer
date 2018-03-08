@@ -28,6 +28,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baoyz.swipemenulistview.SwipeMenu;
+import com.baoyz.swipemenulistview.SwipeMenuCreator;
+import com.baoyz.swipemenulistview.SwipeMenuItem;
+import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.example.user.smartclassroom.Account.Student_Profile;
 import com.example.user.smartclassroom.Global.Properties;
 import com.example.user.smartclassroom.Logs.Logs_Daily;
@@ -74,7 +78,7 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
     String day;
     Spinner mySpinner;
     String[] splitter;
-    ListView listView;
+    SwipeMenuListView listView;
     View view1;
     String course;
     String sections;
@@ -94,10 +98,9 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
         myView = inflater.inflate(R.layout.attendance_prof_daily,container,false);
         stud_id = getArguments().getString("Stud_id").toString();
 
-        date_today = (TextView) myView.findViewById(R.id.tv_date_attendance_daily);
         course_pick = (Button) myView.findViewById(R.id.btn_attendance_course);
         date_pick = (Button) myView.findViewById(R.id.btn_attendance_date);
-        listView = (ListView)myView.findViewById(R.id.listview_attendance_daily);
+        listView = (SwipeMenuListView) myView.findViewById(R.id.listview_attendance_daily);
         swipeRefreshLayout = (SwipeRefreshLayout) myView.findViewById(R.id.swipe_refresh_attendance_daily);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -106,34 +109,10 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
             }
         });
         //datetoday();
-        date_today.setText(dateToday());
         date_final = datetoday();
         date_pick.setText(datetoday());
         date_pick.setOnClickListener(this);
         course_pick.setOnClickListener(this);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                p = properties.get(position);
-                Toast.makeText(getActivity(),p.getStudentlname(),Toast.LENGTH_SHORT).show();
-                Student_Profile student_profile=new Student_Profile();
-                FragmentManager fragmentManager = getFragmentManager();
-                bundle.putInt("Stud_id",p.getStud_id());
-                bundle.putString("course",course);
-                bundle.putString("sections",sections);
-                bundle.putString("room",room);
-                bundle.putString("date",p.getDate());
-                bundle.putString("url",p.getPic());
-                bundle.putString("name", p.getStudentfname()+" "+p.getStudentmname()+" "+p.getStudentlname());
-                bundle.putString("status",p.getStatdescript());
-                student_profile.setArguments(bundle);
-                fragmentManager.beginTransaction().addToBackStack("Profile")
-                        .replace(R.id.contentFrame
-                                , student_profile)
-                        .commit();
-
-            }
-        });
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
@@ -151,7 +130,7 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
                     date_final = year_final + "-" + month_final + "-" + "0"+day_final;
                 }
                 MessageBox(date_final);
-                if(course.length()>0&&sections.length()>0&&room.length()>0&&date_final.length()>0){
+                if(course!=null&&sections!=null&&room!=null&&date_final!=null){
                     final Handler handler=new Handler();
                     handler.post(new Runnable() {
                         @Override
@@ -162,6 +141,7 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
                     });
                     date_pick.setText(date_final);
                 }else {
+                    date_pick.setText(date_final);
                     Toast.makeText(getActivity(),"Pick Course",Toast.LENGTH_SHORT).show();
                 }
 
@@ -234,7 +214,102 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
             datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             datePickerDialog.show();
         }
+        SwipeMenuCreator creator = new SwipeMenuCreator() {
 
+            @Override
+            public void create(SwipeMenu menu) {
+                // create "open" item
+                SwipeMenuItem openItem = new SwipeMenuItem(
+                        getActivity());
+                // set item background
+                openItem.setBackground(new ColorDrawable(Color.rgb(0xC9, 0xC9,
+                        0xCE)));
+                // set item width
+                openItem.setWidth(130);
+                // set item title
+                openItem.setTitle("Edit");
+                // set item title fontsize
+                openItem.setTitleSize(16);
+                // set item title font color
+                openItem.setTitleColor(Color.WHITE);
+                // add to menu
+                menu.addMenuItem(openItem);
+
+                // create "delete" item
+                SwipeMenuItem deleteItem = new SwipeMenuItem(
+                        getActivity());
+                // set item background
+                deleteItem.setBackground(new ColorDrawable(Color.rgb(0xC9, 0xC9,
+                        0xCE)));
+                // set item width
+                deleteItem.setWidth(130);
+                // set a icon
+                deleteItem.setTitle("Status");
+                deleteItem.setTitleSize(16);
+                deleteItem.setTitleColor(Color.WHITE);
+
+//                deleteItem.setIcon(R.drawable.ic_wifi_black_24dp);
+                // add to menu
+                menu.addMenuItem(deleteItem);
+            }
+        };
+
+// set creator
+        listView.setMenuCreator(creator);
+        listView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
+                FragmentManager fragmentManager = getFragmentManager();
+                switch (index) {
+                    case 0:
+                        Toast.makeText(getActivity(),"Edit",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(),"Show",Toast.LENGTH_LONG).show();
+                        p = properties.get(position);
+                        Toast.makeText(getActivity(),p.getStudentlname(),Toast.LENGTH_SHORT).show();
+                        update_attendance update_attendance = new update_attendance();
+                        //FragmentManager fragmentManager = getFragmentManager();
+                        bundle.putInt("Stud_id",p.getStud_id());
+                        bundle.putString("course",course);
+                        bundle.putString("sections",sections);
+                        bundle.putString("room",room);
+                        bundle.putString("date",p.getDate());
+                        bundle.putString("url",p.getPic());
+                        bundle.putInt("attendance_id",p.getAttendID());
+                        bundle.putString("name", p.getStudentfname()+" "+p.getStudentmname()+" "+p.getStudentlname());
+                        bundle.putString("status",p.getStatdescript());
+                        bundle.putString("Program",p.getStudent_program());
+                        update_attendance.setArguments(bundle);
+                        fragmentManager.beginTransaction().addToBackStack("Profile")
+                                .replace(R.id.contentFrame
+                                        , update_attendance)
+                                .commit();
+                        break;
+                    case 1:
+                        // delete
+                        Toast.makeText(getActivity(),"Show",Toast.LENGTH_LONG).show();
+                        p = properties.get(position);
+                        Toast.makeText(getActivity(),p.getStudentlname(),Toast.LENGTH_SHORT).show();
+                        Student_Profile student_profile=new Student_Profile();
+                        //FragmentManager fragmentManager = getFragmentManager();
+                        bundle.putInt("Stud_id",p.getStud_id());
+                        bundle.putString("course",course);
+                        bundle.putString("sections",sections);
+                        bundle.putString("room",room);
+                        bundle.putString("date",p.getDate());
+                        bundle.putString("url",p.getPic());
+                        bundle.putString("name", p.getStudentfname()+" "+p.getStudentmname()+" "+p.getStudentlname());
+                        bundle.putString("status",p.getStatdescript());
+                        student_profile.setArguments(bundle);
+                        fragmentManager.beginTransaction().addToBackStack("Profile")
+                                .replace(R.id.contentFrame
+                                        , student_profile)
+                                .commit();
+                        break;
+                }
+                // false : close the menu; true : not close the menu
+                return false;
+            }
+        });
     }
     public String dateToday()
     {
@@ -251,7 +326,7 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
         date_final = String.valueOf(day);
         year_final = String.valueOf(year);
         String date = month_name+" "+date_final+" , "+year_final+", "+dayToday();
-        date_today.setText(date);
+
         return date;
     }
     public class LoadClass extends AsyncTask<Void,Void,String>{
@@ -420,7 +495,7 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        Toast.makeText(getActivity(),s,Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(),s,Toast.LENGTH_SHORT).show();
         properties = attendanceUse(s);
         attendance_prof_adaptor=new attendance_prof_adaptor(getActivity(),properties);
         listView.setAdapter(attendance_prof_adaptor);
@@ -489,6 +564,7 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
                 user.setStudentmname(json_data.getString("student_mname"));
                 user.setStudentlname(json_data.getString("student_lname"));
                 user.setStatdescript(json_data.getString("status_description"));
+                user.setStudent_program(json_data.getString("student_program"));
                 user.setDate(json_data.getString("date"));
                 user.setPic(json_data.getString("student_ImgUrl"));
                 attendanceusers.add(user);

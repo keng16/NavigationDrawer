@@ -18,6 +18,11 @@
         <item>Saturday</item>
         <item>Sunday</item>
     </string-array>
+    <string-array name="attendance_status">
+        <item>Present</item>
+        <item>Late</item>
+        <item>Absent</item>
+    </string-array>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -31,4 +36,10 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="title_activity_notification">notification</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
+    <string name="title_activity_main2">Main2Activity</string>
 </resources>

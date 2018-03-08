@@ -32,6 +32,9 @@ import com.example.user.smartclassroom.Global.Properties;
 import com.squareup.picasso.Picasso;
 
 import android.widget.ImageView;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * Created by kenonnegammad on 31/01/2018.
  */
@@ -50,8 +53,9 @@ public class Account_Class extends Fragment implements View.OnClickListener{
     EditText et_newpassword;
     EditText et_newpassword2;
     Button btn_save;
-    ImageView imgProfile;
+    CircleImageView imgProfile;
     private ProgressDialog dialog;
+    String url;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -64,16 +68,18 @@ public class Account_Class extends Fragment implements View.OnClickListener{
         et_oldpassword = (EditText)myView.findViewById(R.id.et_oldpassword);
         et_newpassword = (EditText)myView.findViewById(R.id.et_newpassword);
         et_newpassword2 = (EditText)myView.findViewById(R.id.et_newpassword2);
-        imgProfile=(ImageView)myView.findViewById(R.id.imageView4);
+        imgProfile=(CircleImageView) myView.findViewById(R.id.imageView4);
         btn_save = (Button)myView.findViewById(R.id.btn_save);
         id = getArguments().getString("Stud_id").toString();
         user = getArguments().getString("User").toString();
         name = getArguments().getString("Name").toString();
+        url = getArguments().getString("Url").toString();
         tv_name.setText(name);
         btn_save.setOnClickListener(this);
 
         Picasso.with(getActivity())
-                .load("https://scontent.fmnl4-4.fna.fbcdn.net/v/t1.0-9/25498243_1940597495956755_8655756564574274692_n.jpg?_nc_eui2=v1%3AAeFwwatFfrOIXkER7QX4sbvpIH6mDnx1y85GjjiiZg-x4Sliu9sgMegLiNC3ikLf4A9z39rVXgAJCznsbRO-V5nhiAzJUAU7g8YOboUh8R-uXw&oh=4765dcc5dfa8337457abcb570082d608&oe=5B170219")
+                .load(url)
+                .centerCrop()
                 .resize(120, 120)
                 .into(imgProfile);
 

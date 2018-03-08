@@ -14,22 +14,23 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.smartclassroom.Account.Account_Class;
-import com.example.user.smartclassroom.Attendance.Attendance;
+import com.example.user.smartclassroom.Attendance.Attendance_Daily;
+import com.example.user.smartclassroom.Attendance.add_attendance;
+import com.example.user.smartclassroom.Attendance.full_status;
 import com.example.user.smartclassroom.Global.Properties;
 import com.example.user.smartclassroom.LoginActivity;
-import com.example.user.smartclassroom.Logs.Logs_Dash;
+import com.example.user.smartclassroom.Logs.Logs_Daily;
+import com.example.user.smartclassroom.Notif.Notification_Class;
 import com.example.user.smartclassroom.R;
 import com.example.user.smartclassroom.Schedule.Schedule;
-import com.example.user.smartclassroom.Student.MainActivity_Student;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.squareup.picasso.Picasso;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -43,6 +44,8 @@ import org.apache.http.message.BasicNameValuePair;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
@@ -72,10 +75,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.setDrawerListener(toggle);
         toggle.syncState();
         control="Login";
-        name = extras.getString("Name");
-        email = extras.getString("Email");
-        user = extras.getString("User");
-        stud_id = extras.getString("Stud_id");
+        name = getIntent().getStringExtra("Name");
+        email = getIntent().getStringExtra("Email");
+        url = getIntent().getStringExtra("Url");
+        user = getIntent().getStringExtra("User");
+        stud_id = getIntent().getStringExtra("Stud_id");
         FirebaseMessaging.getInstance().subscribeToTopic("test");
         token= FirebaseInstanceId.getInstance().getToken();
         new registerToken().execute();
@@ -83,6 +87,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View hView = navigationView.getHeaderView(0);
+        CircleImageView imgView = (CircleImageView) hView.findViewById(R.id.imageView);
+        Picasso.with(MainActivity.this)
+                .load(url)
+                .resize(60, 60)
+                .centerCrop()
+                .into(imgView);
         textName = (TextView) hView.findViewById(R.id.textName);
         textEmail = (TextView) hView.findViewById(R.id.textEmail);
         textName.setText(extras.getString("Name"));
@@ -115,20 +125,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -139,50 +135,88 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         bundle.putString("Stud_id",stud_id);
         bundle.putString("User",user);
         bundle.putString("Name",name);
+        bundle.putString("Url",url);
 
 
         if (id == R.id.Attendance) {
-            Attendance attendance = new Attendance();
-            attendance.setArguments(bundle);
-            ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
-            ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
+            Attendance_Daily attendance_daily=new Attendance_Daily();
+            attendance_daily.setArguments(bundle);
+//            ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
             fragmentManager.beginTransaction().addToBackStack("Attendance")
                     .replace(R.id.contentFrame
-                            , attendance)
+                            , attendance_daily)
+                    .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
                     .commit();
         }else if (id==R.id.Controller) {
             new ControllerTask().execute();
 
         }else if (id==R.id.logs) {
-            Logs_Dash logs_dash=new Logs_Dash();
-            logs_dash.setArguments(bundle);
-            ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
-            ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
+            Logs_Daily logs_daily=new Logs_Daily();
+            logs_daily.setArguments(bundle);
+//            ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
             fragmentManager.beginTransaction().addToBackStack("logs")
                     .replace(R.id.contentFrame
-                            , logs_dash)
+                            , logs_daily)
+                    .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
+                    .commit();
+        }
+        else if(id == R.id.Notification){
+            Notification_Class notification_class = new Notification_Class();
+            notification_class.setArguments(bundle);
+//            ((LinearLayout)findViewById(R.id.Linear_Student)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear_Student2)).removeAllViews();
+            fragmentManager.beginTransaction().addToBackStack("Notification")
+                    .replace(R.id.contentFrame
+                            ,notification_class)
+                    .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
                     .commit();
         }else if (id == R.id.Schedule) {
             Schedule schedule=new Schedule();
-
             schedule.setArguments(bundle);
-            ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
-            ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
             fragmentManager.beginTransaction().addToBackStack("Schedule")
                     .replace(R.id.contentFrame
                             , schedule)
+                    .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
                     .commit();
         } else if (id==R.id.nav_Account) {
             Account_Class account_class=new Account_Class();
 
             account_class.setArguments(bundle);
-            ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
-            ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
             fragmentManager.beginTransaction().addToBackStack("Account")
                     .replace(R.id.contentFrame
                             , account_class)
+                    .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
                     .commit();
-        } else {
+        } else if(id==R.id.full_status){
+            full_status full_status = new full_status();
+
+            full_status.setArguments(bundle);
+//            ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
+            fragmentManager.beginTransaction().addToBackStack("Full Status")
+                    .replace(R.id.contentFrame
+                            , full_status)
+                    .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
+                    .commit();
+
+        }else if(id==R.id.add_attendance){
+            add_attendance add_attendance=new add_attendance();
+            add_attendance.setArguments(bundle);
+//            ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
+            fragmentManager.beginTransaction().addToBackStack("Account")
+                    .replace(R.id.contentFrame
+                            , add_attendance)
+                    .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
+                    .commit();
+        }
+        else {
             if (id == R.id.logout) {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
                 alertDialogBuilder.setMessage("Are you sure?");
@@ -221,41 +255,45 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onClick(View view) {
         //content
-
         FragmentManager fragmentManager = getFragmentManager();
         bundle.putString("Stud_id",stud_id);
         bundle.putString("User",user);
+        bundle.putString("Name",name);
+        bundle.putString("Url",url);
 
         if (view.getId()==R.id.Attendance) {
-            Attendance attendance=new Attendance();
-            attendance.setArguments(bundle);
-            ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
-            ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
+            Attendance_Daily attendance_daily=new Attendance_Daily();
+            attendance_daily.setArguments(bundle);
+//            ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
                     fragmentManager.beginTransaction().addToBackStack("Attendance")
                             .replace(R.id.contentFrame
-                                    , attendance)
+                                    , attendance_daily)
+                            .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
                             .commit();
         }
         else if (view.getId()==R.id.Controller) {
             new ControllerTask().execute();
 
         }else if (view.getId()==R.id.Logs) {
-            Logs_Dash logs_dash=new Logs_Dash();
-            logs_dash.setArguments(bundle);
-            ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
-            ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
+            Logs_Daily logs_daily=new Logs_Daily();
+            logs_daily.setArguments(bundle);
+//            ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
                     fragmentManager.beginTransaction().addToBackStack("Logs")
                             .replace(R.id.contentFrame
-                                    , logs_dash)
+                                    , logs_daily)
+                            .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
                             .commit();
         }else if (view.getId()==R.id.Schedule) {
             Schedule schedule=new Schedule();
             schedule.setArguments(bundle);
-            ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
-            ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
                     fragmentManager.beginTransaction().addToBackStack("Schedule")
                             .replace(R.id.contentFrame
                                     , schedule)
+                            .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
                             .commit();
 
         }
@@ -399,11 +437,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }else{
                 Controller controller=new Controller();
                 controller.setArguments(bundle);
-                ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
-                ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
+//                ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
+//                ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
                 fragmentManager.beginTransaction().addToBackStack("Controller")
                         .replace(R.id.contentFrame
                                 , controller)
+                        .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
                         .commit();
             }
         }

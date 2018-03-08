@@ -6,26 +6,35 @@ package com.example.user.smartclassroom.Global;
 
 public class NotificationModel {
 
-    String message;
+    String title;
+    String body;
     String date;
     String time;
-    String name;
+    String status;
+    String id;
 
-    public String getName() {
-        return name;
+    public String getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(String id) {
+        this.id = id;
     }
 
-
-    public String getMessage() {
-        return message;
+    public String getTitle() {
+        return title;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
     }
 
     public String getDate() {
@@ -44,11 +53,13 @@ public class NotificationModel {
         this.time = time;
     }
 
+    public String getStatus() {
+        return status;
+    }
 
-
-
-
-
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
 
 }

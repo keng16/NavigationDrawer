@@ -235,7 +235,7 @@ public class Schedule extends Fragment implements View.OnClickListener{
                 user.setRoom(json_data.getString("rooms_id"));
                 user.setCourse(json_data.getString("course_id"));
                 user.setSection(json_data.getString("sections_id"));
-
+                user.setCoursename(json_data.getString("course_name"));
                 String formatstart_time=json_data.getString("start_time");
                 String formatend_time=json_data.getString("end_time");
 

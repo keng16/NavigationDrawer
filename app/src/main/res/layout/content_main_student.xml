@@ -7,13 +7,12 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.user.smartclassroom.Student.MainActivity_Student"
-    tools:showIn="@layout/app_bar_main_student"
-    >
+    tools:showIn="@layout/app_bar_main_student">
     <FrameLayout
         android:id="@+id/contentFrame_Student"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <include layout="@layout/dashboard_student"/>
+        <include layout="@layout/dashboard_student" android:id="@+id/dash"/>
     </FrameLayout>
 
 

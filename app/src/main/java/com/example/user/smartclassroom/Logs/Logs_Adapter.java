@@ -11,8 +11,13 @@ import android.widget.TextView;
 
 import com.example.user.smartclassroom.Global.Properties;
 import com.example.user.smartclassroom.R;
+import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by kenonnegammad on 03/02/2018.
@@ -27,6 +32,9 @@ public class Logs_Adapter extends BaseAdapter {
     TextView tv_name;
     TextView tv_transaction;
     TextView tv_time;
+    TextView tv_fullname;
+    ImageView img_status;
+    CircleImageView img_profile;
     public Logs_Adapter(Context context, ArrayList<Properties> model) {
         this.context = context;
         this.model = model;
@@ -55,40 +63,33 @@ public class Logs_Adapter extends BaseAdapter {
         }
 
         Properties properties =model.get(position);
-        tv_name = (TextView) convertView.findViewById(R.id.tv_name);
-        tv_transaction = (TextView) convertView.findViewById(R.id.tv_transaction);
-        tv_time = (TextView) convertView.findViewById(R.id.tv_time);
+        tv_name = (TextView) convertView.findViewById(R.id.tv_name_logs);
+        img_profile = (CircleImageView) convertView.findViewById(R.id.imageView_logs_profile);
+        img_status = (ImageView) convertView.findViewById(R.id.imageView_Status_logs);
         cardView = (CardView)convertView.findViewById(R.id.cardview);
-        tv_name.setText(properties.getStudentlname()+", "+properties.getStudentfname()+" "+properties.getStudentmname());
-        tv_transaction.setText(properties.getTransact());
+        tv_time = (TextView)convertView.findViewById(R.id.tv_time);
+        tv_fullname = (TextView)convertView.findViewById(R.id.tv_fullname);
+        tv_fullname.setText(properties.getStudentfname()+" "+properties.getStudentmname());
+        tv_name.setText(properties.getStudentlname()+",");
+//        tv_transaction.setText(properties.getTransact());
+//        tv_time.setText(properties.getStartTime());
+        Picasso.with(context)
+                .load(properties.getPic())
+                .resize(50, 50)
+                .centerCrop()
+                .into(img_profile);
         tv_time.setText(properties.getStartTime());
+        if(properties.getTransact().equals("In")){
+            img_status.setBackgroundResource(R.drawable.tapin);
+        }else if(properties.getTransact().equals("Out")){
+            img_status.setBackgroundResource(R.drawable.tapout);
+        }
 
         //feb19
-        String identify_entity = properties.getEntity();
 
-        if (identify_entity.equals("Student"))
-        {
-            cardView.setCardBackgroundColor(Color.parseColor("#EE9859"));
-        }
-        else if (identify_entity.equals("Professor"))
-        {
-            cardView.setCardBackgroundColor(Color.parseColor("#ffc94d"));
-        }
-        transText();
 
 
         return convertView;
 
-    }
-    private void transText()
-    {
-        if (tv_transaction.getText().toString().equals("In"))
-        {
-            tv_transaction.setTextColor(Color.parseColor("#477956"));
-        }
-        else if (tv_transaction.getText().toString().equals("Out"))
-        {
-            tv_transaction.setTextColor(Color.parseColor("#5181CB"));
-        }
     }
 }

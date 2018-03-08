@@ -24,7 +24,7 @@ public class Schedule_Adapter extends BaseAdapter {
     private ArrayList<Properties> model;
     CardView cardView;
     String allday="Monday-Tuesday-Wednesday-Thursday-Friday-Saturday-Sunday";
-    TextView tv_course,tv_day,tv_time,tv_room,tv_section;
+    TextView tv_course,tv_day,tv_time,tv_room,tv_coursename;
     public Schedule_Adapter(Context context, ArrayList<Properties> model) {
         this.context = context;
         this.model = model;
@@ -54,11 +54,12 @@ public class Schedule_Adapter extends BaseAdapter {
         tv_day= (TextView) convertview.findViewById(R.id.day_tv);
         tv_time=(TextView)convertview.findViewById(R.id.time_tv);
         tv_room = (TextView)convertview.findViewById(R.id.room_tv);
+        tv_coursename = (TextView)convertview.findViewById(R.id.tv_coursename);
         cardView = (CardView)convertview.findViewById(R.id.cardview);
         Properties properties=model.get(i);
         tv_time.setText(properties.getStartTime()+" "+"-"+" "+ properties.getEndTime());
         tv_course.setText(properties.getCourseId()+" "+"-"+" "+properties.getSection());
-
+        tv_coursename.setText(properties.getCoursename());
         String get_Day=properties.getDay();
         tv_day.setText(get_Day);
         if (get_Day.equals(allday))

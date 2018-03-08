@@ -15,6 +15,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * Created by kenonnegammad on 02/02/2018.
  */
@@ -23,11 +25,13 @@ public class attendance_prof_adaptor extends BaseAdapter {
     private Context context;
     private ArrayList<Properties> model;
     CardView cardView;
-    ImageView student_pic;
+    CircleImageView student_pic;
     TextView tv_name;
     TextView tv_studnum;
     TextView tv_present,tv_late,tv_absent;
     TextView tv_status,tv_date;
+    TextView tv_lname;
+    ImageView img_status;
 
     public attendance_prof_adaptor(Context context, ArrayList<Properties> model) {
         this.context = context;
@@ -54,43 +58,27 @@ public class attendance_prof_adaptor extends BaseAdapter {
         if (view==null){
             view = View.inflate(context,R.layout.attendance_design_prof,null);
         }
-        tv_name = (TextView) view.findViewById(R.id.tv_name);
-        student_pic = (ImageView)view.findViewById(R.id.imageView_ProfilePic);
-        tv_studnum = (TextView) view.findViewById(R.id.tv_studnum);
-        tv_status = (TextView)view.findViewById(R.id.tv_status);
-        tv_date = (TextView)view.findViewById(R.id.tv_date);
+        tv_name = (TextView) view.findViewById(R.id.tv_fullname);
+        student_pic = (CircleImageView)view.findViewById(R.id.imageView_ProfilePic);
         cardView=(CardView)view.findViewById(R.id.cardviewAttendance);
+        tv_lname = (TextView)view.findViewById(R.id.tv_lname);
+        img_status = (ImageView)view.findViewById(R.id.imageView_status);
+
 
         Properties properties=model.get(i);
         Picasso.with(context)
                 .load(properties.getPic())
                 .resize(90,90)
                 .into(student_pic);
-
-        tv_name.setText(properties.getStudentlname()+" , "+properties.getStudentfname()+" "+properties.getStudentmname());
-        tv_status.setText(properties.getStatdescript());
-        cardStatus();  //change 2/18 -nicole
-        dateInvi();   //change 2/18 -nicole
-        tv_studnum.setText(String.valueOf(properties.getStud_id()));
+        tv_lname.setText(properties.getStudentlname()+",");
+        tv_name.setText(properties.getStudentfname()+" "+properties.getStudentmname());
+        if(properties.getStatdescript().equals("Present")){
+            img_status.setBackgroundResource(R.drawable.present);
+        }else if(properties.getStatdescript().equals("Late")){
+            img_status.setBackgroundResource(R.drawable.late);
+        }else if(properties.getStatdescript().equals("Absent")){
+            img_status.setBackgroundResource(R.drawable.absent);
+        }
         return  view;
-    }
-    private void dateInvi()
-    {
-        if(tv_date.getText().toString().equals("TextView"));
-        {
-            tv_date.setText("");
-        }
-    }
-    private void cardStatus()
-    {
-        if (tv_status.getText().toString().equals("Absent")) {
-            cardView.setCardBackgroundColor(Color.parseColor("#EE9859"));
-        }
-        else if (tv_status.getText().toString().equals("Late")) {
-            cardView.setCardBackgroundColor(Color.parseColor("#ffc94d"));
-        }
-        else if (tv_status.getText().toString().equals("Present")) {
-            cardView.setCardBackgroundColor(Color.parseColor("#477956"));
-        }
     }
 }

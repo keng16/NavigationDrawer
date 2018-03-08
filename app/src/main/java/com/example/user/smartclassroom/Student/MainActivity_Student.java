@@ -16,19 +16,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.user.smartclassroom.Account.Account_Class;
 import com.example.user.smartclassroom.Attendance.Student_Attendance;
-import com.example.user.smartclassroom.Firebase.MyFirebaseInstanceIDService;
 import com.example.user.smartclassroom.Global.Properties;
 import com.example.user.smartclassroom.LoginActivity;
-import com.example.user.smartclassroom.Notif.Notif_Class;
-import com.example.user.smartclassroom.Prof.Controller;
+import com.example.user.smartclassroom.Notif.Notification_Class;
 import com.example.user.smartclassroom.R;
 import com.example.user.smartclassroom.Schedule.Schedule;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -44,15 +39,11 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity_Student extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener{
 
@@ -62,7 +53,7 @@ public class MainActivity_Student extends AppCompatActivity implements Navigatio
     Bundle extras;
     String token;
     CardView cardAttendace, cardLogs,cardSchedule,cardController;
-    String name, email,url,user, stud_id;
+    String name, email,user,url,stud_id;
     String control;
     Bundle bundle = new Bundle();
     final FragmentManager fragmentManager = getFragmentManager();
@@ -89,23 +80,20 @@ public class MainActivity_Student extends AppCompatActivity implements Navigatio
         url = getIntent().getStringExtra("Url");
         user = getIntent().getStringExtra("User");
         stud_id = getIntent().getStringExtra("Stud_id");
-
         FirebaseMessaging.getInstance().subscribeToTopic("test");
         token=FirebaseInstanceId.getInstance().getToken();
-
-
-        Toast.makeText(getBaseContext(),url,Toast.LENGTH_SHORT).show();
-
+        Toast.makeText(MainActivity_Student.this,url,Toast.LENGTH_LONG).show();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View hView = navigationView.getHeaderView(0);
         //imageview
         new registerToken().execute();
         new CheckProfNotif().execute();
 
-        ImageView imgView = (ImageView)hView.findViewById(R.id.imageView);
-        Picasso.with(getApplicationContext())
+        CircleImageView imgView = (CircleImageView) hView.findViewById(R.id.imageView);
+        Picasso.with(MainActivity_Student.this)
                 .load(url)
-                .resize(300, 300)
+                .resize(60, 60)
+                .centerCrop()
                 .into(imgView);
         //end
         //email and name
@@ -128,6 +116,7 @@ public class MainActivity_Student extends AppCompatActivity implements Navigatio
         cardLogs.setOnClickListener(this);
 
         //end
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -135,34 +124,16 @@ public class MainActivity_Student extends AppCompatActivity implements Navigatio
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else{
-            drawer.openDrawer(GravityCompat.START);
-        }
+//        if (drawer.isDrawerOpen(GravityCompat.START)) {
+//            drawer.closeDrawer(GravityCompat.START);
+//        } else{
+//            drawer.openDrawer(GravityCompat.START);
+//        }
+        FragmentManager fm = getFragmentManager();
+        fm.popBackStack();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -173,42 +144,48 @@ public class MainActivity_Student extends AppCompatActivity implements Navigatio
         bundle.putString("Stud_id", stud_id);
         bundle.putString("User",user);
         bundle.putString("Name",name);
+        bundle.putString("Url",url);
         if (id == R.id.nav_Schedule) {
             Schedule schedule=new Schedule();
             schedule.setArguments(bundle);
-            ((LinearLayout)findViewById(R.id.Linear_Student)).removeAllViews();
-            ((LinearLayout) findViewById(R.id.Linear_Student2)).removeAllViews();
+//            ((LinearLayout)findViewById(R.id.Linear_Student)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear_Student2)).removeAllViews();
             fragmentManager.beginTransaction()
                     .replace(R.id.contentFrame_Student
-                            , schedule).addToBackStack(null)
+                            , schedule)
+                    .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
                     .commit();
         } else if (id==R.id.nav_Account) {
             Account_Class account_class=new Account_Class();
             account_class.setArguments(bundle);
-            ((LinearLayout) findViewById(R.id.Linear_Student)).removeAllViews();
-            ((LinearLayout) findViewById(R.id.Linear_Student2)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear_Student)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear_Student2)).removeAllViews();
             fragmentManager.beginTransaction()
                     .replace(R.id.contentFrame_Student
                             , account_class)
+                    .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
                     .commit();
         }
         else if (id == R.id.nav_Attendance) {
             Student_Attendance student_attendance=new Student_Attendance();
             student_attendance.setArguments(bundle);
-            ((LinearLayout)findViewById(R.id.Linear_Student)).removeAllViews();
-            ((LinearLayout) findViewById(R.id.Linear_Student2)).removeAllViews();
+//            ((LinearLayout)findViewById(R.id.Linear_Student)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear_Student2)).removeAllViews();
             fragmentManager.beginTransaction()
                     .replace(R.id.contentFrame_Student
-                            , student_attendance).addToBackStack(null)
+                            , student_attendance)
+                    .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
                     .commit();
         }else if(id == R.id.nav_Notif){
-            Notif_Class notif_class = new Notif_Class();
+            FragmentManager fragmentManager2 = getFragmentManager();
+            Notification_Class notif_class = new Notification_Class();
             notif_class.setArguments(bundle);
-            ((LinearLayout)findViewById(R.id.Linear_Student)).removeAllViews();
-            ((LinearLayout) findViewById(R.id.Linear_Student2)).removeAllViews();
-            fragmentManager.beginTransaction()
+//            ((LinearLayout)findViewById(R.id.Linear_Student)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear_Student2)).removeAllViews();
+            fragmentManager2.beginTransaction()
                     .replace(R.id.contentFrame_Student
-                            , notif_class).addToBackStack(null)
+                            , notif_class)
+                    .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
                     .commit();
         }
         else if (id == R.id.nav_logout) {
@@ -252,45 +229,51 @@ public class MainActivity_Student extends AppCompatActivity implements Navigatio
         bundle.putString("Stud_id", stud_id);
         bundle.putString("User",user);
         bundle.putString("Name",name);
+        bundle.putString("Url",url);
+        FragmentManager fragmentManager = getFragmentManager();
         if(view.getId()==R.id.Attendance) {
             Student_Attendance student_attendance=new Student_Attendance();
-                    ((LinearLayout) findViewById(R.id.Linear_Student)).removeAllViews();
-            ((LinearLayout) findViewById(R.id.Linear_Student2)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear_Student)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear_Student2)).removeAllViews();
             student_attendance.setArguments(bundle);
                     fragmentManager.beginTransaction()
                             .replace(R.id.contentFrame_Student
                                     , student_attendance).addToBackStack(null)
+                            .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
                             .commit();
         }
         else if(view.getId()==R.id.Notification){
-            Notif_Class notif_class = new Notif_Class();
-            notif_class.setArguments(bundle);
-            ((LinearLayout)findViewById(R.id.Linear_Student)).removeAllViews();
-            ((LinearLayout) findViewById(R.id.Linear_Student2)).removeAllViews();
-            fragmentManager.beginTransaction()
+            Notification_Class notification_class = new Notification_Class();
+            notification_class.setArguments(bundle);
+//            ((LinearLayout)findViewById(R.id.Linear_Student)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear_Student2)).removeAllViews();
+            fragmentManager.beginTransaction().addToBackStack(null)
                     .replace(R.id.contentFrame_Student
-                            , notif_class).addToBackStack(null)
+                            , notification_class)
+                    .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
                     .commit();
         }
         else if (view.getId()==R.id.Schedule) {
             Schedule schedule=new Schedule();
-                    ((LinearLayout) findViewById(R.id.Linear_Student)).removeAllViews();
-            ((LinearLayout) findViewById(R.id.Linear_Student2)).removeAllViews();
+//                    ((LinearLayout) findViewById(R.id.Linear_Student)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear_Student2)).removeAllViews();
             schedule.setArguments(bundle);
                     fragmentManager.beginTransaction()
                             .replace(R.id.contentFrame_Student
                                     , schedule).addToBackStack(null)
+                            .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
                             .commit();
 
         }
         else if (view.getId()==R.id.Account){
             Account_Class account_class=new Account_Class();
-            ((LinearLayout) findViewById(R.id.Linear_Student)).removeAllViews();
-            ((LinearLayout) findViewById(R.id.Linear_Student2)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear_Student)).removeAllViews();
+//            ((LinearLayout) findViewById(R.id.Linear_Student2)).removeAllViews();
             account_class.setArguments(bundle);
             fragmentManager.beginTransaction()
                     .replace(R.id.contentFrame_Student
                             , account_class).addToBackStack(null)
+                    .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
                     .commit();
         }
 

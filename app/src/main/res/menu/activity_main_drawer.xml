@@ -5,35 +5,41 @@
 
         <item
             android:id="@+id/Schedule"
-            android:icon="@drawable/ic_menu_share"
+            android:icon="@drawable/myschedulelogo"
             android:title="Schedule" />
 
         <item
             android:id="@+id/Attendance"
-            android:icon="@drawable/ic_menu_send"
+            android:icon="@drawable/attendancelogo"
             android:title="Attendance" />
 
         <item
             android:id="@+id/Controller"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/controllerlogo"
             android:title="Controller" />
         <item
+            android:id="@+id/full_status"
+            android:icon="@drawable/classattendancelogo"
+            android:title="Full Status" />
+        <item
             android:id="@+id/nav_Account"
-            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:icon="@drawable/accountlogo"
             android:title="Account" />
         <item
+            android:id="@+id/add_attendance"
+            android:icon="@drawable/addattendancelogo"
+            android:title="Add Attendance"/>
+        <item
             android:id="@+id/logs"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/logslogo"
             android:title="Logs" />
+        <item
+            android:id="@+id/Notification"
+            android:icon="@drawable/warninglogo"
+            android:title="Notification" />
         <item
             android:id="@+id/logout"
             android:icon="@drawable/ic_exit_to_app_black_24dp"
             android:title="Logout" />
     </group>
-
-
-
-
-
-
 </menu>
