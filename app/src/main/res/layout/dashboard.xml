@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center">
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.user.smartclassroom.Student.MainActivity_Student"
+    tools:context="org.smartautomation.user.smartclassroom.Student.MainActivity_Student"
     android:orientation="vertical"
+    android:gravity="center"
     android:padding="10dp"
     android:id="@+id/ll"
-    android:stateListAnimator="@null"
     android:background="@drawable/background_72013202">
 
     <LinearLayout
@@ -47,7 +41,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:padding="10dp"
-                    android:src="@drawable/controllerlogo" />
+                    android:src="@drawable/controllerlogox256" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -96,7 +90,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:padding="10dp"
-                    android:src="@drawable/logslogo" />
+                    android:src="@drawable/logslogox256" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -149,7 +143,7 @@
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/myschedulelogo"
+                    android:src="@drawable/myschedulelogox256"
                     android:padding="10dp"/>
 
                 <TextView
@@ -196,7 +190,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:padding="10dp"
-                    android:src="@drawable/attendancelogo" />
+                    android:src="@drawable/attendancelogo2" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -225,106 +219,4 @@
             </LinearLayout>
         </android.support.v7.widget.CardView>
     </LinearLayout>
-    <LinearLayout
-        android:clipToPadding="false"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <android.support.v7.widget.CardView
-            android:id="@+id/Schedule"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:layout_width="160dp"
-            app:cardBackgroundColor="#D9FFFFFF"
-            android:layout_height="180dp"
-            android:layout_margin="10dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/myschedulelogo"
-                    android:padding="10dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/arsenal"
-                    android:text="Schedule"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/lightgray"
-                    android:layout_margin="10dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/arsenal"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:text="Check your bank activities"
-                    android:textColor="@android:color/darker_gray" />
-
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-        <android.support.v7.widget.CardView
-            android:id="@+id/Attendance"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:layout_width="160dp"
-            android:layout_height="180dp"
-            app:cardBackgroundColor="#D9FFFFFF"
-            android:layout_margin="10dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:padding="10dp"
-                    android:src="@drawable/attendancelogo" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/arsenal"
-                    android:text="Attendance"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_margin="10dp"
-                    android:background="@color/lightgray" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/arsenal"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:text="Check your bank activities"
-                    android:textColor="@android:color/darker_gray" />
-
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-
-    </LinearLayout>
-
-
 </LinearLayout>
-</ScrollView>

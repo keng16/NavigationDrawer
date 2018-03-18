@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Main Menu">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_Notif"
+                    android:icon="@drawable/ic_notifications_black_36dp"
+                    android:title="Notifications" />
+                <item
+                    android:id="@+id/nav_Schedule"
+                    android:icon="@drawable/ic_schedule_black_48dp"
+                    android:title="Schedule" />
+                <item
+                    android:id="@+id/nav_Account"
+                    android:icon="@drawable/ic_account_circle_black_48dp"
+                    android:title="Account" />
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_Notif"
-            android:icon="@drawable/notificationlogo"
-            android:title="Notifications" />
-        <item
-            android:id="@+id/nav_Schedule"
-            android:icon="@drawable/myschedulelogo"
-            android:title="Schedule" />
-        <item
-            android:id="@+id/nav_Account"
-            android:icon="@drawable/accountlogo"
-            android:title="Account" />
-
-        <item
-            android:id="@+id/nav_Attendance"
-            android:icon="@drawable/attendancelogo"
-            android:title="Attendance" />
-        <item
-            android:id="@+id/nav_logout"
-            android:icon="@drawable/ic_exit_to_app_black_24dp"
-            android:title="Logout" />
-    </group>
+                <item
+                    android:id="@+id/nav_Attendance"
+                    android:icon="@drawable/ic_description_black_48dp"
+                    android:title="Attendance" />
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/ic_exit_to_app_black_48dp"
+                    android:title="Logout" />
+            </group>
+        </menu>
+    </item>
 </menu>

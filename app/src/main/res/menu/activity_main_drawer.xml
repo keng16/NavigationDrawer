@@ -1,45 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Attendance">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/Attendance"
+                    android:icon="@drawable/ic_description_black_48dp"
+                    android:title="Attendance" />
+                <item
+                    android:id="@+id/add_attendance"
+                    android:icon="@drawable/ic_note_add_black_48dp"
+                    android:title="Add Attendance"/>
+                <item
+                    android:id="@+id/full_status"
+                    android:icon="@drawable/ic_chrome_reader_mode_black_48dp"
+                    android:title="Full Status" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="Other">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/Notification"
+                    android:icon="@drawable/ic_notifications_black_36dp"
+                    android:title="Notification" />
+                <item
+                    android:id="@+id/Controller"
+                    android:icon="@drawable/ic_build_black_48dp"
+                    android:title="Controller" />
+                <item
+                    android:id="@+id/Schedule"
+                    android:icon="@drawable/ic_schedule_black_48dp"
+                    android:title="Schedule" />
 
-    <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/logs"
+                    android:icon="@drawable/ic_event_black_48dp"
+                    android:title="Logs" />
 
-        <item
-            android:id="@+id/Schedule"
-            android:icon="@drawable/myschedulelogo"
-            android:title="Schedule" />
-
-        <item
-            android:id="@+id/Attendance"
-            android:icon="@drawable/attendancelogo"
-            android:title="Attendance" />
-
-        <item
-            android:id="@+id/Controller"
-            android:icon="@drawable/controllerlogo"
-            android:title="Controller" />
-        <item
-            android:id="@+id/full_status"
-            android:icon="@drawable/classattendancelogo"
-            android:title="Full Status" />
-        <item
-            android:id="@+id/nav_Account"
-            android:icon="@drawable/accountlogo"
-            android:title="Account" />
-        <item
-            android:id="@+id/add_attendance"
-            android:icon="@drawable/addattendancelogo"
-            android:title="Add Attendance"/>
-        <item
-            android:id="@+id/logs"
-            android:icon="@drawable/logslogo"
-            android:title="Logs" />
-        <item
-            android:id="@+id/Notification"
-            android:icon="@drawable/warninglogo"
-            android:title="Notification" />
-        <item
-            android:id="@+id/logout"
-            android:icon="@drawable/ic_exit_to_app_black_24dp"
-            android:title="Logout" />
-    </group>
+                <item
+                    android:id="@+id/logout"
+                    android:icon="@drawable/ic_exit_to_app_black_48dp"
+                    android:title="Logout" />
+            </group>
+        </menu>
+    </item>
 </menu>

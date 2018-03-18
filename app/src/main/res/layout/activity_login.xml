@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/background_7201320"
-    tools:context="com.example.user.smartclassroom.LoginActivity">
+    tools:context="com.example.user.smartclassroom.com.smartautomation.user.smartclassroom.LoginActivity">
 
     <!-- Login progress -->
 
@@ -76,7 +76,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
                     android:alpha=".9"
-                    android:drawableLeft="@drawable/ic_person_outline_black_24dp"
+                    android:drawableLeft="@drawable/userlogo"
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
@@ -100,7 +100,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
-                    android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
+                    android:drawableLeft="@drawable/passwordlogo"
                     android:hint="@string/prompt_password"
                     android:imeActionId="6"
                     android:imeActionLabel="@string/action_sign_in_short"

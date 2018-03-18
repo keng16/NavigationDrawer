@@ -10,7 +10,38 @@
       "client_info": {
         "mobilesdk_app_id": "1:799342714342:android:d46d2d669f394f2b",
         "android_client_info": {
-          "package_name": "com.example.user.smartclassroom"
+          "package_name": "com.smartautomation.user.smartclassroom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "799342714342-09r2vhou4df5boocellqeu21nh3qpdjc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDrIiZc_dCIy6YvFP-k5MVY-OOBsp0mCs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799342714342:android:64ddc7eee622e5d0",
+        "android_client_info": {
+          "package_name": "org.smartautomation.user.smartclassroom"
         }
       },
       "oauth_client": [

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.user.smartclassroom.Student.MainActivity_Student"
+    tools:context="org.smartautomation.user.smartclassroom.Student.MainActivity_Student"
     android:orientation="vertical"
     android:padding="10dp"
     android:background="@drawable/background_72013202"
@@ -178,7 +178,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:padding="10dp"
-                    android:src="@drawable/attendancelogo" />
+                    android:src="@drawable/attendancelogo2" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -206,6 +206,7 @@
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
+
 
     </LinearLayout>
 </LinearLayout>

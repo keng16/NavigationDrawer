@@ -20,14 +20,16 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:alpha=".8"
+            android:background="#A6FFFFFF">
 
                 <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/imageView3"
-                    android:layout_width="50dp"
+                    android:layout_width="60dp"
                     android:layout_height="50dp"
                     android:layout_marginBottom="8dp"
-                    android:layout_marginStart="28dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     app:civ_border_color="#FF000000"
                     app:civ_border_width="1dp"
@@ -43,7 +45,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:text="studentnumber"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black_overlay"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/imageView3"
@@ -56,7 +58,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="4dp"
                     android:text="Name"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black_overlay"
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/imageView3"
                     app:layout_constraintTop_toBottomOf="@+id/tv_studentnumber" />
@@ -66,11 +68,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:layout_marginStart="100dp"
                     android:text="0"
-                    android:textColor="@color/white"
-                    app:layout_constraintBottom_toTopOf="@+id/imageView6"
-                    app:layout_constraintStart_toEndOf="@+id/tv_present_attendance" />
+                    android:textColor="@color/black_overlay"
+                    app:layout_constraintBottom_toTopOf="@+id/imageView7"
+                    app:layout_constraintLeft_toRightOf="@id/tv_present_attendance"
+                    app:layout_constraintRight_toLeftOf="@id/tv_absent_attendance" />
 
                 <TextView
                     android:id="@+id/tv_present_attendance"
@@ -79,7 +81,7 @@
                     android:layout_marginBottom="4dp"
                     android:layout_marginStart="108dp"
                     android:text="0"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black_overlay"
                     app:layout_constraintBottom_toTopOf="@+id/imageView6"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:text="0" />
@@ -91,7 +93,7 @@
                     android:layout_marginBottom="4dp"
                     android:layout_marginEnd="60dp"
                     android:text="0"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black_overlay"
                     app:layout_constraintBottom_toTopOf="@+id/imageView6"
                     app:layout_constraintEnd_toEndOf="parent" />
 
@@ -104,7 +106,7 @@
                     android:layout_marginTop="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView12"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_name"
                     app:layout_constraintVertical_bias="1.0"
                     app:srcCompat="@drawable/present" />
 
@@ -113,12 +115,9 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginBottom="8dp"
-                    android:layout_marginStart="200dp"
-                    android:layout_marginTop="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0"
+                    app:layout_constraintLeft_toRightOf="@id/imageView6"
+                    app:layout_constraintRight_toLeftOf="@id/imageView8"
                     app:srcCompat="@drawable/late" />
 
                 <ImageView
@@ -138,11 +137,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1">
-                <ListView
+                <com.baoyz.swipemenulistview.SwipeMenuListView
                     android:id="@+id/list_view_attendance_student"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
-                </ListView>
+                </com.baoyz.swipemenulistview.SwipeMenuListView>
         </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>
