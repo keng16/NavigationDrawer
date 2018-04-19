@@ -1,4 +1,4 @@
-package org.smartautomation.user.smartclassroom.Attendance;
+package org.smartautomation.user.smartclassroom.Remarks_List;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
@@ -8,19 +8,20 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import org.smartautomation.user.smartclassroom.Global.Properties;
 import org.smartautomation.user.smartclassroom.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
- * Created by kenonnegammad on 02/02/2018.
+ * Created by kenonnegammad on 26/03/2018.
  */
 
-public class attendance_prof_adaptor extends BaseAdapter {
+public class Remarks_LIst_Adapter extends BaseAdapter {
     private Context context;
     private ArrayList<Properties> model;
     CardView cardView;
@@ -33,7 +34,7 @@ public class attendance_prof_adaptor extends BaseAdapter {
     ImageView img_status;
     ImageView img_history;
 
-    public attendance_prof_adaptor(Context context, ArrayList<Properties> model) {
+    public Remarks_LIst_Adapter(Context context, ArrayList<Properties> model) {
         this.context = context;
         this.model = model;
     }
@@ -56,7 +57,7 @@ public class attendance_prof_adaptor extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         if (view==null){
-            view = View.inflate(context,R.layout.attendance_design_prof,null);
+            view = View.inflate(context, R.layout.attendance_design_prof,null);
         }
         tv_name = (TextView) view.findViewById(R.id.tv_fullname);
         student_pic = (CircleImageView)view.findViewById(R.id.imageView_ProfilePic);
@@ -73,15 +74,9 @@ public class attendance_prof_adaptor extends BaseAdapter {
                 .into(student_pic);
         tv_lname.setText(properties.getStudentlname()+",");
         tv_name.setText(properties.getStudentfname()+" "+properties.getStudentmname());
-        if(properties.getStatdescript().equals("Present")){
-            img_status.setBackgroundResource(R.drawable.present);
-        }else if(properties.getStatdescript().equals("Late")){
-            img_status.setBackgroundResource(R.drawable.late);
-        }else if(properties.getStatdescript().equals("Absent")){
-            img_status.setBackgroundResource(R.drawable.absent);
-        }else if (properties.getStatdescript().equals("Excused")){
+        if(properties.getStatdescript().equals("Excused")){
             img_status.setBackgroundResource(R.drawable.excused);
-        }else if (properties.getStatdescript().equals("Cutting")){
+        }else if(properties.getStatdescript().equals("Cutting")){
             img_status.setBackgroundResource(R.drawable.cutting);
         }
         //history

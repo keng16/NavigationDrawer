@@ -79,6 +79,7 @@ public class Logs_Daily extends Fragment implements View.OnClickListener{
     String day_final;
     ProgressDialog dialog;
     TimerTask timerTask;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -137,10 +138,11 @@ public class Logs_Daily extends Fragment implements View.OnClickListener{
 
         return myView;
     }
-    public void MessageBox(String message)
-    {
+
+    public void MessageBox(String message) {
         Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
     }
+
     public String dateToday(int year,int month,int day)
     {
         Calendar cal = Calendar.getInstance();

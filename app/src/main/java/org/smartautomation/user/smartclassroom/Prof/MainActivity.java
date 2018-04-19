@@ -26,6 +26,7 @@ import org.smartautomation.user.smartclassroom.LoginActivity;
 import org.smartautomation.user.smartclassroom.Logs.Logs_Daily;
 import org.smartautomation.user.smartclassroom.Notif.Notification_Class;
 import org.smartautomation.user.smartclassroom.R;
+import org.smartautomation.user.smartclassroom.Remarks_List.Remarks_List;
 import org.smartautomation.user.smartclassroom.Schedule.Schedule;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -39,6 +40,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.smartautomation.user.smartclassroom.send_notification.Send_Notification;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     TextView textName;
     TextView textEmail;
     Bundle extras;
-    CardView cardAttendace, cardLogs,cardSchedule,cardController;
+    CardView cardAttendace, cardRemarks,cardSchedule,cardController;
 
     Properties p =new Properties();
     Bundle bundle=new Bundle();
@@ -100,11 +102,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //
         View cView = findViewById(R.id.contentView);
         cardAttendace = (CardView) cView.findViewById(R.id.Attendance);
-        cardLogs = (CardView) cView.findViewById(R.id.Logs);
+        cardRemarks = (CardView) cView.findViewById(R.id.Remarks);
         cardController = (CardView) cView.findViewById(R.id.Controller);
         cardSchedule = (CardView) cView.findViewById(R.id.Schedule);
         cardAttendace.setOnClickListener(this);
-        cardLogs.setOnClickListener(this);
+        cardRemarks.setOnClickListener(this);
         cardController.setOnClickListener(this);
         cardSchedule.setOnClickListener(this);
         //
@@ -150,20 +152,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
                     .commit();
         }else if (id==R.id.Controller) {
-            new ControllerTask().execute();
 
-        }else if (id==R.id.logs) {
-            Logs_Daily logs_daily=new Logs_Daily();
-            logs_daily.setArguments(bundle);
-//            ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
-//            ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
-            fragmentManager.beginTransaction().addToBackStack(null)
+            Controller controller=new Controller();
+            controller.setArguments(bundle);
+//                ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
+//                ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
+            fragmentManager.beginTransaction().addToBackStack("Controller")
                     .replace(R.id.contentFrame
-                            , logs_daily)
+                            , controller)
                     .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
                     .commit();
-        }
-        else if(id == R.id.Notification){
+        } else if(id == R.id.Notification){
             Notification_Class notification_class = new Notification_Class();
             notification_class.setArguments(bundle);
 //            ((LinearLayout)findViewById(R.id.Linear_Student)).removeAllViews();
@@ -209,6 +208,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragmentManager.beginTransaction().addToBackStack(null)
                     .replace(R.id.contentFrame
                             , listViewFragment)
+                    .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
+                    .commit();
+        }else if (id==R.id.Send_Notification){
+            Send_Notification send_notification=new Send_Notification();
+            send_notification.setArguments(bundle);
+            fragmentManager.beginTransaction().addToBackStack(null)
+                    .replace(R.id.contentFrame
+                            , send_notification)
+                    .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
+                    .commit();
+        } else if (id==R.id.remarks){
+            Remarks_List remarks_list=new Remarks_List();
+            remarks_list.setArguments(bundle);
+            fragmentManager.beginTransaction().addToBackStack(null)
+                    .replace(R.id.contentFrame
+                            , remarks_list)
                     .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
                     .commit();
         }
@@ -269,18 +284,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             .commit();
         }
         else if (view.getId()==R.id.Controller) {
-            new ControllerTask().execute();
 
-        }else if (view.getId()==R.id.Logs) {
-            Logs_Daily logs_daily=new Logs_Daily();
-            logs_daily.setArguments(bundle);
-//            ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
-//            ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
-                    fragmentManager.beginTransaction().addToBackStack("Logs")
-                            .replace(R.id.contentFrame
-                                    , logs_daily)
-                            .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
-                            .commit();
+            Controller controller=new Controller();
+            controller.setArguments(bundle);
+//                ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
+//                ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
+            fragmentManager.beginTransaction().addToBackStack("Controller")
+                    .replace(R.id.contentFrame
+                            , controller)
+                    .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
+                    .commit();
+        }else if (view.getId()==R.id.Remarks) {
+            Remarks_List remarks_list=new Remarks_List();
+            remarks_list.setArguments(bundle);
+            fragmentManager.beginTransaction().addToBackStack(null)
+                    .replace(R.id.contentFrame
+                            , remarks_list)
+                    .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
+                    .commit();
         }else if (view.getId()==R.id.Schedule) {
             Schedule schedule=new Schedule();
             schedule.setArguments(bundle);
@@ -361,86 +382,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-        }
-    }
-    public class ControllerTask extends AsyncTask<String,Void,String>{
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected String doInBackground(String... strings) {
-            String output = "";
-            byte[] data;
-            HttpPost httppost;
-            HttpClient httpclient;
-            StringBuffer buffer = null;
-            HttpResponse response;
-            InputStream inputStream;
-            HttpGet httpGet;
-            Intent intent;
-            String resultString="";
-            Bundle extras=new Bundle();
-            List<NameValuePair> nameValuePairs;
-            nameValuePairs = new ArrayList<NameValuePair>(2);
-            // nameValuePairs.add(new BasicNameValuePair("id",stud_id));
-            nameValuePairs.add(new BasicNameValuePair("id",stud_id));
-            nameValuePairs.add(new BasicNameValuePair("condition","control"));
-            try {
-                String Url = p.getIP()+"controlDevice.php";
-                httpclient = new DefaultHttpClient();
-                httppost = new HttpPost(Url);
-                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-                response = httpclient.execute(httppost);
-                inputStream = response.getEntity().getContent();
-
-                data = new byte[256];
-
-                buffer = new StringBuffer();
-
-                int len = 0;
-
-                while (-1 != (len = inputStream.read(data)) ) {
-                    buffer.append(new String(data, 0, len));
-                }
-                //for the output or echo
-                String bufferedInputString = buffer.toString();
-
-                inputStream.close();
-            }
-            catch (final Exception e) {
-                runOnUiThread(new Runnable() {
-                    public void run() {
-
-                        Toast.makeText(MainActivity.this, "error: "+e.toString(), Toast.LENGTH_SHORT).show();
-
-                    }
-                });
-            }
-            return buffer.toString();
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            FragmentManager fragmentManager = getFragmentManager();
-            bundle.putString("Stud_id",stud_id);
-            bundle.putString("User",user);
-            if(s.equals("Not time yet")){
-                Toast.makeText(getApplicationContext(),s,Toast.LENGTH_SHORT).show();
-            }else{
-                Controller controller=new Controller();
-                controller.setArguments(bundle);
-//                ((LinearLayout) findViewById(R.id.Linear)).removeAllViews();
-//                ((LinearLayout) findViewById(R.id.Linear2)).removeAllViews();
-                fragmentManager.beginTransaction().addToBackStack("Controller")
-                        .replace(R.id.contentFrame
-                                , controller)
-                        .setCustomAnimations(R.animator.fragment_slide_right_enter,R.animator.fragment_slide_right_exit)
-                        .commit();
-            }
         }
     }
 }

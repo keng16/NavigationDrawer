@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,7 +18,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.smartautomation.user.smartclassroom.Global.Properties;
+import org.smartautomation.user.smartclassroom.Guard.MainActivity_Guard;
 import org.smartautomation.user.smartclassroom.Prof.MainActivity;
 import org.smartautomation.user.smartclassroom.R;
 import org.smartautomation.user.smartclassroom.Student.MainActivity_Student;
@@ -98,7 +105,6 @@ public class LoginActivity extends AppCompatActivity{
                 }
             }
         });
-
     }
 
     /**
@@ -155,19 +161,29 @@ public class LoginActivity extends AppCompatActivity{
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             mAuthTask = new UserLoginTask(email, password);
-            if(checkNetwork.checkInternetConenction(LoginActivity.this)){
+            if(email.equals("MCL2007_Guard")){
+
                 mAuthTask.execute();
-            }else{
-                Toast.makeText(this,"No internet",Toast.LENGTH_SHORT).show();
+
+            }else {
+
+                if (checkNetwork.checkInternetConenction(LoginActivity.this)) {
+                    mAuthTask.execute();
+                } else {
+                    Toast.makeText(this, "No internet", Toast.LENGTH_SHORT).show();
+                }
             }
-
-
         }
     }
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return email.contains("@live.mcl.edu.ph");
+        if (email.equals("MCL2007_Guard")){
+            return true;
+        }
+        else {
+            return email.contains("@live.mcl.edu.ph");
+        }
     }
 
     private boolean isPasswordValid(String password) {
@@ -292,6 +308,14 @@ public class LoginActivity extends AppCompatActivity{
                         i.putExtra("Name",sname);
                         i.putExtra("Email",mEmail);
                         i.putExtra("Url",url);
+                        i.putExtra("User",user);
+                        i.putExtra("Stud_id",id);
+                        startActivity(i);
+                    }else if (user.equals("Guard")){
+                        String id = usergetter[4];
+                        Intent i = new Intent(LoginActivity.this, MainActivity_Guard.class);
+                        i.putExtra("Name",sname);
+                        i.putExtra("Email",mEmail);
                         i.putExtra("User",user);
                         i.putExtra("Stud_id",id);
                         startActivity(i);

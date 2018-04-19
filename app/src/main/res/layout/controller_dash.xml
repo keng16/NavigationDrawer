@@ -7,14 +7,28 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_72013202">
 
+    <!--<Button-->
+        <!--android:id="@+id/btn_controller_room"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:background="@drawable/mybutton"-->
+        <!--android:text="Select Room"-->
+        <!--android:textColor="@color/white"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
+
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/c_light"
         android:layout_width="match_parent"
-        android:layout_height="102dp"
+        android:layout_height="95dp"
         android:background="#A6FFFFFF"
         app:layout_constraintBottom_toTopOf="@id/c_socket"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
         tools:layout_editor_absoluteX="0dp">
 
         <ImageView
@@ -116,7 +130,9 @@
         android:layout_height="102dp"
         android:background="#A6FFFFFF"
         app:layout_constraintBottom_toTopOf="@id/c_back"
-        app:layout_constraintTop_toBottomOf="@id/c_socket">
+        app:layout_constraintTop_toBottomOf="@id/c_socket"
+        tools:layout_editor_absoluteX="0dp">
+
         <ImageView
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -162,10 +178,13 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/c_back"
         android:layout_width="match_parent"
-        android:layout_height="102dp"
+        android:layout_height="105dp"
+        android:layout_marginBottom="8dp"
         android:background="#A6FFFFFF"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/c_front">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/c_front"
+        tools:layout_editor_absoluteX="0dp">
+
         <ImageView
             android:layout_width="80dp"
             android:layout_height="80dp"

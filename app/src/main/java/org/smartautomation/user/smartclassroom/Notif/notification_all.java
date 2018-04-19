@@ -164,6 +164,7 @@ public class notification_all extends Fragment {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            //MessageBox(s);
             notificationModels = logsUse(s);
             notification_adapter = new notification_adapter(getActivity(),notificationModels);
             listView.setAdapter(notification_adapter);
@@ -192,9 +193,7 @@ public class notification_all extends Fragment {
                 //end
                 notificationModel.setStatus(json_data.getString("status"));
                 logsusers.add(notificationModel);
-//                }
             }
-            //attendanceusers.get(index)
 
         } catch (JSONException e) {
             Log.e("log_tag", "Error parsing data " + e.toString());

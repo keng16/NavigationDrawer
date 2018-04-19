@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_72013202">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_logs_room_guard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="R206"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/white"
+            android:background="@drawable/mybutton"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_logs_date_guard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Date"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/white"
+            android:background="@drawable/mybutton"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_logs_start_time_guard"
+                android:layout_width="188dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/mybutton"
+                android:text="Start Time"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/btn_logs_end_time_guard"
+                android:layout_width="188dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/mybutton"
+                android:text="End Time"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/btn_logs_start_time_guard"
+                tools:layout_editor_absoluteY="0dp" />
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/swipe_refresh_logs_guard"
+        android:layout_weight="1">
+        <com.baoyz.swipemenulistview.SwipeMenuListView
+            android:id="@+id/logs_guard"
+            android:layout_width="match_parent"
+            android:dividerHeight="0dp"
+            android:layout_height="0dip"
+            android:layout_weight="1">
+        </com.baoyz.swipemenulistview.SwipeMenuListView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>

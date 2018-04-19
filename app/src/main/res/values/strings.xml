@@ -18,11 +18,48 @@
         <item>Saturday</item>
         <item>Sunday</item>
     </string-array>
+    <string-array name="rooms">
+        <item>R200</item>
+        <item>R201</item>
+        <item>R202</item>
+        <item>R203</item>
+        <item>R204</item>
+        <item>R205</item>
+        <item>R206</item>
+    </string-array>
     <string-array name="attendance_status">
-        <item>Present</item>
-        <item>Late</item>
-        <item>Absent</item>
         <item>Excused</item>
+        <item>Cutting</item>
+    </string-array>
+    <string-array name="start_time">
+        <item>7:00am</item>
+        <item>8:30am</item>
+        <item>10:00am</item>
+        <item>11:30am</item>
+        <item>1:00pm</item>
+        <item>2:30pm</item>
+        <item>4:00pm</item>
+        <item>5:30pm</item>
+        <item>7:00pm</item>
+        <item>8:30pm</item>
+    </string-array>
+    <string-array name="end_time">
+        <item>7:00am</item>
+        <item>8:30am</item>
+        <item>10:00am</item>
+        <item>11:30am</item>
+        <item>1:00pm</item>
+        <item>2:30pm</item>
+        <item>4:00pm</item>
+        <item>5:30pm</item>
+        <item>7:00pm</item>
+        <item>8:30pm</item>
+    </string-array>
+    <string-array name="purpose">
+        <item>Room Reassignment</item>
+        <item>Cleaning</item>
+        <item>Substitute</item>
+        <item>Others</item>
     </string-array>
 
     <!-- Strings related to login -->

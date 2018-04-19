@@ -21,7 +21,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main_student" android:id="@+id/contentView"/>
+    <include layout="@layout/content_main_guard" android:id="@+id/contentView"/>
 
 
 </android.support.design.widget.CoordinatorLayout>

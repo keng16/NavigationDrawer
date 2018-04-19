@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_72013202">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_notification_course"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Course"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/white"
+            android:background="@drawable/mybutton"/>
+    </LinearLayout>
+    <EditText
+        android:id="@+id/et_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/textinputborder"
+        android:ems="30"
+        android:hint="Title"
+        android:inputType="textMultiLine"
+        android:textColor="@color/backgroundcolor"
+        android:textColorHint="@color/white">
+        <requestFocus/>
+    </EditText>
+
+    <EditText
+        android:id="@+id/et_message"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/textinputborder"
+        android:ems="30"
+        android:hint="Message"
+        android:inputType="textMultiLine"
+        android:textColor="@color/backgroundcolor"
+        android:textColorHint="@color/white">
+        <requestFocus/>
+    </EditText>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Send"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/white"
+            android:background="@drawable/mybutton"/>
+    </LinearLayout>
+
+</LinearLayout>

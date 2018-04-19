@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import org.smartautomation.user.smartclassroom.Global.Properties;
+import org.smartautomation.user.smartclassroom.Guard.MainActivity_Guard;
 import org.smartautomation.user.smartclassroom.Prof.MainActivity;
 import org.smartautomation.user.smartclassroom.R;
 import org.smartautomation.user.smartclassroom.Student.MainActivity_Student;
@@ -231,6 +232,14 @@ public class Splash extends AppCompatActivity {
                     i.putExtra("Name",sname);
                     i.putExtra("Email",usergetter[7]);
                     i.putExtra("Url",url);
+                    i.putExtra("User",user);
+                    i.putExtra("Stud_id",id);
+                    startActivity(i);
+                }else if (user.equals("Guard")){
+                    String id = usergetter[4];
+                    Intent i = new Intent(Splash.this, MainActivity_Guard.class);
+                    i.putExtra("Name",sname);
+                    i.putExtra("Email",user);
                     i.putExtra("User",user);
                     i.putExtra("Stud_id",id);
                     startActivity(i);

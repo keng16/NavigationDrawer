@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -89,7 +90,13 @@ public class GridListAdapter extends BaseAdapter {
             public void onClick(View v) {
                 itemCheckChanged(v);
                 counter++;
+
+                boolean check = false;
                 System.out.println(counter);
+                int c = arrayList.size();
+                if(viewHolder.radioButton.isChecked()&&(Integer)viewHolder.radioButton.getTag()==selectedPosition){
+                    viewHolder.radioButton.setChecked(false);
+                }
                 if (counter==0) {
                     append = full_status_model.getStudent_id();
                 }else if (counter>0){

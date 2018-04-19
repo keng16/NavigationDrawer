@@ -34,6 +34,127 @@
             android:textColor="@color/white"
             android:background="@drawable/mybutton"/>
     </LinearLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_weight="0"
+        android:background="#A6FFFFFF">
+
+        <TextView
+            android:id="@+id/tv_late_attendance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="0"
+            android:textColor="@color/black_overlay"
+            app:layout_constraintBottom_toTopOf="@+id/imageView7"
+            app:layout_constraintHorizontal_bias="0.463"
+            app:layout_constraintLeft_toRightOf="@id/tv_present_attendance"
+            app:layout_constraintRight_toLeftOf="@id/tv_absent_attendance" />
+
+        <TextView
+            android:id="@+id/tv_present_attendance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="40dp"
+            android:text="0"
+            android:textColor="@color/black_overlay"
+            app:layout_constraintBottom_toTopOf="@+id/imageView6"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="0" />
+
+        <TextView
+            android:id="@+id/tv_absent_attendance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="188dp"
+            android:text="0"
+            android:textColor="@color/black_overlay"
+            app:layout_constraintBottom_toTopOf="@+id/imageView6"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_in_attendance"
+            android:layout_width="9dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="68dp"
+            android:text="0"
+            android:textColor="@color/black_overlay"
+            app:layout_constraintBottom_toTopOf="@+id/imageView9"
+            app:layout_constraintStart_toEndOf="@+id/tv_absent_attendance" />
+
+        <TextView
+            android:id="@+id/tv_out_attendance"
+            android:layout_width="7dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="64dp"
+            android:text="0"
+            android:textColor="@color/black_overlay"
+            app:layout_constraintBottom_toTopOf="@+id/imageView10"
+            app:layout_constraintStart_toEndOf="@+id/tv_in_attendance" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/present" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="44dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageView8"
+            app:layout_constraintLeft_toRightOf="@id/imageView6"
+            app:srcCompat="@drawable/late" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="172dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/absent" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageView10"
+            app:layout_constraintStart_toEndOf="@+id/imageView8"
+            app:srcCompat="@drawable/tapin" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/tapout" />
+    </android.support.constraint.ConstraintLayout>
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh_attendance_daily"
              android:layout_width="match_parent"

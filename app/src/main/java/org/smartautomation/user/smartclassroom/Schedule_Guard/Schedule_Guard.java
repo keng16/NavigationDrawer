@@ -1,4 +1,4 @@
-package org.smartautomation.user.smartclassroom.Schedule;
+package org.smartautomation.user.smartclassroom.Schedule_Guard;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -20,6 +20,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import org.smartautomation.user.smartclassroom.Global.Properties;
+import org.smartautomation.user.smartclassroom.Guard.MainActivity_Guard;
 import org.smartautomation.user.smartclassroom.R;
 
 import org.apache.http.HttpResponse;
@@ -33,7 +34,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.smartautomation.user.smartclassroom.Schedule.Schedule_Student;
 
 import java.io.InputStream;
 import java.text.DateFormat;
@@ -48,7 +48,7 @@ import java.util.List;
 /**
  * Created by user on 12/31/15.
  */
-public class Schedule extends Fragment implements View.OnClickListener{
+public class Schedule_Guard extends Fragment implements View.OnClickListener{
 
     private View myView;
     Properties p= new Properties();
@@ -56,8 +56,7 @@ public class Schedule extends Fragment implements View.OnClickListener{
     private ArrayList<Properties> properties;
 
 
-    private Schedule_Adapter schedule_adapter;
-    private Schedule_Student schedule_student;
+    private Schedule_Guard_Adapter schedule_guard_adapter;
     Button btn_day;
     Spinner mySpinner;
     String stud_id;
@@ -65,35 +64,35 @@ public class Schedule extends Fragment implements View.OnClickListener{
     String selectedday;
     String PhpFile;
     private ProgressDialog dialog;
+    Button btnroom;
+    String room;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        myView = inflater.inflate(R.layout.schedule_student, container, false);
-        btn_day = (Button)myView.findViewById(R.id.btn_select_day);
+        myView = inflater.inflate(R.layout.schedule_guard, container, false);
+        btn_day = (Button)myView.findViewById(R.id.btn_select_day_guard);
+        btnroom = (Button)myView.findViewById(R.id.btn_select_room_guard);
         user = getArguments().getString("User").toString();
         stud_id=this.getArguments().getString("Stud_id").toString();
-        if(user.equals("Professor")){
-            PhpFile = "SCHEDULE-PROF.php";
-        }else if (user.equals("Student")){
-            PhpFile = "getSchedule.php";
-        }
         selectedday = dayToday();
         btn_day.setText("TODAY IS "+selectedday);
         ScheduleTask scheduleTask;
         btn_day.setOnClickListener(this);
+        btnroom.setOnClickListener(this);
         dialog = new ProgressDialog(getActivity());
         dialog.setIndeterminate(true);
         dialog.setCancelable(false);
         dialog.setMessage("Getting Schedule...");
         scheduleTask = new ScheduleTask();
         scheduleTask.execute();
-        listView = (ListView) myView.findViewById(R.id.list_view_schedule_student);
-
+        listView = (ListView) myView.findViewById(R.id.list_view_schedule_guard);
         return myView;
     }
-
+    public void MessageBox(String message){
+        Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -103,7 +102,7 @@ public class Schedule extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        if(v.getId()==R.id.btn_select_day){
+        if(v.getId()==R.id.btn_select_day_guard){
 //            mySpinner.getSelectedItem().equals(selectedday);
             final Handler handler = new Handler();
 
@@ -118,16 +117,66 @@ public class Schedule extends Fragment implements View.OnClickListener{
             mBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
+
                     Toast.makeText(getActivity(),mySpinner.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
+
                     selectedday = mySpinner.getSelectedItem().toString();
 //                   student_attendance_task.execute();
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            scheduleTask.execute();
-                        }
-                    });
-                    btn_day.setText( "Selected day:"+" "+mySpinner.getSelectedItem().toString());
+                    if (room!=null) {
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                scheduleTask.execute();
+                            }
+                        });
+                    }else{
+                        btn_day.setText( "Selected day:"+" "+mySpinner.getSelectedItem().toString());
+                        MessageBox("Select room!");
+                    }
+
+                    //dialogInterface.dismiss();
+
+                }
+            });
+            mBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                }
+            });
+            mBuilder.setView(view1);
+            AlertDialog dialog= mBuilder.create();
+            dialog.show();
+        }else if(v.getId()==R.id.btn_select_room_guard){
+            final Handler handler = new Handler();
+
+            final ScheduleTask scheduleTask = new ScheduleTask();
+            AlertDialog.Builder mBuilder= new AlertDialog.Builder(getActivity(),R.style.MyDialogTheme);
+            View view1 = getActivity().getLayoutInflater().inflate(R.layout.spinner,null);
+            mBuilder.setTitle("Pick Day");
+            mySpinner = (Spinner) view1.findViewById(R.id.spinner_design);
+            ArrayAdapter<String> adapter=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.rooms));
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            mySpinner.setAdapter(adapter);
+            mBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                    Toast.makeText(getActivity(),mySpinner.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
+                    room = mySpinner.getSelectedItem().toString();
+//                   student_attendance_task.execute();
+                    if (selectedday!=null) {
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                scheduleTask.execute();
+                            }
+                        });
+                        btnroom.setText("Selected room:" + " " + mySpinner.getSelectedItem().toString());
+                    }else{
+                        btnroom.setText("Selected room:" + " " + mySpinner.getSelectedItem().toString());
+                        MessageBox("Select day!");
+                    }
                     //dialogInterface.dismiss();
 
                 }
@@ -169,17 +218,16 @@ public class Schedule extends Fragment implements View.OnClickListener{
             Bundle extras=new Bundle();
             List<NameValuePair> nameValuePairs;
             nameValuePairs = new ArrayList<NameValuePair>(2);
-            nameValuePairs.add(new BasicNameValuePair("id",stud_id));
-            nameValuePairs.add(new BasicNameValuePair("day",selectedday));
             nameValuePairs.add(new BasicNameValuePair("entity_id",stud_id));
             nameValuePairs.add(new BasicNameValuePair("term","3"));
             nameValuePairs.add(new BasicNameValuePair("year","2018"));
             nameValuePairs.add(new BasicNameValuePair("position",user));
-            nameValuePairs.add(new BasicNameValuePair("room_id",user));
+            nameValuePairs.add(new BasicNameValuePair("room_id",room));
+
 
             try {
                 //ip= new Properties();
-                String Url = p.getIP()+PhpFile;
+                String Url = p.getIP()+"getSchedule.php";
                 httpclient = new DefaultHttpClient();
                 httppost = new HttpPost(Url);
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
@@ -219,69 +267,17 @@ public class Schedule extends Fragment implements View.OnClickListener{
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             dialog.dismiss();
-            if (user.equals("Professor")) {
-                properties = new ArrayList<Properties>();
-                //Toast.makeText(getActivity(),s,Toast.LENGTH_SHORT).show();
-                properties = parseScheduleProfessor(s);
-                schedule_adapter = new Schedule_Adapter(getActivity(), properties);
-                listView.setAdapter(schedule_adapter);
-            }else if (user.equals("Student")){
-                properties = new ArrayList<Properties>();
-               // Toast.makeText(getActivity(),s,Toast.LENGTH_SHORT).show();
-                properties = parseScheduleStudent(s);
-                schedule_student = new Schedule_Student(getActivity(), properties);
-                listView.setAdapter(schedule_student);
-            }
+            properties = new ArrayList<Properties>();
+           // MessageBox(s);
+            properties = parseSchedule(s);
+            schedule_guard_adapter = new Schedule_Guard_Adapter(getActivity(),properties);
+            listView.setAdapter(schedule_guard_adapter);
             //parseSchedule(s);
         }
     }
 
 
-    public ArrayList<Properties> parseScheduleProfessor(String result) {
-        ArrayList<Properties> mysched = new ArrayList<>();
-
-        try {
-            JSONArray jArray = new JSONArray(result);
-            for (int i = 0; i < jArray.length(); i++) {
-                JSONObject json_data = jArray.getJSONObject(i);
-                Properties user = new Properties();
-                user.setRoom(json_data.getString("rooms_id"));
-                user.setCourse(json_data.getString("course_id"));
-                user.setSection(json_data.getString("sections_id"));
-                user.setCoursename(json_data.getString("course_name"));
-                String formatstart_time=json_data.getString("start_time");
-                String formatend_time=json_data.getString("end_time");
-
-
-                try {
-                    DateFormat start = new SimpleDateFormat("HH:mm:ss"); //HH for hour of the day (0 - 23)
-                    Date d = start.parse(formatstart_time);
-                    DateFormat f2 = new SimpleDateFormat("h:mma");
-                    String startingtime =f2.format(d).toLowerCase(); // "12:18am"
-
-                    DateFormat end = new SimpleDateFormat("HH:mm:ss"); //HH for hour of the day (0 - 23)
-                    Date d2 = start.parse(formatend_time);
-                    DateFormat f3 = new SimpleDateFormat("h:mma");
-                    String endingtime =f3.format(d2).toLowerCase();
-
-                    user.setStartTime(startingtime);//error
-                    user.setEndTime(endingtime);//error
-                    //if string contains su and myday is sunday bla bla
-                    user.setDay(json_data.getString("day"));
-                    mysched.add(user);
-                    System.out.println(mysched);
-                } catch (ParseException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-
-            }
-        } catch (JSONException e) {
-            Log.e("log_tag", "Error parsing data " + e.toString());
-        }
-        return mysched;
-    }
-    public ArrayList<Properties> parseScheduleStudent(String result) {
+    public ArrayList<Properties> parseSchedule(String result) {
         ArrayList<Properties> mysched = new ArrayList<>();
 
         try {
@@ -376,7 +372,7 @@ public class Schedule extends Fragment implements View.OnClickListener{
             month_name = months[month];
         }
         String date_final = String.valueOf(day);
-       String year_final = String.valueOf(year);
+        String year_final = String.valueOf(year);
         String date = month_name+" "+date_final+" , "+year_final+", "+dayToday();
         //date_today.setText(date);
         return date;

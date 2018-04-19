@@ -68,6 +68,7 @@ public class notification_today extends Fragment {
                 new notification_today_task().execute();
             }
         });
+        Toast.makeText(getActivity(), id, Toast.LENGTH_SHORT).show();
 //        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -164,7 +165,6 @@ public class notification_today extends Fragment {
             notification_adapter = new notification_adapter(getActivity(),notificationModels);
             listView.setAdapter(notification_adapter);
             swipeRefreshLayout.setRefreshing(false);
-
         }
     }
     public ArrayList<NotificationModel> logsUse(String result) {

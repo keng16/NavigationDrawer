@@ -72,7 +72,7 @@
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:id="@+id/Logs"
+            android:id="@+id/Remarks"
             android:layout_width="160dp"
             android:layout_height="180dp"
             android:layout_margin="10dp"
@@ -97,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/arsenal"
-                    android:text="Logs"
+                    android:text="Remarks"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 

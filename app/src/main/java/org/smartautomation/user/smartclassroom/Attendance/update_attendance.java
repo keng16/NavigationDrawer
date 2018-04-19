@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -62,6 +63,8 @@ public class update_attendance extends Fragment implements View.OnClickListener{
     String program;
     String attendance_id;
     Properties p =new Properties();
+    EditText et_Remarks;
+    String remarks;
 
     @Nullable
     @Override
@@ -74,12 +77,13 @@ public class update_attendance extends Fragment implements View.OnClickListener{
         tv_course = (TextView)myView.findViewById(R.id.tv_course);
         tv_date = (TextView)myView.findViewById(R.id.tv_date);
         btn_status = (Button)myView.findViewById(R.id.btn_change_status);
+        et_Remarks = (EditText)myView.findViewById(R.id.et_Remarks);
         attendance_id = String.valueOf(getArguments().getInt("attendance_id"));
         stud_id = String.valueOf(getArguments().getInt("Stud_id"));
         course = getArguments().getString("course").toString();
         sections = getArguments().getString("sections").toString();
         room = getArguments().getString("room").toString();
-          date = getArguments().getString("date").toString();
+        date = getArguments().getString("date").toString();
         url = getArguments().getString("url").toString();
         name = getArguments().getString("name").toString();
         status = getArguments().getString("status").toString();
@@ -87,9 +91,10 @@ public class update_attendance extends Fragment implements View.OnClickListener{
         tv_studentnumber.setText(stud_id);
         tv_fullname.setText(name);
         tv_program.setText(program);
-        btn_status.setText(status);
+        btn_status.setText("Select Remarks");
         tv_course.setText(course+" "+room);
         tv_date.setText(date);
+        btn_status.setText(status);
         Picasso.with(getActivity())
                 .load(url)
                 .resize(144, 144)
@@ -105,67 +110,70 @@ public class update_attendance extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         if(v.getId()==R.id.btn_change_status){
 //            mySpinner.getSelectedItem().equals(selectedday);
-            final Handler handler = new Handler();
-            AlertDialog.Builder mBuilder= new AlertDialog.Builder(getActivity(),R.style.MyDialogTheme);
-            View view1 = getActivity().getLayoutInflater().inflate(R.layout.spinner,null);
-            mBuilder.setTitle("Pick Day");
-            mySpinner = (Spinner) view1.findViewById(R.id.spinner_design);
-            ArrayAdapter<String> adapter=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.attendance_status));
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            mySpinner.setAdapter(adapter);
-            mBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    Toast.makeText(getActivity(),mySpinner.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
-                    if(!status.equals(mySpinner.getSelectedItem().toString())) {
-                        status = mySpinner.getSelectedItem().toString();
-                        if (status.equals("Present")) {
-                            status_attedance = "1";
-                        } else if (status.equals("Late")) {
-                            status_attedance = "2";
-                        } else if (status.equals("Absent")) {
-                            status_attedance = "3";
-                        } else if (status.equals("Excused")) {
-                            status_attedance = "4";
+            if (et_Remarks.length()>0){
+                remarks = et_Remarks.getText().toString();
+                final Handler handler = new Handler();
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity(), R.style.MyDialogTheme);
+                View view1 = getActivity().getLayoutInflater().inflate(R.layout.spinner, null);
+                mBuilder.setTitle("Pick Day");
+                mySpinner = (Spinner) view1.findViewById(R.id.spinner_design);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.attendance_status));
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                mySpinner.setAdapter(adapter);
+                mBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), mySpinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        if (!status.equals(mySpinner.getSelectedItem().toString())) {
+                            status = mySpinner.getSelectedItem().toString();
+                            if (status.equals("Excused")) {
+                                btn_status.setText("Selected: " + status);
+                                status_attedance = "4";
+                            } else if (status.equals("Cutting")) {
+                                btn_status.setText("Selected: " + status);
+                                status_attedance = "5";
+                            }
+                            btn_status.setText(status);
+                            AlertDialog.Builder mBuilder2 = new AlertDialog.Builder(getActivity());
+                            mBuilder2.setTitle("Are you sure to update attendance?");
+                            mBuilder2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    handler.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            new update_attendance_task().execute();
+                                        }
+                                    });
+                                }
+                            });
+                            mBuilder2.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            AlertDialog dialog = mBuilder2.create();
+                            dialog.show();
+                        } else {
+                            MessageBox("Can't select same status");
                         }
-                        btn_status.setText(status);
-                        AlertDialog.Builder mBuilder2 = new AlertDialog.Builder(getActivity());
-                        mBuilder2.setTitle("Are you sure to update attendance?");
-                        mBuilder2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                handler.post(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        new update_attendance_task().execute();
-                                    }
-                                });
-                            }
-                        });
-                        mBuilder2.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                        AlertDialog dialog = mBuilder2.create();
-                        dialog.show();
-                    }else{
-                        MessageBox("Can't select same status");
-                    }
-                    //dialogInterface.dismiss();
+                        //dialogInterface.dismiss();
 
-                }
-            });
-            mBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    dialogInterface.dismiss();
-                }
-            });
-            mBuilder.setView(view1);
-            AlertDialog dialog= mBuilder.create();
-            dialog.show();
+                    }
+                });
+                mBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                mBuilder.setView(view1);
+                AlertDialog dialog = mBuilder.create();
+                dialog.show();
+            }else if (et_Remarks.length()==0){
+                MessageBox("Remarks Empty!");
+            }
         }
     }
     public class update_attendance_task extends AsyncTask<Void,Void,String>{
@@ -192,6 +200,8 @@ public class update_attendance extends Fragment implements View.OnClickListener{
             // nameValuePairs.add(new BasicNameValuePair("id",stud_id));
             nameValuePairs.add(new BasicNameValuePair("attendance",attendance_id));
             nameValuePairs.add(new BasicNameValuePair("status",status_attedance));
+            nameValuePairs.add(new BasicNameValuePair("remarks",remarks));
+
 
             try {
                 //ip= new Properties();

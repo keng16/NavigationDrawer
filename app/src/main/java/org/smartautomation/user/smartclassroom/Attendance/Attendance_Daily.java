@@ -44,6 +44,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartautomation.user.smartclassroom.Prof.Controller;
 import org.smartautomation.user.smartclassroom.R;
 
 import java.io.InputStream;
@@ -54,6 +55,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Timer;
 import java.util.TimerTask;
 
 /**
@@ -69,6 +71,7 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
     private ArrayList<Properties> properties;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private attendance_prof_adaptor attendance_prof_adaptor;
+
 
     String day;
     Spinner mySpinner;
@@ -87,7 +90,16 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
     ProgressDialog dialog;
     Bundle bundle=new Bundle();
     String history;
+    String condition;
     TimerTask timerTask;
+    Timer timer;
+    TextView tv_late;
+    TextView tv_absent;
+    TextView tv_present;
+    TextView tv_in;
+    TextView tv_out;
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -97,6 +109,11 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
         course_pick = (Button) myView.findViewById(R.id.btn_attendance_course);
         date_pick = (Button) myView.findViewById(R.id.btn_attendance_date);
         listView = (SwipeMenuListView) myView.findViewById(R.id.listview_attendance_daily);
+        tv_present = (TextView)myView.findViewById(R.id.tv_present_attendance);
+        tv_absent = (TextView)myView.findViewById(R.id.tv_absent_attendance);
+        tv_late = (TextView)myView.findViewById(R.id.tv_late_attendance);
+        tv_in = (TextView)myView.findViewById(R.id.tv_in_attendance);
+        tv_out = (TextView)myView.findViewById(R.id.tv_out_attendance);
         swipeRefreshLayout = (SwipeRefreshLayout) myView.findViewById(R.id.swipe_refresh_attendance_daily);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -104,7 +121,7 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
                 new getAttendance_Daily().execute();
             }
         });
-        //datetoday();
+        AutoDetect();
         date_final = datetoday();
         date_pick.setText(date_today());
         date_pick.setOnClickListener(this);
@@ -134,6 +151,7 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
                         @Override
                         public void run() {
                             new getAttendance_Daily().execute();
+                            new CountInTask().execute();
                         }
                     });
                     //date_pick.setText(date_final);
@@ -150,9 +168,42 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
     public void MessageBox(String message) {
         Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
     }
+
+    public void AutoDetect(){
+
+        condition = "AutoDetect";
+        timer = new Timer();
+        timerTask=new TimerTask() {
+            @Override
+            public void run() {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        new LoadClass().execute();
+                        new getAttendance_Daily().execute();
+                        new CountInTask().execute();
+                    }
+                });
+            }
+        };
+        timer.schedule(timerTask,0,3000);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        timer.cancel();
+        timerTask.cancel();
+    }
+
     @Override
     public void onClick(View view) {
         if (view.getId()==R.id.btn_attendance_course){
+            timer.cancel();
+            condition = "Manual";
+//            course = "";
+//            room = "";
+//            sections = "";
             final Handler handler = new Handler();
             final LoadClass loadClass=new LoadClass();
             loadClass.execute();
@@ -179,6 +230,7 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
                                 @Override
                                 public void run() {
                                     new getAttendance_Daily().execute();
+                                    new CountInTask().execute();
                                 }
                             });
 
@@ -189,14 +241,16 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
                     }else{
                         MessageBox("No Subject");
                     }
-                    //dialogInterface.dismiss();
-
                 }
             });
             mBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     dialogInterface.dismiss();
+                    course = "";
+                    room = "";
+                    sections = "";
+                    AutoDetect();
                 }
             });
             mBuilder.setView(view1);
@@ -205,6 +259,7 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
         }else if(view.getId()==R.id.btn_attendance_date){
 //            timerTask.cancel();
             date_final = "";
+            timer.cancel();
             Calendar cal = Calendar.getInstance();
             int year = cal.get(Calendar.YEAR);
             int month = cal.get(Calendar.MONTH);
@@ -219,38 +274,6 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
 
             @Override
             public void create(SwipeMenu menu) {
-//                // create "open" item
-//                SwipeMenuItem openItem = new SwipeMenuItem(
-//                        getActivity());
-//                // set item background
-//                openItem.setBackground(new ColorDrawable(Color.rgb(0xC9, 0xC9,
-//                        0xCE)));
-//                // set item width
-//                openItem.setWidth(130);
-//                // set item title
-//                openItem.setTitle("Edit");
-//                // set item title fontsize
-//                openItem.setTitleSize(16);
-//                // set item title font color
-//                openItem.setTitleColor(Color.WHITE);
-//                // add to menu
-//                menu.addMenuItem(openItem);
-//
-//                // create "delete" item
-//                SwipeMenuItem deleteItem = new SwipeMenuItem(
-//                        getActivity());
-//                // set item background
-//                deleteItem.setBackground(new ColorDrawable(Color.rgb(0xC9, 0xC9,
-//                        0xCE)));
-//                // set item width
-//                deleteItem.setWidth(130);
-//                // set a icon
-//                deleteItem.setTitle("Status");
-//                deleteItem.setTitleSize(16);
-//                deleteItem.setTitleColor(Color.WHITE);
-//                menu.addMenuItem(deleteItem);
-
-//                deleteItem.setIcon(R.drawable.ic_wifi_black_24dp);
                 // add to menu
                 if(history.equals("1")) {
 
@@ -445,6 +468,8 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
             List<NameValuePair> nameValuePairs;
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("id",stud_id));
+            nameValuePairs.add(new BasicNameValuePair("condition",condition));
+            nameValuePairs.add(new BasicNameValuePair("day",dayToday()));
             try {
                 //ip= new Properties();
                 String Url = p.getIP()+"Prof_Course.php";
@@ -483,8 +508,14 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            properties = parseJSON(s);
-            addData(properties);
+            if (condition.equals("AutoDetect")){
+                System.out.println(s);
+                properties = parseJSON(s);
+            }else if (condition.equals("Manual")) {
+                System.out.println(s);
+                properties = parseJSON(s);
+                addData(properties);
+            }
 
         }
     }
@@ -500,6 +531,10 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
                 user.setRoom(json_data.getString("rooms_id")); //ipinasa dito
                 user.setCourse(json_data.getString("course_id"));
                 user.setSection(json_data.getString("sections_id"));
+                course = json_data.getString("course_id");
+                room = json_data.getString("rooms_id");
+                sections = json_data.getString("sections_id");
+                course_pick.setText(course+" "+room+" "+sections);
                 //pic=getBitmapFromURL(json_data.getString(""));
                 courseusers.add(user);
             }
@@ -551,6 +586,7 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
         nameValuePairs.add(new BasicNameValuePair("course",course));
         nameValuePairs.add(new BasicNameValuePair("section",sections));
         nameValuePairs.add(new BasicNameValuePair("room",room));
+
         try {
             //ip= new Properties();
             String Url = p.getIP()+"getStudentAttendance.php";
@@ -589,8 +625,7 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-//        Toast.makeText(getActivity(),s,Toast.LENGTH_SHORT).show();
-        System.out.println(s);
+//        System.out.println(s);
         properties = attendanceUse(s);
         attendance_prof_adaptor=new attendance_prof_adaptor(getActivity(),properties);
         listView.setAdapter(attendance_prof_adaptor);
@@ -601,8 +636,6 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
     public String datetoday()
     {
         Calendar c = Calendar.getInstance();
-        //	System.out.println("Current time => " + c.getTime());
-
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         day = df.format(c.getTime());
         MessageBox(day);
@@ -663,7 +696,6 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
         }
         return Day;
     }
-
     //Attendance
     public ArrayList<Properties> attendanceUse(String result) {
         ArrayList<Properties> attendanceusers = new ArrayList<Properties>();
@@ -692,6 +724,88 @@ public class Attendance_Daily extends Fragment implements View.OnClickListener {
         }
         return attendanceusers;
     }
+    public class CountInTask extends AsyncTask<Void,Void,String>{
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            String output = "";
+            byte[] data;
+            HttpPost httppost;
+            HttpClient httpclient;
+            StringBuffer buffer = null;
+            HttpResponse response;
+            InputStream inputStream;
+            HttpGet httpGet;
+            Intent intent;
+            String resultString="";
+            Bundle extras=new Bundle();
+            List<NameValuePair> nameValuePairs;
+            nameValuePairs = new ArrayList<NameValuePair>(2);
+            // nameValuePairs.add(new BasicNameValuePair("id",stud_id));
+            nameValuePairs.add(new BasicNameValuePair("date",date_final));
+            nameValuePairs.add(new BasicNameValuePair("course",course));
+            nameValuePairs.add(new BasicNameValuePair("section",sections));
+            nameValuePairs.add(new BasicNameValuePair("room",room));
+
+            try {
+                //ip= new Properties();
+                String Url = p.getIP()+"getInOutStudnumber.php";
+                httpclient = new DefaultHttpClient();
+                httppost = new HttpPost(Url);
+                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                response = httpclient.execute(httppost);
+                inputStream = response.getEntity().getContent();
+
+                data = new byte[256];
+
+                buffer = new StringBuffer();
+
+                int len = 0;
+
+                while (-1 != (len = inputStream.read(data)) ) {
+                    buffer.append(new String(data, 0, len));
+                }
+                //for the output or echo
+                String bufferedInputString = buffer.toString();
+
+                inputStream.close();
+            }
+            catch (final Exception e) {
+                getActivity().runOnUiThread(new Runnable() {
+                    public void run() {
+
+                        Toast.makeText(getActivity(), "error: "+e.toString(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+            }
+            return buffer.toString();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+           // MessageBox(s);
+            try {
+                JSONArray jArray = new JSONArray(s);
+                for (int i = 0; i < jArray.length(); i++) {
+                    JSONObject json_data = jArray.getJSONObject(i);
+                    tv_present.setText(json_data.getString("present"));
+                    tv_absent.setText(json_data.getString("absent"));
+                    tv_late.setText(json_data.getString("late"));
+                    tv_in.setText(json_data.getString("in"));
+                    tv_out.setText(json_data.getString("out"));
+                }
+            } catch (JSONException e) {
+                Log.e("log_tag", "Error parsing data " + e.toString());
+            }
+        }
+    }
+
 
 
 }

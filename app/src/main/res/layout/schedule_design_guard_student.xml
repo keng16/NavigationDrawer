@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardview"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="2dp"
+    android:layout_marginBottom="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="240dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:orientation="vertical"
+        android:background="@drawable/schedulebackground">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/imageView_schedule_guard_student"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="4dp"
+                app:civ_border_width="1dp"
+                app:civ_border_color="#FF000000"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"/>
+
+            <TextView
+                android:id="@+id/tv_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:text="ID Number"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/imageView_schedule_guard_student"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_name_schedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="20dp"
+                android:text="Name"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView_schedule_guard_student" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:background="#A6FFFFFF">
+
+            <TextView
+                android:id="@+id/time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/amiko"
+                android:text="8:30-10:00"
+                android:textColor="@color/black_overlay"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.562" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/course_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="224dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/amiko"
+                android:text="Course: IT179P"
+                android:textColor="@color/black_overlay"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/section_tv"
+                android:layout_width="112dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/amiko"
+                android:text="Section: A56"
+                android:textColor="@color/black_overlay"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.88"
+                app:layout_constraintStart_toEndOf="@+id/course_tv"
+                app:layout_constraintTop_toTopOf="parent" />" />" />
+
+            <TextView
+                android:id="@+id/room_tv"
+                android:layout_width="match_parent"
+                android:layout_height="29dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/amiko"
+                android:gravity="center"
+                android:text="Room"
+                android:textColor="@color/black_overlay"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_coursename"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/tv_coursename"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="64dp"
+                android:text="asdasd"
+                android:textColor="@color/black_overlay"
+                android:textSize="15sp"
+                android:maxEms="50"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.523"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/day_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="MWF"
+                android:textColor="@color/black_overlay"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

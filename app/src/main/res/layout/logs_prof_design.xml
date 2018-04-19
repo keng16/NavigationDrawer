@@ -76,6 +76,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/imageRemarks"
+            android:layout_width="17dp"
+            android:layout_height="16dp"
+            android:layout_marginBottom="28dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
 
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

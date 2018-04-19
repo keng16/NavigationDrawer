@@ -423,7 +423,7 @@ public class Student_Attendance extends Fragment implements View.OnClickListener
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-//            Toast.makeText(getActivity(),s,Toast.LENGTH_SHORT).show();
+
             splitter = s.split(":");
             present = splitter[0];
             late = splitter[1];
